@@ -1,0 +1,13 @@
+.idea/
+.phpdoc/
+vendor/
+database/*.db
+
+*.log
+*.cache
+
+Thumbs.db
+composer.lock
+
+.DS_Store
+
