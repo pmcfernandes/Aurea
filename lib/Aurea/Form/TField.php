@@ -22,6 +22,7 @@ abstract class TField extends TComponent
     protected bool $editable = true;
     /** @var array{0:string,1:TValidatorInterface}[] */
     protected array $validations = [];
+    protected ?string $validationError = null;
 
     /**
      * Cria o campo base com o nome informado.
@@ -145,9 +146,31 @@ abstract class TField extends TComponent
      */
     public function validate(): void
     {
+        $this->validationError = null;
+        $classes = preg_split('/\s+/', (string) $this->getProperty('class')) ?: [];
+        $this->setProperty('class', implode(' ', array_filter($classes, fn(string $class): bool => $class !== 'is-invalid')));
+        $this->setProperty('aria-invalid', 'false');
         foreach ($this->validations as [$label, $validator]) {
-            $validator->validate($label, $this->value);
+            try {
+                $validator->validate($label, $this->value);
+            } catch (\Throwable $error) {
+                $this->validationError = $error->getMessage();
+                $this->addClass('is-invalid');
+                $this->setProperty('aria-invalid', 'true');
+                $this->setProperty('aria-describedby', $this->getProperty('id') . '_error');
+                throw $error;
+            }
         }
+    }
+
+    /**
+     * Obtém a última mensagem de validação do campo.
+     *
+     * @return string|null Mensagem ou null quando não houve falha
+     */
+    public function getValidationError(): ?string
+    {
+        return $this->validationError;
     }
 
     /**

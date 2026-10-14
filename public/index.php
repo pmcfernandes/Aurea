@@ -7,13 +7,71 @@ declare(strict_types=1);
  */
 require dirname(__DIR__) . '/bootstrap.php';
 
+use Aurea\Auth\TAuth;
+use Aurea\Auth\TPermission;
 use Aurea\Core\TApplication;
+use Aurea\Core\TAction;
+use Aurea\Core\TScript;
+use Aurea\Core\TSession;
+use Aurea\Core\TConfig;
+use Aurea\Database\TTransaction;
+use Aurea\Log\TLog;
+use Aurea\Log\TLogContext;
+use Aurea\Log\TRotatingTxtLogger;
 
-TApplication::setTitle('Aurea Framework');
+TConfig::loadEnv(APP_ROOT . '/.env');
+$config = TConfig::loadWithEnv(APP_ROOT . '/config/application.php');
+$config->validate([
+    'app.environment' => 'string',
+    'app.debug' => 'bool',
+    'app.csrf_protection' => 'bool',
+    'app.permission_guard' => 'bool',
+    'permissions' => 'array',
+    'logging' => 'array',
+]);
+
+TApplication::setTitle('Aurea CRM Demo');
 TApplication::setControlNamespace('App\\Control\\');
-TApplication::setDefault('HomeView', 'onShow');
-if (file_exists(APP_ROOT . '/app/menu.xml')) {
-    // $allowed = fn(string $programa): bool => true; // ligue às suas permissões
-    TApplication::setMenuXml(APP_ROOT . '/app/menu.xml');
+TApplication::setDefault('CrmDashboard', 'onShow');
+TApplication::setEnv($config->get('app.environment'), $config->get('app.debug'));
+TApplication::setCsrfProtection($config->get('app.csrf_protection'));
+TApplication::usePermissionGuard($config->get('app.permission_guard'));
+
+if ($config->get('logging.enabled', false)) {
+    $logger = new TRotatingTxtLogger(
+        (string) $config->get('logging.file'),
+        (int) $config->get('logging.max_bytes', 1048576),
+        (int) $config->get('logging.keep', 5)
+    );
+    TLog::setLogger($logger);
+    TTransaction::setLogger(TLog::writer());
+    TLogContext::beginRequest();
+    TLogContext::set('environment', TApplication::getEnv());
+    TLogContext::set('http_method', (string) ($_SERVER['REQUEST_METHOD'] ?? 'CLI'));
+    TLog::info('Pedido iniciado', ['path' => (string) ($_SERVER['REQUEST_URI'] ?? '')]);
+}
+
+foreach ($config->get('permissions') as $controller => $actions) {
+    foreach ($actions as $action) {
+        TPermission::grantAction((string) $controller, (string) $action);
+    }
+}
+
+TApplication::setAuthCallback(static function (string $class, string $method): bool|string {
+    if (!str_starts_with($class, 'Crm') || $class === 'CrmLogin' || TAuth::check()) {
+        return true;
+    }
+    TSession::setValue('crm_after_login', ['class' => $class, 'method' => $method]);
+    TScript::redirect(new TAction(['CrmLogin', 'onShow']));
+    return 'Autenticação necessária.';
+});
+if (TAuth::check() && file_exists(APP_ROOT . '/app/menu.xml')) {
+    $menuControllers = array_keys($config->get('permissions'));
+    TApplication::setMenuXml(
+        APP_ROOT . '/app/menu.xml',
+        static fn(string $controller): bool => in_array($controller, $menuControllers, true)
+    );
+} else {
+    TApplication::setMenuHtml('');
 }
 TApplication::run();

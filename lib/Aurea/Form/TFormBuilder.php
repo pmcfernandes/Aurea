@@ -160,12 +160,19 @@ class TFormBuilder extends TComponent
             }
             if (isset($labels[$i])) {
                 $lab = $labels[$i] instanceof TComponent ? $labels[$i] : new TLabel((string) $labels[$i]);
+                if ($lab instanceof TLabel && $field instanceof TField) {
+                    $lab->setProperty('for', (string) $field->getProperty('id'));
+                }
                 $col->add($lab);
             }
             if ($field instanceof TField) {
                 $this->form->addField($field);
             }
             $col->add($field);
+            if ($field instanceof TField) {
+                $feedback = new TFieldFeedback($field);
+                $col->add($feedback);
+            }
             $row->add($col);
         }
         $this->body->add($row);

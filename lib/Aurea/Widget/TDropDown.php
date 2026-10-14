@@ -20,6 +20,8 @@ class TDropDown extends TComponent
 {
     protected string $label;
     protected string $btnClass;
+    protected string $toggleId;
+    protected static int $counter = 0;
     /** @var array<int,array{label:string,action:TAction,icon:string}> */
     protected array $actions = [];
 
@@ -34,6 +36,8 @@ class TDropDown extends TComponent
         parent::__construct('div');
         $this->label = $label;
         $this->btnClass = $class;
+        self::$counter++;
+        $this->toggleId = 'dropdown_toggle_' . self::$counter;
         $this->addClass('dropdown');
     }
 
@@ -63,12 +67,12 @@ class TDropDown extends TComponent
             $href = htmlspecialchars($item['action']->serialize(), ENT_QUOTES);
             $label = htmlspecialchars($item['label'], ENT_QUOTES);
             $icon = $item['icon'] !== '' ? "<i class='" . htmlspecialchars($item['icon'], ENT_QUOTES) . "'></i> " : '';
-            $items .= "<li><a class='dropdown-item' href='{$href}'>{$icon}{$label}</a></li>";
+            $items .= "<li role='none'><a class='dropdown-item' role='menuitem' href='{$href}'>{$icon}{$label}</a></li>";
         }
         $attrs = $this->renderAttributes();
         $label = htmlspecialchars($this->label, ENT_QUOTES);
         $class = htmlspecialchars($this->btnClass, ENT_QUOTES);
-        return "<div{$attrs}><button type='button' class='btn {$class} dropdown-toggle' data-bs-toggle='dropdown'>"
-             . "{$label}</button><ul class='dropdown-menu'>{$items}</ul></div>";
+        return "<div{$attrs}><button id='{$this->toggleId}' type='button' class='btn {$class} dropdown-toggle' data-bs-toggle='dropdown' aria-expanded='false' aria-haspopup='true'>"
+             . "{$label}</button><ul class='dropdown-menu' role='menu' aria-labelledby='{$this->toggleId}'>{$items}</ul></div>";
     }
 }

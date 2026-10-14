@@ -2,6 +2,32 @@
 
 Framework PHP **baseada em Componentes e orientada a Eventos**.
 
+## Demo CRM (SQLite)
+
+A demonstração inclui dashboard, pipeline de oportunidades, tarefas e CRUD de
+clientes sobre `database/crm_demo.sqlite`. A base e os dados de exemplo são
+criados automaticamente na primeira visita.
+
+```bash
+php -S localhost:8000 -t public
+```
+
+Abra `http://localhost:8000/?class=CrmDashboard&method=onShow`.
+
+A política de arranque está em `config/application.php`: ativa CSRF, uma allow-list de
+controllers/eventos e a guarda de permissões. Para produção, inicie com
+`APP_ENV=prod`; o debug fica desativado por padrão (pode ser explicitamente
+controlado por `APP_DEBUG`).
+
+Os pedidos também recebem `X-Request-ID` e são escritos como JSON em
+`var/log/aurea.log`, com nível, contexto e rotação configurável em
+`config/application.php`. Valores cujo nome indique segredo, token, password,
+cookie ou authorization são redigidos automaticamente.
+
+As palavras-passe usam BCrypt com custo 12. Um hash criado com política anterior
+é renovado automaticamente após um login bem-sucedido; não são registados
+e-mails nem palavras-passe nos eventos de autenticação.
+
 > Telas são **compostas por componentes** (`TForm`, `TEntry`, `TDataGrid`, `TPanel`, …)
 > e a interação acontece por **eventos** encapsulados em `TAction([Controller, método], params)`
 > despachados por um **Front Controller** (`index.php?class=…&method=…`).
@@ -10,7 +36,7 @@ Framework PHP **baseada em Componentes e orientada a Eventos**.
 
 | Classe | Papel |
 |---|---|
-| `Aurea\Core\TComponent` | base de todo componente visual |
+| `Aurea\Core\TComponent` | base visual; `addText()` escapa conteúdo e `addHtml()` é explícito para HTML confiável |
 | `Aurea\Core\TAction` | encapsula evento controller+método+params |
 | `Aurea\Core\TPage` | contentor de tela |
 | `Aurea\Core\TApplication` | Front Controller |
@@ -29,7 +55,7 @@ Framework PHP **baseada em Componentes e orientada a Eventos**.
 | `Aurea\Core\TTranslator`, `_t()` | i18n pt/en + dicionários |
 | `Aurea\Util\TDateTimeUtil` | conversões `dd/mm/yyyy` ⇄ `yyyy-mm-dd`, addDays, diff |
 | `Aurea\Form\TDBCombo`, `TDBUniqueSearch` | campos vindos do banco |
-| `Aurea\Form\TFileField` + `TUploader` | upload de arquivos |
+| `Aurea\Form\TFileField` + `TUploader` | upload com multipart automático, extensão/MIME e validação de imagem |
 | `Aurea\Log\TTxtLogger`, `THtmlLogger`, `TDbLogger` | logs + `TTransaction::setLogger()` |
 | `Aurea\Container\TMenu::fromXml()` | menu com permissões |
 | `Aurea\Dialog\TWindow` | modal Bootstrap via controller |
@@ -42,7 +68,7 @@ Framework PHP **baseada em Componentes e orientada a Eventos**.
 | `Aurea\Dialog\TInputDialog` | formulário dentro de modal |
 | `Aurea\Form\TFieldList` | linhas editáveis mestre-detalhe |
 | `TTime`, `TDateTimeField`, `TSlider`, `TColor`, `TSpinner`, `THtmlEditor`, `TMultiSearch`, `TSeekButton`, `TBarCode`, … | + `TMonthField`, `TCheckButton`, `TRadioButton`, `TIcon`, `TImageField` e variantes `DB*` |
-| `Aurea\Http\*`, `Aurea\Service\TRestServer` | `HttpRequest/Response`, `TRestClient`, `TCookie`, servidor REST |
+| `Aurea\Http\*`, `Aurea\Service\TRestServer` | `HttpRequest/Response`, `TRestClient`, `TCookie`, servidor REST com rotas e respostas HTTP |
 | `Aurea\IO\TFile` | ficheiros: ler/escrever/listar/apagar/download |
 | `Aurea\Database\TDBLoop` | iteração de resultados (Iterator/Countable) |
 | `Aurea\Base\TStandardForm/List/Seek` (abstratas) | CRUD pronto (a de Listagem traz CSV) |
@@ -57,9 +83,12 @@ Framework PHP **baseada em Componentes e orientada a Eventos**.
 | `TXmlLogger`, `TStyle`, `TFrame`, `TCard` | fecha a família de loggers + contentores |
 | `TTimeline`, `TQrCode`, `TImageCropper` | linha do tempo, QR, crop (CDN) |
 | `TSearchField`, `display` em ações, `TExpression` | pesquisa em tabelas grandes, `UPPER()` nos filtros |
-| `TMigrator`, `TCsvImporter`, `TGridExporter`, `TCaptchaField` | versões de banco, import/export, anti-spam |
+| `TMigrator`, `TSqlMultiInsert`, `TCsvImporter`, `TGridExporter`, `TCaptchaField` | migrations com checksum, inserção em lote, import/export, anti-spam |
 | `TStatCard`, `TStepForm`, `TSidebar`, `{block}` | dashboard, multi-passo, herança de templates |
 | `TDataGridWrapper` | título + busca rápida + ações de cabeçalho |
+| `TCacheInterface`, `TArrayCache`, `TFileCache` | cache com TTL em memória ou ficheiro |
+| `TMasterDetailTrait`, `TAttachmentTrait` | persistência de detalhes e anexos na transação ativa |
+| `TRecordSearchService`, `TUploadService` | pesquisa paginada segura e upload assíncrono com token |
 | `THash::make/verify`, `TImageUtil::thumbnail()` | BCRYPT + resize com fallback |
 | `app/model`, `app/control`, `app/Mvc`, `config/*.php` | estrutura da app |
 
@@ -277,9 +306,8 @@ class HomeController extends TController
 
 Vistas em `app/views/<template>.php` (PHP normal com as variáveis extraídas).
 Ver exemplo a correr em `public/mvc.php` (+ `public/.htaccess` para Apache).
-```
 
-## Testes (PHPUnit, 767 testes, 1675 asserções)
+## Testes (PHPUnit, 848 testes)
 
 ```bash
 php vendor/bin/phpunit --testsuite Unit            # suite completa
@@ -294,4 +322,7 @@ classe de `lib/`), sem rede nem dependências externas.
 - Implementação original com **arquitetura** baseada em componentes,
   eventos e Active Record, com código 100% próprio.
 - Suporta SQLite, MySQL, PostgreSQL, SQL Server, Oracle e Firebird via PDO.
-- Requer PHP >= 8.1.
+- Requer PHP >= 8.1 com extensões `gd`, `mbstring`, `pdo`, `pdo_sqlite`, `xml` e `zlib`.
+- PDF real via `mpdf/mpdf` (`composer require mpdf/mpdf` já incluído). Em produção,
+  garanta escrita em `sys_get_temp_dir()/aurea-mpdf` ou configure
+  `TGridExporter::setPdfTempDir()`.

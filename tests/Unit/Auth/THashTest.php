@@ -30,6 +30,14 @@ final class THashTest extends TestCase
         $this->assertFalse(THash::needsRehash($hash));
     }
 
+    public function testNeedsRehashWhenBcryptPolicyChanges(): void
+    {
+        $hash = THash::make('segredo', ['cost' => 10]);
+
+        $this->assertTrue(THash::needsRehash($hash));
+        $this->assertFalse(THash::needsRehash($hash, ['cost' => 10]));
+    }
+
     public function testInfo(): void
     {
         $hash = THash::make('segredo');

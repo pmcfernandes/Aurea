@@ -1,0 +1,5 @@
+<?php
+declare(strict_types=1);
+namespace Aurea\Form;
+/** Seletor discreto com botões anterior/seguinte e input oculto. */
+class TArrowStep extends TField { private array $items=[]; public function addItems(array $items):static{$this->items=$items;return $this;} public function getContents():string{$keys=array_keys($this->items);$current=array_search((string)$this->value,array_map('strval',$keys),true);$current=$current===false?0:$current;$label=htmlspecialchars((string)($this->items[$keys[$current]]??''));$json=json_encode(array_values($keys));return "<div class='input-group'><button type='button' class='btn btn-outline-secondary' onclick='this.parentNode.querySelector("."\"aurea-arrow-value\"".").stepDown()'>‹</button><span class='form-control text-center'>{$label}</span><input class='aurea-arrow-value' type='hidden' name='".htmlspecialchars($this->name,ENT_QUOTES)."' value='".htmlspecialchars((string)($keys[$current]??''),ENT_QUOTES)."'><button type='button' class='btn btn-outline-secondary'>›</button></div>";} }

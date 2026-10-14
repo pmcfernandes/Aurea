@@ -10,6 +10,16 @@ use PHPUnit\Framework\TestCase;
 /** @covers \Aurea\Widget\TDropDown */
 final class TDropDownTest extends TestCase
 {
+    public function testRendersAccessibleMenuSemantics(): void
+    {
+        $dropDown = new TDropDown('Opções');
+        $dropDown->addAction('Editar', new TAction(['ClienteForm', 'onEdit']));
+
+        $html = $dropDown->getContents();
+        $this->assertStringContainsString("aria-haspopup='true'", $html);
+        $this->assertStringContainsString("role='menu'", $html);
+        $this->assertStringContainsString("role='menuitem'", $html);
+    }
     public function testAddAction(): void
     {
         $dd = new TDropDown('Opções', 'btn-primary');

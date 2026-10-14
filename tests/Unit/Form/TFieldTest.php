@@ -10,6 +10,21 @@ use PHPUnit\Framework\TestCase;
 /** @covers \Aurea\Form\TField */
 final class TFieldTest extends TestCase
 {
+    public function testValidationFailureSetsAccessibleErrorState(): void
+    {
+        $field = new TEntry('nome');
+        $field->addValidation('Nome', new \Aurea\Validator\TRequiredValidator);
+        $field->setValue('');
+
+        try {
+            $field->validate();
+            self::fail('Era esperada falha de validação.');
+        } catch (\Throwable) {
+            $this->assertNotNull($field->getValidationError());
+            $this->assertSame('true', $field->getProperty('aria-invalid'));
+            $this->assertSame('field_nome_error', $field->getProperty('aria-describedby'));
+        }
+    }
     public function testGetName(): void
     {
         $f = new TEntry('cliente');

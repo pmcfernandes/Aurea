@@ -23,7 +23,11 @@ class TRotatingTxtLogger implements TLoggerInterface
         protected string $file,
         protected int $maxBytes = 1048576,
         protected int $keep = 5
-    ) {}
+    ) {
+        if ($this->maxBytes < 1 || $this->keep < 1) {
+            throw new \InvalidArgumentException('maxBytes e keep devem ser positivos.');
+        }
+    }
 
     /**
      * Regista uma mensagem (roda o arquivo se exceder o tamanho).
@@ -36,14 +40,28 @@ class TRotatingTxtLogger implements TLoggerInterface
         if (!is_dir($dir)) {
             mkdir($dir, 0777, true);
         }
-        if (is_file($this->file) && filesize($this->file) >= $this->maxBytes) {
-            $this->rotate();
+        $lock = fopen($this->file . '.lock', 'c');
+        if ($lock === false || !flock($lock, LOCK_EX)) {
+            if (is_resource($lock)) {
+                fclose($lock);
+            }
+            error_log('Aurea: não foi possível bloquear o ficheiro de log.');
+            return;
         }
-        file_put_contents(
-            $this->file,
-            '[' . date('Y-m-d H:i:s') . '] ' . $message . PHP_EOL,
-            FILE_APPEND
-        );
+        try {
+            $line = '[' . date('Y-m-d H:i:s') . '] ' . $message . PHP_EOL;
+            if (is_file($this->file) && (int) filesize($this->file) + strlen($line) > $this->maxBytes) {
+                $this->rotate();
+            }
+            if (file_put_contents($this->file, $line, FILE_APPEND | LOCK_EX) === false) {
+                throw new \RuntimeException('Não foi possível escrever o ficheiro de log.');
+            }
+        } catch (\Throwable $error) {
+            error_log('Aurea: falha ao escrever o log: ' . $error->getMessage());
+        } finally {
+            flock($lock, LOCK_UN);
+            fclose($lock);
+        }
     }
 
     /**
@@ -55,9 +73,16 @@ class TRotatingTxtLogger implements TLoggerInterface
             $from = $this->file . '.' . $i;
             $to = $this->file . '.' . ($i + 1);
             if (is_file($from)) {
-                rename($from, $to);
+                if (is_file($to)) {
+                    unlink($to);
+                }
+                if (!rename($from, $to)) {
+                    throw new \RuntimeException('Não foi possível rodar o ficheiro de log.');
+                }
             }
         }
-        rename($this->file, $this->file . '.1');
+        if (!rename($this->file, $this->file . '.1')) {
+            throw new \RuntimeException('Não foi possível rodar o ficheiro de log.');
+        }
     }
 }

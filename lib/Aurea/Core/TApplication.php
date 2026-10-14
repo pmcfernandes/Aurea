@@ -243,6 +243,11 @@ class TApplication
             }
             echo self::template($content, $class);
         } catch (\Throwable $e) {
+            \Aurea\Log\TLog::error('Falha ao processar pedido', [
+                'exception' => $e,
+                'controller' => $class,
+                'action' => $method,
+            ]);
             $envelope = self::errorEnvelope($e);
             http_response_code($envelope['code']);
             if (TRequest::wantsJson()) {

@@ -61,6 +61,11 @@ Search.appendIndex(
             "summary": "Obt\u00E9m\u0020informa\u00E7\u00E3o\u0020sobre\u0020o\u0020hash.",
             "url": "classes/Aurea-Auth-THash.html#method_info"
         },                {
+            "fqsen": "\\Aurea\\Auth\\THash\u003A\u003ADEFAULT_OPTIONS",
+            "name": "DEFAULT_OPTIONS",
+            "summary": "Custo\u0020BCrypt\u0020padr\u00E3o\u0020para\u0020novas\u0020palavras\u002Dpasse.",
+            "url": "classes/Aurea-Auth-THash.html#constant_DEFAULT_OPTIONS"
+        },                {
             "fqsen": "\\Aurea\\Auth\\TPermission",
             "name": "TPermission",
             "summary": "TPermission\u0020\u2014\u0020autoriza\u00E7\u00E3o\u0020por\u0020programa\u0020\u0028whitelist\u0020de\u0020acessos\u0029.",
@@ -1876,6 +1881,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Aurea-Core-TCsrf.html#constant_FIELD"
         },                {
+            "fqsen": "\\Aurea\\Core\\TExceptionView",
+            "name": "TExceptionView",
+            "summary": "Renderer\u0020seguro\u0020para\u0020exce\u00E7\u00F5es\u0020HTML,\u0020com\u0020trace\u0020somente\u0020em\u0020modo\u0020debug.",
+            "url": "classes/Aurea-Core-TExceptionView.html"
+        },                {
+            "fqsen": "\\Aurea\\Core\\TExceptionView\u003A\u003Arender\u0028\u0029",
+            "name": "render",
+            "summary": "",
+            "url": "classes/Aurea-Core-TExceptionView.html#method_render"
+        },                {
             "fqsen": "\\Aurea\\Core\\TFileCache",
             "name": "TFileCache",
             "summary": "Cache\u0020serializado\u0020em\u0020ficheiros,\u0020com\u0020escrita\u0020at\u00F3mica\u0020e\u0020TTL.",
@@ -3346,6 +3361,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Aurea-Dialog-TWindow.html#property_titleId"
         },                {
+            "fqsen": "\\Aurea\\Form\\TArrowStep",
+            "name": "TArrowStep",
+            "summary": "Seletor\u0020discreto\u0020com\u0020bot\u00F5es\u0020anterior\/seguinte\u0020e\u0020input\u0020oculto.",
+            "url": "classes/Aurea-Form-TArrowStep.html"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TArrowStep\u003A\u003AaddItems\u0028\u0029",
+            "name": "addItems",
+            "summary": "",
+            "url": "classes/Aurea-Form-TArrowStep.html#method_addItems"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TArrowStep\u003A\u003AgetContents\u0028\u0029",
+            "name": "getContents",
+            "summary": "",
+            "url": "classes/Aurea-Form-TArrowStep.html#method_getContents"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TArrowStep\u003A\u003A\u0024items",
+            "name": "items",
+            "summary": "",
+            "url": "classes/Aurea-Form-TArrowStep.html#property_items"
+        },                {
             "fqsen": "\\Aurea\\Form\\TBarCode",
             "name": "TBarCode",
             "summary": "TBarCode\u0020\u2014\u0020c\u00F3digo\u0020de\u0020barras\u0020Code\u002039\u0020gerado\u0020em\u0020SVG\u0020puro.",
@@ -4191,6 +4226,11 @@ Search.appendIndex(
             "summary": "Valida\u0020o\u0020valor\u0020do\u0020campo.",
             "url": "classes/Aurea-Form-TField.html#method_validate"
         },                {
+            "fqsen": "\\Aurea\\Form\\TField\u003A\u003AgetValidationError\u0028\u0029",
+            "name": "getValidationError",
+            "summary": "Obt\u00E9m\u0020a\u0020\u00FAltima\u0020mensagem\u0020de\u0020valida\u00E7\u00E3o\u0020do\u0020campo.",
+            "url": "classes/Aurea-Form-TField.html#method_getValidationError"
+        },                {
             "fqsen": "\\Aurea\\Form\\TField\u003A\u003Async\u0028\u0029",
             "name": "sync",
             "summary": "Sincroniza\u0020o\u0020valor\u0020com\u0020os\u0020atributos\u0020HTML.",
@@ -4220,6 +4260,31 @@ Search.appendIndex(
             "name": "validations",
             "summary": "",
             "url": "classes/Aurea-Form-TField.html#property_validations"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TField\u003A\u003A\u0024validationError",
+            "name": "validationError",
+            "summary": "",
+            "url": "classes/Aurea-Form-TField.html#property_validationError"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TFieldFeedback",
+            "name": "TFieldFeedback",
+            "summary": "Renderiza\u0020uma\u0020mensagem\u0020de\u0020valida\u00E7\u00E3o\u0020associada\u0020a\u0020um\u0020TField.",
+            "url": "classes/Aurea-Form-TFieldFeedback.html"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TFieldFeedback\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Cria\u0020o\u0020componente\u0020com\u0020a\u0020tag\u0020informada.",
+            "url": "classes/Aurea-Form-TFieldFeedback.html#method___construct"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TFieldFeedback\u003A\u003AgetContents\u0028\u0029",
+            "name": "getContents",
+            "summary": "",
+            "url": "classes/Aurea-Form-TFieldFeedback.html#method_getContents"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TFieldFeedback\u003A\u003A\u0024field",
+            "name": "field",
+            "summary": "",
+            "url": "classes/Aurea-Form-TFieldFeedback.html#property_field"
         },                {
             "fqsen": "\\Aurea\\Form\\TFieldList",
             "name": "TFieldList",
@@ -4665,6 +4730,16 @@ Search.appendIndex(
             "name": "__construct",
             "summary": "Cria\u0020o\u0020r\u00F3tulo\u0020com\u0020o\u0020texto\u0020informado.",
             "url": "classes/Aurea-Form-TLabel.html#method___construct"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TLikertScale",
+            "name": "TLikertScale",
+            "summary": "Escala\u0020Likert\u0020acess\u00EDvel\u0020composta\u0020por\u0020op\u00E7\u00F5es\u0020radio.",
+            "url": "classes/Aurea-Form-TLikertScale.html"
+        },                {
+            "fqsen": "\\Aurea\\Form\\TLikertScale\u003A\u003AgetContents\u0028\u0029",
+            "name": "getContents",
+            "summary": "Obt\u00E9m\u0020o\u0020HTML\u0020do\u0020campo.",
+            "url": "classes/Aurea-Form-TLikertScale.html#method_getContents"
         },                {
             "fqsen": "\\Aurea\\Form\\TMonthField",
             "name": "TMonthField",
@@ -6181,6 +6256,91 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Aurea-Log-THtmlLogger.html#property_file"
         },                {
+            "fqsen": "\\Aurea\\Log\\TLog",
+            "name": "TLog",
+            "summary": "Fachada\u0020para\u0020registos\u0020estruturados\u0020com\u0020n\u00EDvel\u0020e\u0020contexto\u0020do\u0020pedido.",
+            "url": "classes/Aurea-Log-TLog.html"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003AsetLogger\u0028\u0029",
+            "name": "setLogger",
+            "summary": "Define\u0020o\u0020destino\u0020que\u0020receber\u00E1\u0020linhas\u0020JSON\u0020estruturadas.",
+            "url": "classes/Aurea-Log-TLog.html#method_setLogger"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003Alog\u0028\u0029",
+            "name": "log",
+            "summary": "Regista\u0020uma\u0020mensagem\u0020estruturada.\u0020Contextos\u0020sens\u00EDveis\u0020s\u00E3o\u0020redigidos.",
+            "url": "classes/Aurea-Log-TLog.html#method_log"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003Adebug\u0028\u0029",
+            "name": "debug",
+            "summary": "Regista\u0020um\u0020evento\u0020de\u0020diagn\u00F3stico.",
+            "url": "classes/Aurea-Log-TLog.html#method_debug"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003Ainfo\u0028\u0029",
+            "name": "info",
+            "summary": "Regista\u0020um\u0020evento\u0020informativo.",
+            "url": "classes/Aurea-Log-TLog.html#method_info"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003Awarning\u0028\u0029",
+            "name": "warning",
+            "summary": "Regista\u0020um\u0020aviso\u0020que\u0020n\u00E3o\u0020interrompe\u0020a\u0020execu\u00E7\u00E3o.",
+            "url": "classes/Aurea-Log-TLog.html#method_warning"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003Aerror\u0028\u0029",
+            "name": "error",
+            "summary": "Regista\u0020uma\u0020falha\u0020da\u0020aplica\u00E7\u00E3o.",
+            "url": "classes/Aurea-Log-TLog.html#method_error"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003Awriter\u0028\u0029",
+            "name": "writer",
+            "summary": "Cria\u0020um\u0020adaptador\u0020para\u0020subsistemas\u0020que\u0020aceitam\u0020apenas\u0020TLoggerInterface.",
+            "url": "classes/Aurea-Log-TLog.html#method_writer"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003Anormalize\u0028\u0029",
+            "name": "normalize",
+            "summary": "",
+            "url": "classes/Aurea-Log-TLog.html#method_normalize"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003ALEVELS",
+            "name": "LEVELS",
+            "summary": "",
+            "url": "classes/Aurea-Log-TLog.html#constant_LEVELS"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLog\u003A\u003A\u0024logger",
+            "name": "logger",
+            "summary": "",
+            "url": "classes/Aurea-Log-TLog.html#property_logger"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogContext",
+            "name": "TLogContext",
+            "summary": "Contexto\u0020estruturado\u0020associado\u0020ao\u0020pedido\u0020atual.",
+            "url": "classes/Aurea-Log-TLogContext.html"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogContext\u003A\u003AbeginRequest\u0028\u0029",
+            "name": "beginRequest",
+            "summary": "Inicia\u0020o\u0020contexto\u0020de\u0020um\u0020pedido\u0020e\u0020devolve\u0020o\u0020seu\u0020identificador\u0020de\u0020correla\u00E7\u00E3o.",
+            "url": "classes/Aurea-Log-TLogContext.html#method_beginRequest"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogContext\u003A\u003Aset\u0028\u0029",
+            "name": "set",
+            "summary": "Define\u0020um\u0020valor\u0020de\u0020contexto\u0020para\u0020os\u0020registos\u0020seguintes.",
+            "url": "classes/Aurea-Log-TLogContext.html#method_set"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogContext\u003A\u003Aall\u0028\u0029",
+            "name": "all",
+            "summary": "Obt\u00E9m\u0020todo\u0020o\u0020contexto\u0020do\u0020pedido.",
+            "url": "classes/Aurea-Log-TLogContext.html#method_all"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogContext\u003A\u003Aclear\u0028\u0029",
+            "name": "clear",
+            "summary": "Limpa\u0020o\u0020contexto,\u0020\u00FAtil\u0020para\u0020workers\u0020de\u0020longa\u0020dura\u00E7\u00E3o\u0020e\u0020testes.",
+            "url": "classes/Aurea-Log-TLogContext.html#method_clear"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogContext\u003A\u003A\u0024values",
+            "name": "values",
+            "summary": "",
+            "url": "classes/Aurea-Log-TLogContext.html#property_values"
+        },                {
             "fqsen": "\\Aurea\\Log\\TLoggerInterface",
             "name": "TLoggerInterface",
             "summary": "Loggers.",
@@ -6190,6 +6350,26 @@ Search.appendIndex(
             "name": "write",
             "summary": "Regista\u0020uma\u0020mensagem\u0020de\u0020log.",
             "url": "classes/Aurea-Log-TLoggerInterface.html#method_write"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogWriter",
+            "name": "TLogWriter",
+            "summary": "Adaptador\u0020de\u0020TLog\u0020para\u0020APIs\u0020legadas\u0020baseadas\u0020em\u0020TLoggerInterface.",
+            "url": "classes/Aurea-Log-TLogWriter.html"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogWriter\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Aurea-Log-TLogWriter.html#method___construct"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogWriter\u003A\u003Awrite\u0028\u0029",
+            "name": "write",
+            "summary": "Regista\u0020uma\u0020mensagem\u0020usando\u0020o\u0020n\u00EDvel\u0020configurado.",
+            "url": "classes/Aurea-Log-TLogWriter.html#method_write"
+        },                {
+            "fqsen": "\\Aurea\\Log\\TLogWriter\u003A\u003A\u0024level",
+            "name": "level",
+            "summary": "",
+            "url": "classes/Aurea-Log-TLogWriter.html#property_level"
         },                {
             "fqsen": "\\Aurea\\Log\\TRotatingTxtLogger",
             "name": "TRotatingTxtLogger",
@@ -7061,6 +7241,26 @@ Search.appendIndex(
             "summary": "Valida\u0020o\u0020formato\u0020do\u0020c\u00F3digo\u0020postal.",
             "url": "classes/Aurea-Validator-TPostalCodeValidator.html#method_validate"
         },                {
+            "fqsen": "\\Aurea\\Validator\\TRequiredListValidator",
+            "name": "TRequiredListValidator",
+            "summary": "Exige\u0020uma\u0020quantidade\u0020m\u00EDnima\u0020de\u0020valores\u0020numa\u0020cole\u00E7\u00E3o\u0020submetida.",
+            "url": "classes/Aurea-Validator-TRequiredListValidator.html"
+        },                {
+            "fqsen": "\\Aurea\\Validator\\TRequiredListValidator\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Aurea-Validator-TRequiredListValidator.html#method___construct"
+        },                {
+            "fqsen": "\\Aurea\\Validator\\TRequiredListValidator\u003A\u003Avalidate\u0028\u0029",
+            "name": "validate",
+            "summary": "",
+            "url": "classes/Aurea-Validator-TRequiredListValidator.html#method_validate"
+        },                {
+            "fqsen": "\\Aurea\\Validator\\TRequiredListValidator\u003A\u003A\u0024minimum",
+            "name": "minimum",
+            "summary": "",
+            "url": "classes/Aurea-Validator-TRequiredListValidator.html#property_minimum"
+        },                {
             "fqsen": "\\Aurea\\Validator\\TRequiredValidator",
             "name": "TRequiredValidator",
             "summary": "Valida\u0020o\u0020preenchimento\u0020obrigat\u00F3rio.",
@@ -7250,6 +7450,16 @@ Search.appendIndex(
             "name": "btnClass",
             "summary": "",
             "url": "classes/Aurea-Widget-TDropDown.html#property_btnClass"
+        },                {
+            "fqsen": "\\Aurea\\Widget\\TDropDown\u003A\u003A\u0024toggleId",
+            "name": "toggleId",
+            "summary": "",
+            "url": "classes/Aurea-Widget-TDropDown.html#property_toggleId"
+        },                {
+            "fqsen": "\\Aurea\\Widget\\TDropDown\u003A\u003A\u0024counter",
+            "name": "counter",
+            "summary": "",
+            "url": "classes/Aurea-Widget-TDropDown.html#property_counter"
         },                {
             "fqsen": "\\Aurea\\Widget\\TDropDown\u003A\u003A\u0024actions",
             "name": "actions",
@@ -7461,6 +7671,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Aurea-Widget-TKanban.html#property_moveAction"
         },                {
+            "fqsen": "\\Aurea\\Widget\\TMiniLoader",
+            "name": "TMiniLoader",
+            "summary": "Indicador\u0020compacto\u0020de\u0020carregamento\u0020acess\u00EDvel.",
+            "url": "classes/Aurea-Widget-TMiniLoader.html"
+        },                {
+            "fqsen": "\\Aurea\\Widget\\TMiniLoader\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Cria\u0020o\u0020componente\u0020com\u0020a\u0020tag\u0020informada.",
+            "url": "classes/Aurea-Widget-TMiniLoader.html#method___construct"
+        },                {
+            "fqsen": "\\Aurea\\Widget\\TMiniLoader\u003A\u003AgetContents\u0028\u0029",
+            "name": "getContents",
+            "summary": "",
+            "url": "classes/Aurea-Widget-TMiniLoader.html#method_getContents"
+        },                {
             "fqsen": "\\Aurea\\Widget\\TNumericIndicator",
             "name": "TNumericIndicator",
             "summary": "TNumericIndicator\u0020\u2014\u0020indicador\u0020num\u00E9rico\u0020sem\u00E2ntico\u0020e\u0020format\u00E1vel.",
@@ -7515,6 +7740,31 @@ Search.appendIndex(
             "name": "currency",
             "summary": "",
             "url": "classes/Aurea-Widget-TNumericIndicator.html#property_currency"
+        },                {
+            "fqsen": "\\Aurea\\Widget\\TPillBar",
+            "name": "TPillBar",
+            "summary": "Barra\u0020de\u0020estados\u0020em\u0020pills\u0020com\u0020sem\u00E2ntica\u0020de\u0020navega\u00E7\u00E3o.",
+            "url": "classes/Aurea-Widget-TPillBar.html"
+        },                {
+            "fqsen": "\\Aurea\\Widget\\TPillBar\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Cria\u0020o\u0020componente\u0020com\u0020a\u0020tag\u0020informada.",
+            "url": "classes/Aurea-Widget-TPillBar.html#method___construct"
+        },                {
+            "fqsen": "\\Aurea\\Widget\\TPillBar\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "Adiciona\u0020um\u0020filho\u0020ao\u0020elemento.",
+            "url": "classes/Aurea-Widget-TPillBar.html#method_add"
+        },                {
+            "fqsen": "\\Aurea\\Widget\\TPillBar\u003A\u003AgetContents\u0028\u0029",
+            "name": "getContents",
+            "summary": "",
+            "url": "classes/Aurea-Widget-TPillBar.html#method_getContents"
+        },                {
+            "fqsen": "\\Aurea\\Widget\\TPillBar\u003A\u003A\u0024items",
+            "name": "items",
+            "summary": "",
+            "url": "classes/Aurea-Widget-TPillBar.html#property_items"
         },                {
             "fqsen": "\\Aurea\\Widget\\TProgressBar",
             "name": "TProgressBar",

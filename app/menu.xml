@@ -1,0 +1,6 @@
+<menu>
+  <menuitem label="Dashboard" icon="fa-gauge" action="CrmDashboard:onShow"/>
+  <menuitem label="Clientes" icon="fa-users" action="CrmClienteList:onShow"/>
+  <menuitem label="Novo cliente" icon="fa-user-plus" action="CrmClienteForm:onShow"/>
+  <menuitem label="Sair" icon="fa-right-from-bracket" action="CrmLogin:onLogout"/>
+</menu>

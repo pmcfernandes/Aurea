@@ -15,15 +15,23 @@ namespace Aurea\Auth;
  */
 class THash
 {
+    /** Custo BCrypt padrão para novas palavras-passe. */
+    public const DEFAULT_OPTIONS = ['cost' => 12];
+
     /**
      * Cria um hash BCRYPT da palavra-passe.
      *
      * @param string $plain Palavra-passe em claro
-     * @return string THash gerado
+     * @param array{cost?:int} $options Opções BCrypt; por omissão usa custo 12
+     * @return string Hash gerado
      */
-    public static function make(string $plain): string
+    public static function make(string $plain, array $options = self::DEFAULT_OPTIONS): string
     {
-        return password_hash($plain, PASSWORD_BCRYPT);
+        $hash = password_hash($plain, PASSWORD_BCRYPT, $options);
+        if ($hash === false) {
+            throw new \RuntimeException('Não foi possível criar o hash da palavra-passe.');
+        }
+        return $hash;
     }
 
     /**
@@ -42,11 +50,12 @@ class THash
      * Indica se o hash precisa de ser recalculado.
      *
      * @param string $hash THash armazenado
+     * @param array{cost?:int} $options Política BCrypt pretendida
      * @return bool True se precisa de novo hash
      */
-    public static function needsRehash(string $hash): bool
+    public static function needsRehash(string $hash, array $options = self::DEFAULT_OPTIONS): bool
     {
-        return password_needs_rehash($hash, PASSWORD_BCRYPT);
+        return password_needs_rehash($hash, PASSWORD_BCRYPT, $options);
     }
 
     /**
