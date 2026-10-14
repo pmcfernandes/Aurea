@@ -23,6 +23,13 @@ class TSqlSelect
     /** @var TCriteria|null Critério de filtro/ordenação */
     protected ?TCriteria $criteria = null;
 
+    /** @var string[] Junções SQL brutas */
+    protected array $joins = [];
+    protected bool $distinct = false;
+    protected string $group = '';
+    protected string $having = '';
+    protected array $havingParams = [];
+
     /**
      * Define a tabela da consulta.
      *
@@ -31,7 +38,7 @@ class TSqlSelect
      */
     public function setEntity(string $table): static
     {
-        $this->entity = $table;
+        $this->entity = TIdentifier::assert($table);
         return $this;
     }
 
@@ -71,16 +78,84 @@ class TSqlSelect
             throw new \RuntimeException('Tabela não definida em SqlSelect. Utilize setEntity().');
         }
         $cols = $this->columns ? implode(', ', $this->columns) : '*';
-        $sql = "SELECT {$cols} FROM {$this->entity}";
+        if ($this->criteria !== null && $this->criteria->getColumns() && !$this->columns) {
+            $cols = implode(', ', $this->criteria->getColumns());
+        }
+        $distinct = ($this->distinct || ($this->criteria !== null && !empty($this->criteria->getProperty('distinct')))) ? 'DISTINCT ' : '';
+        $sql = "SELECT {$distinct}{$cols} FROM {$this->entity}";
+        if ($this->joins) {
+            $sql .= ' ' . implode(' ', $this->joins);
+        }
         if ($this->criteria !== null) {
             [$where] = $this->criteria->dump();
             if ($where !== '') {
                 $sql .= " {$where}";
             }
+            $sql .= $this->criteria->groupClause();
+            [$having, ] = $this->criteria->havingClause();
+            if ($having === '' && $this->having !== '') {
+                $sql .= ' HAVING ' . $this->having;
+            } else {
+                $sql .= $having;
+            }
             $sql .= $this->criteria->orderClause();
             $sql .= $this->criteria->limitClause();
+        } else {
+            if ($this->group !== '') {
+                $sql .= " GROUP BY {$this->group}";
+            }
+            if ($this->having !== '') {
+                $sql .= ' HAVING ' . $this->having;
+            }
         }
         return $sql;
+    }
+
+    /**
+     * Adiciona JOIN bruto (ex: "LEFT JOIN cidade c ON c.id = cliente.cidade_id").
+     */
+    public function addJoin(string $join): static
+    {
+        $this->joins[] = $join;
+        return $this;
+    }
+
+    /**
+     * Ativa SELECT DISTINCT.
+     *
+     * @param bool $distinct True para registos distintos
+     * @return static
+     */
+    public function setDistinct(bool $distinct = true): static
+    {
+        $this->distinct = $distinct;
+        return $this;
+    }
+
+    /**
+     * Define o GROUP BY da consulta.
+     *
+     * @param string $group Colunas de agrupamento
+     * @return static
+     */
+    public function setGroup(string $group): static
+    {
+        $this->group = $group;
+        return $this;
+    }
+
+    /**
+     * Define o HAVING da consulta.
+     *
+     * @param string $having Expressão HAVING com placeholders
+     * @param array $params Parâmetros do HAVING
+     * @return static
+     */
+    public function setHaving(string $having, array $params = []): static
+    {
+        $this->having = $having;
+        $this->havingParams = $params;
+        return $this;
     }
 
     /**
@@ -90,11 +165,13 @@ class TSqlSelect
      */
     public function getParams(): array
     {
-        if ($this->criteria === null) {
-            return [];
+        $params = [];
+        if ($this->criteria !== null) {
+            [, $params] = $this->criteria->dump();
+            [, $havingParams] = $this->criteria->havingClause();
+            $params = array_merge($params, $havingParams);
         }
-        [, $params] = $this->criteria->dump();
-        return $params;
+        return array_merge($params, $this->havingParams);
     }
 
     /**

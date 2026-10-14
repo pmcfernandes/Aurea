@@ -284,6 +284,13 @@
 <dd>Limpa todos os valores da aplicação</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TSession.html#method_getFlash">getFlash()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Lê e apaga mensagem flash.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TSession.html#method_getValue">getValue()</a>
     <span>
                                 &nbsp;: mixed    </span>
@@ -303,6 +310,13 @@
                                 &nbsp;: void    </span>
 </dt>
 <dd>Regenera o id da sessão.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TSession.html#method_setFlash">setFlash()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Guarda mensagem flash (lida uma única vez).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TSession.html#method_setPrefix">setPrefix()</a>
@@ -397,7 +411,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TSession.php"><a href="files/lib-aurea-core-tsession.html"><abbr title="lib/Aurea/Core/TSession.php">TSession.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">82</span>
+    <span class="phpdocumentor-element-found-in__line">88</span>
 
     </aside>
 
@@ -444,7 +458,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TSession.php"><a href="files/lib-aurea-core-tsession.html"><abbr title="lib/Aurea/Core/TSession.php">TSession.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">96</span>
 
     </aside>
 
@@ -471,6 +485,58 @@
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getFlash">
+        getFlash()
+        <a href="classes/Aurea-Core-TSession.html#method_getFlash" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TSession.php"><a href="files/lib-aurea-core-tsession.html"><abbr title="lib/Aurea/Core/TSession.php">TSession.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">128</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Lê e apaga mensagem flash.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">getFlash</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$key</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$default</span>
+                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_getValue">
         getValue()
         <a href="classes/Aurea-Core-TSession.html#method_getValue" class="headerlink"><i class="fas fa-link"></i></a>
@@ -479,7 +545,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TSession.php"><a href="files/lib-aurea-core-tsession.html"><abbr title="lib/Aurea/Core/TSession.php">TSession.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 
     </aside>
 
@@ -543,7 +609,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TSession.php"><a href="files/lib-aurea-core-tsession.html"><abbr title="lib/Aurea/Core/TSession.php">TSession.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 
     </aside>
 
@@ -598,7 +664,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TSession.php"><a href="files/lib-aurea-core-tsession.html"><abbr title="lib/Aurea/Core/TSession.php">TSession.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">109</span>
 
     </aside>
 
@@ -613,6 +679,58 @@
     
     
     
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setFlash">
+        setFlash()
+        <a href="classes/Aurea-Core-TSession.html#method_setFlash" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TSession.php"><a href="files/lib-aurea-core-tsession.html"><abbr title="lib/Aurea/Core/TSession.php">TSession.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">120</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Guarda mensagem flash (lida uma única vez).</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">setFlash</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$key</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$value</span>
+                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
     
 
         
@@ -680,7 +798,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TSession.php"><a href="files/lib-aurea-core-tsession.html"><abbr title="lib/Aurea/Core/TSession.php">TSession.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">52</span>
 
     </aside>
 
@@ -788,9 +906,11 @@
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/Aurea-Core-TSession.html#method_clear">clear()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TSession.html#method_free">free()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TSession.html#method_getFlash">getFlash()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TSession.html#method_getValue">getValue()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TSession.html#method_has">has()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TSession.html#method_regenerate">regenerate()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TSession.html#method_setFlash">setFlash()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TSession.html#method_setPrefix">setPrefix()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TSession.html#method_setValue">setValue()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TSession.html#method_start">start()</a></li>

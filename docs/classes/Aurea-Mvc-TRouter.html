@@ -200,7 +200,7 @@
             <p class="phpdocumentor-summary">TRouter — roteador MVC com URLs amigáveis e tabela de rotas regex.</p>
 
 
-    <section class="phpdocumentor-description"><p>$router = new TRouter('App\Mvc\');
+    <section class="phpdocumentor-description"><p>$router = new TRouter('App\Controllers\');
 $router-&gt;add('', ['controller' =&gt; 'Home', 'action' =&gt; 'index']);
 $router-&gt;add('{controller}/{action}');
 $router-&gt;add('{controller}/{id:\d+}/{action}');
@@ -518,7 +518,7 @@ $router-&gt;dispatchFromRequest();</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$controllerNamespace</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">'App\Mvc\\'</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$controllerNamespace</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">'App\Controllers\\'</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -529,7 +529,7 @@ $router-&gt;dispatchFromRequest();</p>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$controllerNamespace</span>
                 : <span class="phpdocumentor-argument-list__argument__type">string</span>
-                 = <span class="phpdocumentor-argument-list__argument__default-value">'App\Mvc\\'</span>            </dt>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">'App\Controllers\\'</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>Namespace dos controllers (com \ final ou sem)</p>
 </section>

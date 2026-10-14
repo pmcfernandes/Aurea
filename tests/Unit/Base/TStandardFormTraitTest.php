@@ -54,6 +54,7 @@ final class TStandardFormTraitTest extends TestCase
             protected function buildForm(): TFormBuilder
             {
                 $form = new TFormBuilder('form_cliente');
+                $form->enableCsrf(false);
                 $nome = new TEntry('nome');
                 $email = new TEntry('email');
                 $form->addFields([new TLabel('Nome')], [$nome]);

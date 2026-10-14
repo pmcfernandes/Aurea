@@ -21,6 +21,7 @@ class TColumn
     protected string $align = 'left';
     protected ?string $transformer = null;
     protected bool $orderable = false;
+    protected bool $visible = true;
     protected string $total = '';
     protected $totalFunction = null;
 
@@ -56,6 +57,25 @@ class TColumn
     public function getLabel(): string
     {
         return $this->label;
+    }
+
+    /** Obtém a largura CSS configurada para a coluna. */
+    public function getWidth(): string
+    {
+        return $this->width;
+    }
+
+    /** Mostra ou oculta a coluna sem remover a sua configuração. */
+    public function setVisible(bool $visible = true): static
+    {
+        $this->visible = $visible;
+        return $this;
+    }
+
+    /** Indica se a coluna participa da renderização atual. */
+    public function isVisible(): bool
+    {
+        return $this->visible;
     }
 
     /**
@@ -217,6 +237,7 @@ class TColumn
             }
             $value = "<a href='" . $a->toHref() . "'>{$value}</a>";
         }
-        return "<td class='text-{$this->align}'>{$value}</td>";
+        $width = $this->width !== '' ? " style='width:" . htmlspecialchars($this->width, ENT_QUOTES) . "'" : '';
+        return "<td class='text-{$this->align}'{$width}>{$value}</td>";
     }
 }

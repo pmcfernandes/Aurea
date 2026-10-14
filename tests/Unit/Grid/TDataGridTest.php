@@ -170,4 +170,20 @@ final class TDataGridTest extends TestCase
         $grid->setItems([['nome' => 'Ana']]);
         $this->assertStringNotContainsString('<tfoot', $grid->getContents());
     }
+
+    public function testCustomActionKeyVisibilityAndPrintMode(): void
+    {
+        $hidden = (new TColumn('interno', 'Interno'))->setVisible(false);
+        $grid = new TDataGrid;
+        $grid->addColumn(new TColumn('nome', 'Nome'))
+            ->addColumn($hidden)
+            ->setKeyField('uuid')
+            ->addAction('Editar', new TAction(['A', 'onEdit']))
+            ->setItems([['uuid' => 'abc', 'nome' => 'Ana', 'interno' => 'segredo']]);
+        $html = $grid->getContents();
+        $this->assertStringContainsString('key=abc', $html);
+        $this->assertStringNotContainsString('segredo', $html);
+        $grid->setPrintMode();
+        $this->assertStringNotContainsString('Ações', $grid->getContents());
+    }
 }

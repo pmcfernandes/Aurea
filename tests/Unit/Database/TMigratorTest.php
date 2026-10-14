@@ -74,4 +74,29 @@ final class TMigratorTest extends TestCase
         $this->assertSame(['001', '002'], $m->pending());
         $this->assertSame(['001', '002'], $m->migrate());
     }
+
+    public function testDetectsChangedAppliedMigration(): void
+    {
+        $this->migrator()->add('001', 'CREATE TABLE t1 (id INTEGER PRIMARY KEY)')->migrate();
+        $this->expectException(\RuntimeException::class);
+        $this->migrator()->add('001', 'CREATE TABLE t1 (id INTEGER PRIMARY KEY, name TEXT)')->migrate();
+    }
+
+    public function testPersistentLockBlocksAnotherProcess(): void
+    {
+        $this->conn->exec('CREATE TABLE migration_lock (name VARCHAR(255) PRIMARY KEY, token VARCHAR(64) NOT NULL, locked_at INTEGER NOT NULL)');
+        $stmt = $this->conn->prepare('INSERT INTO migration_lock (name, token, locked_at) VALUES (?, ?, ?)');
+        $stmt->execute(['aurea_migrator', 'other-process', time()]);
+        $this->expectException(\RuntimeException::class);
+        $this->migrator()->add('001', 'CREATE TABLE blocked (id INTEGER)')->migrate();
+    }
+
+    public function testExpiredPersistentLockCanBeReclaimed(): void
+    {
+        $this->conn->exec('CREATE TABLE migration_lock (name VARCHAR(255) PRIMARY KEY, token VARCHAR(64) NOT NULL, locked_at INTEGER NOT NULL)');
+        $stmt = $this->conn->prepare('INSERT INTO migration_lock (name, token, locked_at) VALUES (?, ?, ?)');
+        $stmt->execute(['aurea_migrator', 'dead-process', time() - 301]);
+        $this->assertSame(['001'], $this->migrator()->add('001', 'CREATE TABLE recovered (id INTEGER)')->migrate());
+        $this->assertSame(0, (int) $this->conn->query('SELECT COUNT(*) FROM migration_lock')->fetchColumn());
+    }
 }

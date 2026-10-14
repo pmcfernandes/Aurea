@@ -11,6 +11,12 @@ use PHPUnit\Framework\TestCase;
 /** @covers \Aurea\Database\TSqlInsert */
 final class TSqlInsertTest extends TestCase
 {
+    public function testRejectsUnsafeTableAndColumnIdentifiers(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        (new TSqlInsert)->setEntity('cliente; DROP TABLE cliente');
+    }
+
     private PDO $conn;
 
     protected function setUp(): void

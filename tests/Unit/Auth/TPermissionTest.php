@@ -73,6 +73,16 @@ final class TPermissionTest extends TestCase
         $this->assertFalse($filter('Admin'));
     }
 
+    public function testActionGrantAndChecker(): void
+    {
+        TPermission::grantAction('Cliente', 'onDelete', '1');
+        $this->assertTrue(TPermission::checkAction('Cliente', 'onDelete', '1'));
+        $this->assertFalse(TPermission::checkAction('Cliente', 'onDelete', '2'));
+        TPermission::setActionChecker(fn(string $p, string $a, ?string $u): bool => $a === 'onShow');
+        $this->assertTrue(TPermission::checkAction('Cliente', 'onShow'));
+        $this->assertFalse(TPermission::checkAction('Cliente', 'onDelete'));
+    }
+
     public function testReset(): void
     {
         TPermission::grant('X');

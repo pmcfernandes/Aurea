@@ -39,7 +39,7 @@ final class TUniqueValidatorTest extends TestCase
         } catch (\Throwable) {
         }
         $r = new \ReflectionClass(TTransaction::class);
-        foreach (['conns' => [], 'active' => null, 'logger' => null, 'dump' => false, 'loggerStrategy' => null, 'loggerFunction' => null] as $prop => $val) {
+        foreach (['conns' => [], 'active' => null, 'contexts' => [], 'depths' => [], 'logger' => null, 'dump' => false, 'loggerStrategy' => null, 'loggerFunction' => null] as $prop => $val) {
             $r->getProperty($prop)->setValue(null, $val);
         }
     }

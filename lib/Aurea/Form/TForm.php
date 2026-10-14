@@ -57,6 +57,9 @@ class TForm extends TComponent
     public function addField(TField $field): static
     {
         $this->fields[$field->getName()] = $field;
+        if ($field instanceof TFileField || $field instanceof TMultiFileField) {
+            $this->setProperty('enctype', 'multipart/form-data');
+        }
         return $this;
     }
 

@@ -25,6 +25,15 @@ trait TStandardFormTrait
     protected string $database = '';
     protected string $activeRecord = '';
     protected $form;
+    /** @var callable|null fn(object,array<string,mixed>):void */
+    protected $beforeStore = null;
+    /** @var callable|null fn(object,array<string,mixed>):void */
+    protected $afterStore = null;
+
+    /** Define callback executado antes de guardar o Active Record. */
+    public function setBeforeStore(?callable $callback): void { $this->beforeStore = $callback; }
+    /** Define callback executado depois de guardar o Active Record. */
+    public function setAfterStore(?callable $callback): void { $this->afterStore = $callback; }
 
     /**
      * Define o banco de dados do formulário.
@@ -62,7 +71,13 @@ trait TStandardFormTrait
             $class = $this->activeRecord;
             $object = new $class;
             $object->fromArray((array) $data);
+            if ($this->beforeStore !== null) {
+                ($this->beforeStore)($object, $param);
+            }
             $object->store();
+            if ($this->afterStore !== null) {
+                ($this->afterStore)($object, $param);
+            }
             $data->id = $object->id;
             $this->form->setData($data);
             TTransaction::close();

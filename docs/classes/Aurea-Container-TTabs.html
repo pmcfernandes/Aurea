@@ -271,9 +271,27 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Container-TTabs.html#property_currentTab">$currentTab</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Container-TTabs.html#property_lazyLoaders">$lazyLoaders</a>
+    <span>
+                        &nbsp;: array&lt;int, callable|null&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Aurea-Container-TTabs.html#property_tabs">$tabs</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Container-TTabs.html#property_tabsId">$tabsId</a>
+    <span>
+                        &nbsp;: string            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
@@ -346,6 +364,27 @@
 <dd>Adiciona uma classe CSS ao elemento.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TComponent.html#method_addHtml">addHtml()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Adiciona HTML confiável.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TComponent.html#method_addText">addText()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Adiciona texto não confiável, escapado para HTML.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Container-TTabs.html#method_appendLazyTab">appendLazyTab()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Anexa uma aba cujo conteúdo só é construído ao renderizar a aba atual.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Container-TTabs.html#method_appendTab">appendTab()</a>
     <span>
                                 &nbsp;: static    </span>
@@ -372,6 +411,13 @@
                                 &nbsp;: static    </span>
 </dt>
 <dd>Substitui todos os filhos do elemento.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Container-TTabs.html#method_setCurrentTab">setCurrentTab()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Define a aba inicialmente visível (índice iniciado em zero).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TComponent.html#method_setId">setId()</a>
@@ -509,6 +555,80 @@
             -protected
                                                                     "
 >
+    <h4 class="phpdocumentor-element__name" id="property_currentTab">
+        $currentTab
+        <a href="classes/Aurea-Container-TTabs.html#property_currentTab" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TTabs.php"><a href="files/lib-aurea-container-ttabs.html"><abbr title="lib/Aurea/Container/TTabs.php">TTabs.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">20</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$currentTab</span>
+     = <span class="phpdocumentor-signature__default-value">0</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_lazyLoaders">
+        $lazyLoaders
+        <a href="classes/Aurea-Container-TTabs.html#property_lazyLoaders" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TTabs.php"><a href="files/lib-aurea-container-ttabs.html"><abbr title="lib/Aurea/Container/TTabs.php">TTabs.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">22</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">array&lt;int, callable|null&gt;</span>
+    <span class="phpdocumentor-signature__name">$lazyLoaders</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
     <h4 class="phpdocumentor-element__name" id="property_tabs">
         $tabs
         <a href="classes/Aurea-Container-TTabs.html#property_tabs" class="headerlink"><i class="fas fa-link"></i></a>
@@ -530,6 +650,43 @@
             <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$tabs</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_tabsId">
+        $tabsId
+        <a href="classes/Aurea-Container-TTabs.html#property_tabsId" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TTabs.php"><a href="files/lib-aurea-container-ttabs.html"><abbr title="lib/Aurea/Container/TTabs.php">TTabs.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">19</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$tabsId</span>
+    </code>
 
     
     
@@ -635,7 +792,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
+    <span class="phpdocumentor-element-found-in__line">239</span>
 
     </aside>
 
@@ -670,7 +827,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TTabs.php"><a href="files/lib-aurea-container-ttabs.html"><abbr title="lib/Aurea/Container/TTabs.php">TTabs.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -816,7 +973,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">203</span>
+    <span class="phpdocumentor-element-found-in__line">231</span>
 
     </aside>
 
@@ -910,7 +1067,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 
     </aside>
 
@@ -953,6 +1110,172 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_addHtml">
+        addHtml()
+        <a href="classes/Aurea-Core-TComponent.html#method_addHtml" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">120</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adiciona HTML confiável.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addHtml</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$html</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>O conteúdo não é sanitizado. Nunca passe dados de utilizador sem
+sanitização prévia; use addText() para texto não confiável.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$html</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>HTML confiável</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addText">
+        addText()
+        <a href="classes/Aurea-Core-TComponent.html#method_addText" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">106</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adiciona texto não confiável, escapado para HTML.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addText</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Use este método para valores fornecidos por utilizadores. Para markup
+controlado pela aplicação, utilize addHtml() de forma explícita.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$text</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Texto a renderizar</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_appendLazyTab">
+        appendLazyTab()
+        <a href="classes/Aurea-Container-TTabs.html#method_appendLazyTab" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TTabs.php"><a href="files/lib-aurea-container-ttabs.html"><abbr title="lib/Aurea/Container/TTabs.php">TTabs.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">54</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Anexa uma aba cujo conteúdo só é construído ao renderizar a aba atual.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">appendLazyTab</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$title</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$loader</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>O callback recebe o índice da aba e devolve conteúdo ou componente.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$title</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$loader</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_appendTab">
         appendTab()
         <a href="classes/Aurea-Container-TTabs.html#method_appendTab" class="headerlink"><i class="fas fa-link"></i></a>
@@ -961,7 +1284,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TTabs.php"><a href="files/lib-aurea-container-ttabs.html"><abbr title="lib/Aurea/Container/TTabs.php">TTabs.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
@@ -1021,7 +1344,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TTabs.php"><a href="files/lib-aurea-container-ttabs.html"><abbr title="lib/Aurea/Container/TTabs.php">TTabs.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">73</span>
 
     </aside>
 
@@ -1119,7 +1442,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">131</span>
 
     </aside>
 
@@ -1162,6 +1485,55 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setCurrentTab">
+        setCurrentTab()
+        <a href="classes/Aurea-Container-TTabs.html#method_setCurrentTab" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TTabs.php"><a href="files/lib-aurea-container-ttabs.html"><abbr title="lib/Aurea/Container/TTabs.php">TTabs.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">62</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define a aba inicialmente visível (índice iniciado em zero).</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setCurrentTab</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$index</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$index</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_setId">
         setId()
         <a href="classes/Aurea-Core-TComponent.html#method_setId" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1170,7 +1542,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">128</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
@@ -1281,7 +1653,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">139</span>
+    <span class="phpdocumentor-element-found-in__line">167</span>
 
     </aside>
 
@@ -1332,7 +1704,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">193</span>
+    <span class="phpdocumentor-element-found-in__line">221</span>
 
     </aside>
 
@@ -1367,7 +1739,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">177</span>
 
     </aside>
 
@@ -1410,7 +1782,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">164</span>
+    <span class="phpdocumentor-element-found-in__line">192</span>
 
     </aside>
 
@@ -1463,7 +1835,10 @@
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_attributes">$attributes</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_children">$children</a></li>
+                                                    <li class=""><a href="classes/Aurea-Container-TTabs.html#property_currentTab">$currentTab</a></li>
+                                                    <li class=""><a href="classes/Aurea-Container-TTabs.html#property_lazyLoaders">$lazyLoaders</a></li>
                                                     <li class=""><a href="classes/Aurea-Container-TTabs.html#property_tabs">$tabs</a></li>
+                                                    <li class=""><a href="classes/Aurea-Container-TTabs.html#property_tabsId">$tabsId</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_tag">$tag</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_voidTags">$voidTags</a></li>
                                             </ul>
@@ -1479,10 +1854,14 @@
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method___toString">__toString()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_add">add()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addClass">addClass()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addHtml">addHtml()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addText">addText()</a></li>
+                                            <li class=""><a href="classes/Aurea-Container-TTabs.html#method_appendLazyTab">appendLazyTab()</a></li>
                                             <li class=""><a href="classes/Aurea-Container-TTabs.html#method_appendTab">appendTab()</a></li>
                                             <li class=""><a href="classes/Aurea-Container-TTabs.html#method_getContents">getContents()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_getProperty">getProperty()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setChildren">setChildren()</a></li>
+                                            <li class=""><a href="classes/Aurea-Container-TTabs.html#method_setCurrentTab">setCurrentTab()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setId">setId()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setProperty">setProperty()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setStyle">setStyle()</a></li>

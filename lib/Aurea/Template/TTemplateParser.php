@@ -14,6 +14,19 @@ class TTemplateParser
 {
     /** @var array<string,string> Secções registadas para herança de layouts */
     protected array $sections = [];
+    /** @var array<string,string> Templates já renderizados por conteúdo e dados. */
+    protected array $cache = [];
+    protected bool $cacheEnabled = false;
+
+    /** Ativa cache em memória por instância para renderizações idênticas. */
+    public function setCacheEnabled(bool $enabled = true): static
+    {
+        $this->cacheEnabled = $enabled;
+        if (!$enabled) {
+            $this->cache = [];
+        }
+        return $this;
+    }
 
     /**
      * Regista o conteúdo de uma secção para o layout.
@@ -66,9 +79,16 @@ class TTemplateParser
      */
     public function parse(string $template, array $data): string
     {
+        $key = hash('sha256', $template . serialize($data));
+        if ($this->cacheEnabled && isset($this->cache[$key])) {
+            return $this->cache[$key];
+        }
         $template = $this->parseLoops($template, $data);
         $template = $this->parseIfs($template, $data);
         $template = $this->parseVars($template, $data);
+        if ($this->cacheEnabled) {
+            $this->cache[$key] = $template;
+        }
         return $template;
     }
 

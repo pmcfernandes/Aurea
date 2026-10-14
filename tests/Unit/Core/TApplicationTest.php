@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Core;
 
 use Aurea\Core\TApplication;
+use Aurea\Core\TAssets;
 use Aurea\Core\TComponent;
 use PHPUnit\Framework\TestCase;
 
@@ -47,6 +48,7 @@ final class TApplicationTest extends TestCase
         $this->setStatic('defaultMethod', 'onShow');
         $this->setStatic('title', 'Aurea Framework');
         $this->setStatic('menuHtml', null);
+        TAssets::reset();
     }
 
     private function setStatic(string $prop, mixed $value): void
@@ -72,6 +74,17 @@ final class TApplicationTest extends TestCase
         TApplication::run('HomeView', 'onShow', []);
         $out = (string) ob_get_clean();
         $this->assertStringContainsString('<title>Minha App</title>', $out);
+    }
+
+    public function testLayoutRendersRegisteredAssets(): void
+    {
+        TAssets::addCss('/assets/app.css');
+        TAssets::addJs('/assets/app.js');
+        ob_start();
+        TApplication::run('HomeView', 'onShow', []);
+        $out = (string) ob_get_clean();
+        $this->assertStringContainsString('/assets/app.css?v=', $out);
+        $this->assertStringContainsString('/assets/app.js?v=', $out);
     }
 
     public function testSetDefault(): void
@@ -185,10 +198,11 @@ final class TApplicationTest extends TestCase
         TApplication::run();
         $out = (string) ob_get_clean();
 
-        $this->assertSame(500, http_response_code());
+        $this->assertSame(404, http_response_code());
         $data = json_decode($out, true);
         $this->assertIsArray($data);
         $this->assertArrayHasKey('error', $data);
+        $this->assertSame(404, $data['code'] ?? null);
     }
 
     public function testRunRendersFullTemplate(): void

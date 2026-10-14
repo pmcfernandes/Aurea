@@ -23,6 +23,12 @@ abstract class TRecord
     const TABLENAME = '';
     const PRIMARYKEY = 'id';
     const IDPOLICY = 'serial';
+    const CREATED_AT = null;
+    const UPDATED_AT = null;
+    const DELETED_AT = null;
+    const SOFT_DELETE = false;
+    /** Lista opcional de atributos públicos aceites por atribuição em massa. */
+    const ATTRIBUTES = [];
 
     protected array $data = [];
     protected array $attributes = [];
@@ -30,11 +36,11 @@ abstract class TRecord
     /**
      * Cria o registro a partir de array, id ou vazio.
      *
-     * @param array|int|null $data Dados iniciais ou chave primária
+     * @param array|int|string|null $data Dados iniciais ou chave primária
      * @param bool $callObjectLoad Se chama onAfterLoad após carregar
      * @throws \Exception Se o registro não for encontrado
      */
-    public function __construct(array|int|null $data = null, bool $callObjectLoad = true)
+    public function __construct(array|int|string|null $data = null, bool $callObjectLoad = true)
     {
         if (is_array($data)) {
             $this->data = $data;
@@ -42,7 +48,7 @@ abstract class TRecord
                 $this->onAfterLoad();
             }
         } elseif ($data !== null) {
-            $this->load((int) $data);
+            $this->load($data);
         }
     }
 
@@ -54,6 +60,7 @@ abstract class TRecord
      */
     public function __set(string $name, $value): void
     {
+        $this->assertAttribute($name);
         $this->data[$name] = $value;
     }
 
@@ -98,9 +105,18 @@ abstract class TRecord
     public function fromArray(array $data): static
     {
         foreach ($data as $k => $v) {
+            $this->assertAttribute((string) $k);
             $this->data[$k] = $v;
         }
         return $this;
+    }
+
+    /** Impede atribuição em massa de atributos fora da allow-list declarada. */
+    protected function assertAttribute(string $name): void
+    {
+        if (static::ATTRIBUTES !== [] && !in_array($name, static::ATTRIBUTES, true) && $name !== static::PRIMARYKEY) {
+            throw new \InvalidArgumentException("Atributo não permitido em " . static::class . ": {$name}");
+        }
     }
 
     /**
@@ -149,6 +165,14 @@ abstract class TRecord
         $pk = static::PRIMARYKEY;
         $data = $this->persistable();
         unset($data[$pk]);
+        $now = date('Y-m-d H:i:s');
+        $isInsert = empty($this->data[$pk] ?? null);
+        if ($isInsert && static::CREATED_AT) {
+            $data[static::CREATED_AT] ??= $now;
+        }
+        if (static::UPDATED_AT) {
+            $data[static::UPDATED_AT] = $now;
+        }
 
         $id = $this->data[$pk] ?? null;
         if (empty($id)) {
@@ -170,6 +194,9 @@ abstract class TRecord
                 $id = (int) $conn->lastInsertId();
             }
             $this->data[$pk] = $id;
+            foreach ($data as $col => $val) {
+                $this->data[$col] = $val;
+            }
         } else {
             $sets = implode(',', array_map(fn($c) => "{$c} = ?", array_keys($data)));
             $vals = array_values($data);
@@ -178,6 +205,9 @@ abstract class TRecord
             TTransaction::log($sql, $vals);
             $stmt = $conn->prepare($sql);
             $stmt->execute($vals);
+            foreach ($data as $col => $val) {
+                $this->data[$col] = $val;
+            }
         }
     }
 
@@ -188,15 +218,19 @@ abstract class TRecord
      * @return static
      * @throws \Exception Se o registro não for encontrado
      */
-    public function load(int $id): static
+    public function load(int|string $id, bool $withTrashed = false): static
     {
         $conn = TTransaction::get();
         $table = static::TABLENAME;
         $pk = static::PRIMARYKEY;
         $sql = "SELECT * FROM {$table} WHERE {$pk} = ?";
-        TTransaction::log($sql, [$id]);
+        $params = [$id];
+        if (!$withTrashed && static::SOFT_DELETE && static::DELETED_AT) {
+            $sql .= ' AND ' . static::DELETED_AT . ' IS NULL';
+        }
+        TTransaction::log($sql, $params);
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$id]);
+        $stmt->execute($params);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         if (!$row) {
             throw new \RuntimeException("Registro {$id} não encontrado em {$table}");
@@ -209,21 +243,127 @@ abstract class TRecord
     }
 
     /**
-     * Apaga o registro da tabela.
+     * Apaga o registro da tabela (soft delete se SOFT_DELETE ativo).
      *
      * @param int|null $id Chave primária ou null para usar a do objeto
      * @throws \Exception Se não houver transação aberta
      */
-    public function delete(?int $id = null): void
+    public function delete(int|string|null $id = null): void
     {
         $conn = TTransaction::get();
         $table = static::TABLENAME;
         $pk = static::PRIMARYKEY;
-        $id = $id ?? (int) ($this->data[$pk] ?? 0);
+        $id = $id ?? ($this->data[$pk] ?? 0);
+        if (static::SOFT_DELETE && static::DELETED_AT) {
+            $col = static::DELETED_AT;
+            $now = date('Y-m-d H:i:s');
+            $sql = "UPDATE {$table} SET {$col} = ? WHERE {$pk} = ?";
+            TTransaction::log($sql, [$now, $id]);
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$now, $id]);
+            $this->data[$col] = $now;
+            return;
+        }
         $sql = "DELETE FROM {$table} WHERE {$pk} = ?";
         TTransaction::log($sql, [$id]);
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
+    }
+
+    /**
+     * Restaura registro com soft delete.
+     */
+    public function restore(): void
+    {
+        if (!static::SOFT_DELETE || !static::DELETED_AT) {
+            return;
+        }
+        $conn = TTransaction::get();
+        $table = static::TABLENAME;
+        $pk = static::PRIMARYKEY;
+        $col = static::DELETED_AT;
+        $id = (int) ($this->data[$pk] ?? 0);
+        $sql = "UPDATE {$table} SET {$col} = NULL WHERE {$pk} = ?";
+        TTransaction::log($sql, [$id]);
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        $this->data[$col] = null;
+    }
+
+    /**
+     * Indica se o registro está eliminado (soft delete).
+     *
+     * @return bool True se tem data de eliminação
+     */
+    public function isTrashed(): bool
+    {
+        if (!static::DELETED_AT) {
+            return false;
+        }
+        return !empty($this->data[static::DELETED_AT]);
+    }
+
+    /**
+     * Relação um-para-muitos.
+     *
+     * @template R of TRecord
+     * @param class-string<R> $related Classe relacionada
+     * @param string $foreignKey Chave estrangeira em $related
+     * @return R[]
+     */
+    public function hasMany(string $related, string $foreignKey): array
+    {
+        $pk = static::PRIMARYKEY;
+        $id = $this->data[$pk] ?? null;
+        $criteria = (new TCriteria)->add(new TFilter($foreignKey, '=', $id));
+        if (is_a($related, TRecord::class, true) && $related::SOFT_DELETE && $related::DELETED_AT) {
+            $criteria->add(new TFilter($related::DELETED_AT, 'IS', null));
+        }
+        return (new TRepository($related))->load($criteria);
+    }
+
+    /**
+     * Relação muitos-para-um.
+     *
+     * @template R of TRecord
+     * @param class-string<R> $related Classe relacionada
+     * @param string $foreignKey Chave estrangeira neste registro
+     */
+    public function belongsTo(string $related, string $foreignKey): ?TRecord
+    {
+        $id = $this->data[$foreignKey] ?? null;
+        if (empty($id)) {
+            return null;
+        }
+        try {
+            return new $related((int) $id);
+        } catch (\Throwable) {
+            return null;
+        }
+    }
+
+    /**
+     * Relação muitos-para-muitos via tabela pivô.
+     *
+     * @param class-string<TRecord> $related Classe relacionada
+     * @return TRecord[]
+     */
+    public function belongsToMany(string $related, string $pivotTable, string $foreignKey, string $relatedKey): array
+    {
+        $conn = TTransaction::get();
+        $pk = static::PRIMARYKEY;
+        $id = $this->data[$pk] ?? null;
+        $relatedTable = $related::TABLENAME;
+        $relatedPk = $related::PRIMARYKEY;
+        $sql = "SELECT r.* FROM {$relatedTable} r INNER JOIN {$pivotTable} p ON p.{$relatedKey} = r.{$relatedPk} WHERE p.{$foreignKey} = ?";
+        TTransaction::log($sql, [$id]);
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        $out = [];
+        foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+            $out[] = new $related($row);
+        }
+        return $out;
     }
 
     /**
@@ -233,16 +373,17 @@ abstract class TRecord
      * @return static Registro carregado
      * @throws \Exception Se o registro não for encontrado
      */
-    public static function find(int $id): static
+    public static function find(int|string $id, bool $withTrashed = false): static
     {
-        return new static($id);
+        $record = new static;
+        return $record->load($id, $withTrashed);
     }
 
     /** @return static[] */
 
-    public static function all(?TCriteria $criteria = null): array
+    public static function all(?TCriteria $criteria = null, bool $withTrashed = false): array
     {
-        return (new TRepository(static::class))->load($criteria);
+        return (new TRepository(static::class))->load($criteria, true, $withTrashed);
     }
 
     /**

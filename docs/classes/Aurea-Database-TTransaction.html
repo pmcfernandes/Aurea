@@ -273,6 +273,18 @@ TTransaction::close();
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Database-TTransaction.html#property_contexts">$contexts</a>
+    <span>
+                        &nbsp;: array&lt;string|int, string&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Database-TTransaction.html#property_depths">$depths</a>
+    <span>
+                        &nbsp;: array&lt;string, int&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Aurea-Database-TTransaction.html#property_dump">$dump</a>
     <span>
                         &nbsp;: bool            </span>
@@ -309,7 +321,7 @@ TTransaction::close();
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Confirma a transação ativa.</dd>
+<dd>Confirma a transação ativa ou liberta o savepoint da reentrada atual.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Database-TTransaction.html#method_closeAll">closeAll()</a>
@@ -365,7 +377,7 @@ TTransaction::close();
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Reverte a transação ativa.</dd>
+<dd>Reverte a transação ativa ou o savepoint da reentrada atual.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Database-TTransaction.html#method_rollbackAll">rollbackAll()</a>
@@ -387,6 +399,13 @@ TTransaction::close();
                                 &nbsp;: void    </span>
 </dt>
 <dd>Define closure de log</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TTransaction.html#method_transaction">transaction()</a>
+    <span>
+                                &nbsp;: <abbr title="\Aurea\Database\T">T</abbr>    </span>
+</dt>
+<dd>Executa callable dentro de transação (commit/rollback automáticos).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Aurea-Database-TTransaction.html#method_activate">activate()</a>
@@ -489,6 +508,84 @@ TTransaction::close();
             -protected
             -static                                                        "
 >
+    <h4 class="phpdocumentor-element__name" id="property_contexts">
+        $contexts
+        <a href="classes/Aurea-Database-TTransaction.html#property_contexts" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">26</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
+    <span class="phpdocumentor-signature__name">$contexts</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>Contextos suspensos ao alternar entre conexões</p>
+</section>
+
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_depths">
+        $depths
+        <a href="classes/Aurea-Database-TTransaction.html#property_depths" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">28</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string, int&gt;</span>
+    <span class="phpdocumentor-signature__name">$depths</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>Profundidade da transação por conexão</p>
+</section>
+
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_dump">
         $dump
         <a href="classes/Aurea-Database-TTransaction.html#property_dump" class="headerlink"><i class="fas fa-link"></i></a>
@@ -499,7 +596,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -536,7 +633,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -573,7 +670,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
@@ -610,7 +707,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
@@ -652,11 +749,11 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">101</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Confirma a transação ativa.</p>
+        <p class="phpdocumentor-summary">Confirma a transação ativa ou liberta o savepoint da reentrada atual.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -665,7 +762,9 @@ TTransaction::close();
     <div class="phpdocumentor-label-line">
         </div>
     
-    
+        <section class="phpdocumentor-description"><p>Ao fechar o nível externo, restaura o contexto anterior ou o limpa.</p>
+</section>
+
     
     
 
@@ -687,7 +786,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">127</span>
+    <span class="phpdocumentor-element-found-in__line">162</span>
 
     </aside>
 
@@ -722,7 +821,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">150</span>
+    <span class="phpdocumentor-element-found-in__line">191</span>
 
     </aside>
 
@@ -767,7 +866,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">80</span>
+    <span class="phpdocumentor-element-found-in__line">94</span>
 
     </aside>
 
@@ -826,7 +925,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">93</span>
+    <span class="phpdocumentor-element-found-in__line">107</span>
 
     </aside>
 
@@ -869,7 +968,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">176</span>
+    <span class="phpdocumentor-element-found-in__line">217</span>
 
     </aside>
 
@@ -925,7 +1024,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">41</span>
 
     </aside>
 
@@ -996,7 +1095,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">49</span>
+    <span class="phpdocumentor-element-found-in__line">53</span>
 
     </aside>
 
@@ -1054,11 +1153,11 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">139</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Reverte a transação ativa.</p>
+        <p class="phpdocumentor-summary">Reverte a transação ativa ou o savepoint da reentrada atual.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -1067,7 +1166,9 @@ TTransaction::close();
     <div class="phpdocumentor-label-line">
         </div>
     
-    
+        <section class="phpdocumentor-description"><p>Ao reverter o nível externo, restaura o contexto anterior ou o limpa.</p>
+</section>
+
     
     
 
@@ -1089,7 +1190,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">139</span>
+    <span class="phpdocumentor-element-found-in__line">177</span>
 
     </aside>
 
@@ -1124,7 +1225,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">158</span>
+    <span class="phpdocumentor-element-found-in__line">199</span>
 
     </aside>
 
@@ -1169,7 +1270,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">165</span>
+    <span class="phpdocumentor-element-found-in__line">206</span>
 
     </aside>
 
@@ -1203,6 +1304,83 @@ TTransaction::close();
                     <article
         class="phpdocumentor-element
             -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_transaction">
+        transaction()
+        <a href="classes/Aurea-Database-TTransaction.html#method_transaction" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">245</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Executa callable dentro de transação (commit/rollback automáticos).</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">transaction</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">callable(): <abbr title="\Aurea\Database\T">T</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fn</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$configName</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">'app'</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Aurea\Database\T">T</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$fn</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable(): <abbr title="\Aurea\Database\T">T</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Trabalho a executar</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$configName</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">'app'</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Nome da config</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="method_transaction_tags">
+        Tags
+        <a href="classes/Aurea-Database-TTransaction.html#method_transaction_tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                    <dt class="phpdocumentor-tag-list__entry">
+                <span class="phpdocumentor-tag__name">template</span>
+            </dt>
+                            <dd class="phpdocumentor-tag-list__definition">
+                                                                                                        
+                                    </dd>
+                        </dl>
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Aurea\Database\T">T</abbr></span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Retorno do callable</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
             -protected
                                     -static                    "
 >
@@ -1214,7 +1392,7 @@ TTransaction::close();
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TTransaction.php"><a href="files/lib-aurea-database-ttransaction.html"><abbr title="lib/Aurea/Database/TTransaction.php">TTransaction.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">64</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 
     </aside>
 
@@ -1227,7 +1405,10 @@ TTransaction::close();
     <div class="phpdocumentor-label-line">
         </div>
     
-    
+        <section class="phpdocumentor-description"><p>Reentradas na mesma conexão criam savepoints; outra conexão suspende o
+contexto atual até ser fechada ou revertida.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1279,6 +1460,8 @@ TTransaction::close();
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="classes/Aurea-Database-TTransaction.html#property_active">$active</a></li>
                                                     <li class=""><a href="classes/Aurea-Database-TTransaction.html#property_conns">$conns</a></li>
+                                                    <li class=""><a href="classes/Aurea-Database-TTransaction.html#property_contexts">$contexts</a></li>
+                                                    <li class=""><a href="classes/Aurea-Database-TTransaction.html#property_depths">$depths</a></li>
                                                     <li class=""><a href="classes/Aurea-Database-TTransaction.html#property_dump">$dump</a></li>
                                                     <li class=""><a href="classes/Aurea-Database-TTransaction.html#property_logger">$logger</a></li>
                                                     <li class=""><a href="classes/Aurea-Database-TTransaction.html#property_loggerFunction">$loggerFunction</a></li>
@@ -1301,6 +1484,7 @@ TTransaction::close();
                                             <li class=""><a href="classes/Aurea-Database-TTransaction.html#method_rollbackAll">rollbackAll()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TTransaction.html#method_setLogger">setLogger()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TTransaction.html#method_setLoggerFunction">setLoggerFunction()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TTransaction.html#method_transaction">transaction()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TTransaction.html#method_activate">activate()</a></li>
                                     </ul>
             </li>

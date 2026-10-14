@@ -22,11 +22,12 @@ class TCookie
      */
     public static function set(string $name, string $value, array $options = []): bool
     {
+        $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
         $params = array_merge([
             'expires' => time() + 365 * 86400,
             'path' => '/',
             'domain' => '',
-            'secure' => false,
+            'secure' => $secure,
             'httponly' => true,
             'samesite' => 'Lax',
         ], $options);

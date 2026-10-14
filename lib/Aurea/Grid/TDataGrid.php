@@ -29,6 +29,7 @@ class TDataGrid extends TComponent
     protected array $actionGroups = [];
     protected bool $selectable = false;
     protected string $keyField = 'id';
+    protected bool $printMode = false;
 
     /**
      * Cria a grade de listagem responsiva.
@@ -89,6 +90,23 @@ class TDataGrid extends TComponent
     {
         $this->selectable = true;
         $this->keyField = $keyField;
+        return $this;
+    }
+
+    /** Define o campo usado por ações de linha, links e seleção. */
+    public function setKeyField(string $keyField): static
+    {
+        if ($keyField === '') {
+            throw new \InvalidArgumentException('O campo-chave da grid não pode ser vazio.');
+        }
+        $this->keyField = $keyField;
+        return $this;
+    }
+
+    /** Ativa um modo de impressão que omite seleção e ações interativas. */
+    public function setPrintMode(bool $enabled = true): static
+    {
+        $this->printMode = $enabled;
         return $this;
     }
 
@@ -158,6 +176,7 @@ class TDataGrid extends TComponent
     protected function headerCell(TColumn $col): string
     {
         $label = htmlspecialchars($col->getLabel());
+        $width = $col->getWidth() !== '' ? " style='width:" . htmlspecialchars($col->getWidth(), ENT_QUOTES) . "'" : '';
         if ($this->orderAction && $col->isOrderable()) {
             $next = ($this->order === $col->getName() && $this->direction === 'asc') ? 'desc' : 'asc';
             $arrow = $this->order === $col->getName()
@@ -167,9 +186,9 @@ class TDataGrid extends TComponent
                 ->setParameter('order', $col->getName())
                 ->setParameter('direction', $next)
                 ->toHref();
-            return "<th><a href='{$href}'>{$label}{$arrow}</a></th>";
+            return "<th{$width}><a href='{$href}'>{$label}{$arrow}</a></th>";
         }
-        return "<th>{$label}</th>";
+        return "<th{$width}>{$label}</th>";
     }
 
     /**
@@ -180,16 +199,19 @@ class TDataGrid extends TComponent
     public function getContents(): string
     {
         $thead = '<tr>';
-        if ($this->selectable) {
+        if ($this->selectable && !$this->printMode) {
             $thead .= '<th><input type="checkbox" title="Selecionar todos" onclick="var t=this.closest(\'table\');var c=this.checked;t.querySelectorAll(\'input[type=checkbox]\').forEach(function(i){i.checked=c;});"></th>';
         }
         foreach ($this->columns as $col) {
+            if (!$col->isVisible()) {
+                continue;
+            }
             $thead .= $this->headerCell($col);
         }
-        if ($this->rowActions) {
+        if ($this->rowActions && !$this->printMode) {
             $thead .= '<th style="width:160px">Ações</th>';
         }
-        foreach ($this->actionGroups as $group) {
+        foreach ($this->printMode ? [] : $this->actionGroups as $group) {
             $thead .= '<th>' . htmlspecialchars($group->getLabel()) . '</th>';
         }
         $thead .= '</tr>';
@@ -198,14 +220,17 @@ class TDataGrid extends TComponent
         foreach ($this->items as $item) {
             $tbody .= '<tr>';
             $arr = $item instanceof TRecord ? $item->toArray() : (array) $item;
-            if ($this->selectable) {
+            if ($this->selectable && !$this->printMode) {
                 $key = (string) ($arr[$this->keyField] ?? '');
                 $tbody .= '<td><input type="checkbox" name="_grid_sel[]" value="' . htmlspecialchars($key) . '"></td>';
             }
             foreach ($this->columns as $col) {
+                if (!$col->isVisible()) {
+                    continue;
+                }
                 $tbody .= $col->renderCell($item);
             }
-            if ($this->rowActions) {
+            if ($this->rowActions && !$this->printMode) {
                 $tbody .= '<td><div class="btn-group btn-group-sm">';
                 foreach ($this->rowActions as $ra) {
                     $display = $ra['display'] ?? null;
@@ -213,21 +238,22 @@ class TDataGrid extends TComponent
                         continue;
                     }
                     $a = clone $ra['action'];
-                    if (isset($arr['id'])) {
-                        $a->setParameter('key', $arr['id']);
+                    if (isset($arr[$this->keyField])) {
+                        $a->setParameter('key', $arr[$this->keyField]);
                     }
                     $tbody .= "<a class='btn {$ra['btnClass']}' title='" . htmlspecialchars($ra['label']) . "' href='" . $a->toHref() . "'>"
                             . "<i class='fa-solid {$ra['icon']}'></i></a>";
                 }
                 $tbody .= '</div></td>';
             }
-            foreach ($this->actionGroups as $group) {
+            foreach ($this->printMode ? [] : $this->actionGroups as $group) {
                 $tbody .= $group->renderCell($arr);
             }
             $tbody .= '</tr>';
         }
         if (!$tbody) {
-            $span = count($this->columns) + ($this->rowActions ? 1 : 0) + count($this->actionGroups) + ($this->selectable ? 1 : 0);
+            $visible = count(array_filter($this->columns, fn(TColumn $column): bool => $column->isVisible()));
+            $span = $visible + ($this->rowActions && !$this->printMode ? 1 : 0) + (!$this->printMode ? count($this->actionGroups) : 0) + ($this->selectable && !$this->printMode ? 1 : 0);
             $tbody = "<tr><td colspan='{$span}' class='text-center text-muted p-4'>Nenhum registro encontrado</td></tr>";
         }
         $tfoot = $this->renderFooter();
@@ -252,18 +278,21 @@ class TDataGrid extends TComponent
             return '';
         }
         $out = '<tr>';
-        if ($this->selectable) {
+        if ($this->selectable && !$this->printMode) {
             $out .= '<td></td>';
         }
         foreach ($this->columns as $col) {
+            if (!$col->isVisible()) {
+                continue;
+            }
             $out .= $col->hasTotal()
                 ? "<td class='fw-bold text-{$col->getAlign()}'>{$col->getTotalValue($this->items)}</td>"
                 : '<td></td>';
         }
-        if ($this->rowActions) {
+        if ($this->rowActions && !$this->printMode) {
             $out .= '<td></td>';
         }
-        foreach ($this->actionGroups as $group) {
+        foreach ($this->printMode ? [] : $this->actionGroups as $group) {
             $out .= '<td></td>';
         }
         return "<tfoot class='table-light'>{$out}</tfoot>";

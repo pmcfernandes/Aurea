@@ -247,6 +247,18 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#property_afterCriteria">$afterCriteria</a>
+    <span>
+                        &nbsp;: callable|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#property_afterLoad">$afterLoad</a>
+    <span>
+                        &nbsp;: callable|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Aurea-Base-TStandardListTrait.html#property_database">$database</a>
     <span>
                         &nbsp;: string            </span>
@@ -276,6 +288,18 @@
                         &nbsp;: int            </span>
 </dt>
 
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#property_orderFields">$orderFields</a>
+    <span>
+                        &nbsp;: array&lt;string|int, string&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#property_persistentFilters">$persistentFilters</a>
+    <span>
+                        &nbsp;: bool            </span>
+</dt>
+
     </dl>
 
 <h4 id="toc-methods">
@@ -284,6 +308,20 @@
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_clearFilters">clearFilters()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Apaga os filtros guardados em sessão.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_deleteCollection">deleteCollection()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Elimina vários registros de uma vez.</dd>
+
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_onDelete">onDelete()</a>
     <span>
@@ -297,6 +335,20 @@
                                 &nbsp;: void    </span>
 </dt>
 <dd>Define o Active Record da listagem.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_setAfterCriteria">setAfterCriteria()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Define um callback para acrescentar filtros compostos ao critério final.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_setAfterLoad">setAfterLoad()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Define um callback executado após carregar uma coleção.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_setDatabase">setDatabase()</a>
@@ -319,12 +371,40 @@
 </dt>
 <dd>Define os campos usados no filtro de busca.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_setOrderFields">setOrderFields()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Define os únicos campos que podem ser usados em ?order=.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_setPersistentFilters">setPersistentFilters()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Ativa/desativa filtros persistentes em sessão.</dd>
+
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_buildCriteria">buildCriteria()</a>
     <span>
                                 &nbsp;: <a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>    </span>
 </dt>
 <dd>Monta o critério de busca, ordenação e paginação.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_filterSessionKey">filterSessionKey()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Chave de sessão usada para guardar os filtros da listagem.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Base-TStandardListTrait.html#method_mergePersistentFilters">mergePersistentFilters()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Funde filtros do pedido com os guardados em sessão.</dd>
 
     </dl>
 
@@ -371,6 +451,84 @@
 
     
     
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_afterCriteria">
+        $afterCriteria
+        <a href="classes/Aurea-Base-TStandardListTrait.html#property_afterCriteria" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">30</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">callable|null</span>
+    <span class="phpdocumentor-signature__name">$afterCriteria</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>fn(array&lt;string,mixed&gt;, TCriteria):void</p>
+</section>
+
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_afterLoad">
+        $afterLoad
+        <a href="classes/Aurea-Base-TStandardListTrait.html#property_afterLoad" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">32</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">callable|null</span>
+    <span class="phpdocumentor-signature__name">$afterLoad</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>fn(array&lt;int,\Aurea\Database\TRecord&gt;):void</p>
+</section>
+
     
 
         
@@ -542,7 +700,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -553,6 +711,82 @@
             <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">$limit</span>
      = <span class="phpdocumentor-signature__default-value">10</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_orderFields">
+        $orderFields
+        <a href="classes/Aurea-Base-TStandardListTrait.html#property_orderFields" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">26</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
+    <span class="phpdocumentor-signature__name">$orderFields</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>Campos permitidos para ordenação vinda da requisição</p>
+</section>
+
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_persistentFilters">
+        $persistentFilters
+        <a href="classes/Aurea-Base-TStandardListTrait.html#property_persistentFilters" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">28</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$persistentFilters</span>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
 
     
     
@@ -576,6 +810,96 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_clearFilters">
+        clearFilters()
+        <a href="classes/Aurea-Base-TStandardListTrait.html#method_clearFilters" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">179</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Apaga os filtros guardados em sessão.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">clearFilters</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_deleteCollection">
+        deleteCollection()
+        <a href="classes/Aurea-Base-TStandardListTrait.html#method_deleteCollection" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">190</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Elimina vários registros de uma vez.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">deleteCollection</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ids</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$ids</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, int&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Ids a eliminar</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Total eliminado</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_onDelete">
         onDelete()
         <a href="classes/Aurea-Base-TStandardListTrait.html#method_onDelete" class="headerlink"><i class="fas fa-link"></i></a>
@@ -584,7 +908,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">96</span>
+    <span class="phpdocumentor-element-found-in__line">217</span>
 
     </aside>
 
@@ -631,7 +955,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
@@ -670,6 +994,96 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setAfterCriteria">
+        setAfterCriteria()
+        <a href="classes/Aurea-Base-TStandardListTrait.html#method_setAfterCriteria" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">88</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define um callback para acrescentar filtros compostos ao critério final.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setAfterCriteria</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callback</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$callback</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAfterLoad">
+        setAfterLoad()
+        <a href="classes/Aurea-Base-TStandardListTrait.html#method_setAfterLoad" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">94</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define um callback executado após carregar uma coleção.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setAfterLoad</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callback</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$callback</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_setDatabase">
         setDatabase()
         <a href="classes/Aurea-Base-TStandardListTrait.html#method_setDatabase" class="headerlink"><i class="fas fa-link"></i></a>
@@ -678,7 +1092,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
@@ -725,7 +1139,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">63</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 
     </aside>
 
@@ -781,7 +1195,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">52</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -817,6 +1231,100 @@
                     <article
         class="phpdocumentor-element
             -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setOrderFields">
+        setOrderFields()
+        <a href="classes/Aurea-Base-TStandardListTrait.html#method_setOrderFields" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">82</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define os únicos campos que podem ser usados em ?order=.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setOrderFields</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fields</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Se não for chamado, são permitidos apenas o campo padrão e os filtros.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$fields</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, string&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setPersistentFilters">
+        setPersistentFilters()
+        <a href="classes/Aurea-Base-TStandardListTrait.html#method_setPersistentFilters" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">137</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Ativa/desativa filtros persistentes em sessão.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setPersistentFilters</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$on</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$on</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>True para guardar e reaplicar filtros em sessão</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
             -protected
                                                         "
 >
@@ -828,7 +1336,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
@@ -869,6 +1377,98 @@
             </section>
 
 </article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_filterSessionKey">
+        filterSessionKey()
+        <a href="classes/Aurea-Base-TStandardListTrait.html#method_filterSessionKey" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">147</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Chave de sessão usada para guardar os filtros da listagem.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">filterSessionKey</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Chave de sessão</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_mergePersistentFilters">
+        mergePersistentFilters()
+        <a href="classes/Aurea-Base-TStandardListTrait.html#method_mergePersistentFilters" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardListTrait.php"><a href="files/lib-aurea-base-tstandardlisttrait.html"><abbr title="lib/Aurea/Base/TStandardListTrait.php">TStandardListTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">155</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Funde filtros do pedido com os guardados em sessão.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">mergePersistentFilters</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$param</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$param</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
             </section>
 
         
@@ -891,22 +1491,34 @@
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_activeRecord">$activeRecord</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_afterCriteria">$afterCriteria</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_afterLoad">$afterLoad</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_database">$database</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_defaultDirection">$defaultDirection</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_defaultOrder">$defaultOrder</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_filterFields">$filterFields</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_limit">$limit</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_orderFields">$orderFields</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#property_persistentFilters">$persistentFilters</a></li>
                                     </ul>
             </li>
                                     <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_clearFilters">clearFilters()</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_deleteCollection">deleteCollection()</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_onDelete">onDelete()</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_setActiveRecord">setActiveRecord()</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_setAfterCriteria">setAfterCriteria()</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_setAfterLoad">setAfterLoad()</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_setDatabase">setDatabase()</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_setDefaultOrder">setDefaultOrder()</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_setFilterFields">setFilterFields()</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_setOrderFields">setOrderFields()</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_setPersistentFilters">setPersistentFilters()</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_buildCriteria">buildCriteria()</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_filterSessionKey">filterSessionKey()</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardListTrait.html#method_mergePersistentFilters">mergePersistentFilters()</a></li>
                                     </ul>
             </li>
                     </ul>

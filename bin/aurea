@@ -1,0 +1,212 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$command = $argv[1] ?? 'help';
+$args = array_slice($argv, 2);
+
+$help = <<<HELP
+Aurea CLI
+
+  php bin/aurea help                          mostra ajuda
+  php bin/aurea make:controller Nome          cria app/control/Nome.php
+  php bin/aurea make:model Nome tabela        cria app/model/Nome.php
+  php bin/aurea make:migration 001_desc       cria database/migrations/001_desc.sql
+  php bin/aurea migrate --db=app              aplica migrations *.sql
+  php bin/aurea make:crud Nome [tabela] [--db=app] [--fields=nome:rótulo:tipo:req,...] [--out=app/control]
+                          introspeciona a tabela e gera NomeForm.php + NomeList.php
+
+HELP;
+
+if ($command === 'help' || $command === '--help' || $command === '-h') {
+    echo $help;
+    exit(0);
+}
+
+if ($command === 'make:controller' && isset($args[0])) {
+    $name = preg_replace('/[^A-Za-z0-9_]/', '', $args[0]);
+    $dir = 'app/control';
+    if (!is_dir($dir)) mkdir($dir, 0777, true);
+    $file = "{$dir}/{$name}.php";
+    if (is_file($file)) { fwrite(STDERR, "Já existe: {$file}\n"); exit(1); }
+    file_put_contents($file, "<?php\ndeclare(strict_types=1);\n\nnamespace App\\Control;\n\nuse Aurea\\Core\\TPage;\n\nclass {$name} extends TPage\n{\n    public function onShow(array \$param = []): void\n    {\n    }\n}\n");
+    echo "Criado {$file}\n";
+    exit(0);
+}
+
+if ($command === 'make:model' && isset($args[0])) {
+    $name = preg_replace('/[^A-Za-z0-9_]/', '', $args[0]);
+    $table = $args[1] ?? strtolower($name);
+    $dir = 'app/model';
+    if (!is_dir($dir)) mkdir($dir, 0777, true);
+    $file = "{$dir}/{$name}.php";
+    if (is_file($file)) { fwrite(STDERR, "Já existe: {$file}\n"); exit(1); }
+    file_put_contents($file, "<?php\ndeclare(strict_types=1);\n\nnamespace App\\Model;\n\nuse Aurea\\Database\\TRecord;\n\nclass {$name} extends TRecord\n{\n    const TABLENAME = '{$table}';\n    const PRIMARYKEY = 'id';\n    const IDPOLICY = 'serial';\n}\n");
+    echo "Criado {$file}\n";
+    exit(0);
+}
+
+if ($command === 'make:migration' && isset($args[0])) {
+    $name = preg_replace('/[^A-Za-z0-9_\-]/', '_', $args[0]);
+    $dir = 'database/migrations';
+    if (!is_dir($dir)) mkdir($dir, 0777, true);
+    $file = "{$dir}/{$name}.sql";
+    file_put_contents($file, "-- migration {$name}\n");
+    echo "Criado {$file}\n";
+    exit(0);
+}
+
+if ($command === 'migrate') {
+    $db = 'app';
+    foreach ($args as $a) {
+        if (str_starts_with($a, '--db=')) $db = substr($a, 5);
+    }
+    require __DIR__ . '/../bootstrap.php';
+    $pdo = \Aurea\Database\TTransaction::open($db);
+    $migrator = new \Aurea\Database\TMigrator($pdo);
+    $dir = 'database/migrations';
+    if (is_dir($dir)) {
+        foreach (glob($dir . '/*.sql') ?: [] as $file) {
+            $version = basename($file, '.sql');
+            $migrator->add($version, (string) file_get_contents($file));
+        }
+    }
+    $done = $migrator->migrate();
+    \Aurea\Database\TTransaction::close();
+    echo $done ? 'Aplicadas: ' . implode(', ', $done) . "\n" : "Nada a aplicar.\n";
+    exit(0);
+}
+
+if ($command === 'make:crud' && isset($args[0])) {
+    require __DIR__ . '/../bootstrap.php';
+    $name = preg_replace('/[^A-Za-z0-9_]/', '', $args[0]);
+    $table = null;
+    $db = 'app';
+    $fieldsOpt = null;
+    $outDir = 'app/control';
+    foreach (array_slice($args, 1) as $a) {
+        if (str_starts_with($a, '--db=')) {
+            $db = substr($a, 5);
+        } elseif (str_starts_with($a, '--fields=')) {
+            $fieldsOpt = substr($a, 9);
+        } elseif (str_starts_with($a, '--out=')) {
+            $outDir = rtrim(substr($a, 6), '/');
+        } elseif ($table === null) {
+            $table = $a;
+        }
+    }
+    $modelClass = "App\\Model\\{$name}";
+    if (!class_exists($modelClass)) {
+        fwrite(STDERR, "Modelo não encontrado: {$modelClass}. Crie com make:model.\n");
+        exit(1);
+    }
+    $table ??= $modelClass::TABLENAME ?: strtolower($name);
+    $fields = $fieldsOpt !== null && $fieldsOpt !== ''
+        ? aurea_parse_fields_opt($fieldsOpt)
+        : aurea_introspect_fields($db, $table);
+    if (!$fields) {
+        fwrite(STDERR, "Sem campos para gerar (tabela '{$table}' vazia ou inexistente).\n");
+        exit(1);
+    }
+    $gen = new \Aurea\Gen\TCrudGenerator($modelClass, $db);
+    $formFile = "{$outDir}/{$name}Form.php";
+    $listFile = "{$outDir}/{$name}List.php";
+    foreach ([$formFile, $listFile] as $f) {
+        if (is_file($f)) {
+            fwrite(STDERR, "Já existe: {$f}\n");
+            exit(1);
+        }
+    }
+    if (!is_dir($outDir)) {
+        mkdir($outDir, 0777, true);
+    }
+    file_put_contents($formFile, $gen->generateForm("{$name}Form", $fields));
+    file_put_contents($listFile, $gen->generateList("{$name}Form", "{$name}List", $fields));
+    echo "Criados {$formFile} e {$listFile}\n";
+    exit(0);
+}
+
+/**
+ * Converte --fields=nome:label:type:required,... em lista de campos.
+ */
+function aurea_parse_fields_opt(string $opt): array
+{
+    $fields = [];
+    foreach (explode(',', $opt) as $part) {
+        $part = trim($part);
+        if ($part === '') {
+            continue;
+        }
+        $chunks = explode(':', $part);
+        $field = ['name' => $chunks[0]];
+        if (isset($chunks[1]) && $chunks[1] !== '') {
+            $field['label'] = $chunks[1];
+        }
+        if (isset($chunks[2]) && $chunks[2] !== '') {
+            $field['type'] = $chunks[2];
+        }
+        if (isset($chunks[3]) && $chunks[3] !== '') {
+            $field['required'] = true;
+        }
+        $fields[] = $field;
+    }
+    return $fields;
+}
+
+/**
+ * Lê as colunas de uma tabela e infere campos do CRUD.
+ */
+function aurea_introspect_fields(string $db, string $table): array
+{
+    $pdo = \Aurea\Database\TTransaction::open($db);
+    try {
+        $driver = (string) $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+        if ($driver === 'sqlite') {
+            $stmt = $pdo->query('PRAGMA table_info(' . str_replace('"', '""', $table) . ')');
+            $cols = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
+            $cols = array_map(fn($c) => ['name' => $c['name'], 'type' => $c['type'], 'pk' => (int) $c['pk']], $cols);
+        } else {
+            $stmt = $pdo->prepare("SELECT column_name AS name, data_type AS type FROM information_schema.columns WHERE table_name = ?");
+            $stmt->execute([$table]);
+            $cols = array_map(fn($c) => ['name' => $c['name'], 'type' => $c['type'], 'pk' => 0], $stmt->fetchAll(PDO::FETCH_ASSOC));
+        }
+    } finally {
+        \Aurea\Database\TTransaction::close();
+    }
+    $skip = ['id', 'created_at', 'updated_at', 'deleted_at', 'created_by', 'updated_by'];
+    $fields = [];
+    foreach ($cols as $c) {
+        $name = (string) $c['name'];
+        if ((int) $c['pk'] === 1 || in_array(strtolower($name), $skip, true)) {
+            continue;
+        }
+        $fields[] = ['name' => $name, 'label' => ucfirst(str_replace('_', ' ', $name)), 'type' => aurea_infer_field_type($name, (string) $c['type'])];
+    }
+    return $fields;
+}
+
+/**
+ * Infere o tipo lógico do widget a partir do nome e tipo SQL da coluna.
+ */
+function aurea_infer_field_type(string $name, string $sqlType): string
+{
+    $lower = strtolower($name . ' ' . $sqlType);
+    if (str_contains($lower, 'email')) {
+        return 'email';
+    }
+    if (str_contains($sqlType, 'DATE') || str_contains($sqlType, 'date')) {
+        return 'date';
+    }
+    if (preg_match('/INT|SERIAL|NUMBER|NUMERIC|DECIMAL|FLOAT|DOUBLE|REAL/i', $sqlType)) {
+        return 'number';
+    }
+    if (preg_match('/TEXT|CLOB|BLOB/i', $sqlType)) {
+        return 'text';
+    }
+    return 'entry';
+}
+
+fwrite(STDERR, "Comando desconhecido: {$command}\n\n" . $help);
+exit(1);

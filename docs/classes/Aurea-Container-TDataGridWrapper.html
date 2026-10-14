@@ -288,6 +288,18 @@ $wrapper-&gt;show();</p>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Container-TDataGridWrapper.html#property_headerWidgets">$headerWidgets</a>
+    <span>
+                        &nbsp;: array&lt;int, <a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a>|string&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Container-TDataGridWrapper.html#property_height">$height</a>
+    <span>
+                        &nbsp;: string|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Aurea-Container-TDataGridWrapper.html#property_searchAction">$searchAction</a>
     <span>
                         &nbsp;: <a href="classes/Aurea-Core-TAction.html"><abbr title="\Aurea\Core\TAction">TAction</abbr></a>|null            </span>
@@ -295,6 +307,12 @@ $wrapper-&gt;show();</p>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Aurea-Container-TDataGridWrapper.html#property_searchParam">$searchParam</a>
+    <span>
+                        &nbsp;: string            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Container-TDataGridWrapper.html#property_searchPlaceholder">$searchPlaceholder</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
@@ -382,6 +400,27 @@ $wrapper-&gt;show();</p>
 <dd>Adiciona um botão ao cabeçalho do cartão.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Container-TDataGridWrapper.html#method_addHeaderWidget">addHeaderWidget()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Adiciona conteúdo adicional ao cabeçalho do card.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TComponent.html#method_addHtml">addHtml()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Adiciona HTML confiável.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TComponent.html#method_addText">addText()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Adiciona texto não confiável, escapado para HTML.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Container-TDataGridWrapper.html#method_getContents">getContents()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -403,6 +442,13 @@ $wrapper-&gt;show();</p>
 <dd>Substitui todos os filhos do elemento.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Container-TDataGridWrapper.html#method_setHeight">setHeight()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Define a altura máxima da área rolável da grelha.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TComponent.html#method_setId">setId()</a>
     <span>
                                 &nbsp;: static    </span>
@@ -422,6 +468,13 @@ $wrapper-&gt;show();</p>
                                 &nbsp;: static    </span>
 </dt>
 <dd>Define a ação da busca rápida (input + botão que navega para URL+param).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Container-TDataGridWrapper.html#method_setSearchPlaceholder">setSearchPlaceholder()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Define o texto de ajuda do campo de busca.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TComponent.html#method_setStyle">setStyle()</a>
@@ -626,6 +679,80 @@ $wrapper-&gt;show();</p>
             -protected
                                                                     "
 >
+    <h4 class="phpdocumentor-element__name" id="property_headerWidgets">
+        $headerWidgets
+        <a href="classes/Aurea-Container-TDataGridWrapper.html#property_headerWidgets" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">31</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">array&lt;int, <a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a>|string&gt;</span>
+    <span class="phpdocumentor-signature__name">$headerWidgets</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_height">
+        $height
+        <a href="classes/Aurea-Container-TDataGridWrapper.html#property_height" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$height</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
     <h4 class="phpdocumentor-element__name" id="property_searchAction">
         $searchAction
         <a href="classes/Aurea-Container-TDataGridWrapper.html#property_searchAction" class="headerlink"><i class="fas fa-link"></i></a>
@@ -684,6 +811,43 @@ $wrapper-&gt;show();</p>
             <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$searchParam</span>
      = <span class="phpdocumentor-signature__default-value">&#039;q&#039;</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_searchPlaceholder">
+        $searchPlaceholder
+        <a href="classes/Aurea-Container-TDataGridWrapper.html#property_searchPlaceholder" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">32</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$searchPlaceholder</span>
+     = <span class="phpdocumentor-signature__default-value">&#039;Pesquisar...&#039;</span></code>
 
     
     
@@ -826,7 +990,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
+    <span class="phpdocumentor-element-found-in__line">239</span>
 
     </aside>
 
@@ -861,7 +1025,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">41</span>
 
     </aside>
 
@@ -1028,7 +1192,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">203</span>
+    <span class="phpdocumentor-element-found-in__line">231</span>
 
     </aside>
 
@@ -1122,7 +1286,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 
     </aside>
 
@@ -1173,7 +1337,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">67</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
@@ -1234,6 +1398,163 @@ $wrapper-&gt;show();</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_addHeaderWidget">
+        addHeaderWidget()
+        <a href="classes/Aurea-Container-TDataGridWrapper.html#method_addHeaderWidget" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">78</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adiciona conteúdo adicional ao cabeçalho do card.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addHeaderWidget</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a>|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$widget</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$widget</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a>|string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addHtml">
+        addHtml()
+        <a href="classes/Aurea-Core-TComponent.html#method_addHtml" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">120</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adiciona HTML confiável.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addHtml</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$html</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>O conteúdo não é sanitizado. Nunca passe dados de utilizador sem
+sanitização prévia; use addText() para texto não confiável.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$html</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>HTML confiável</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addText">
+        addText()
+        <a href="classes/Aurea-Core-TComponent.html#method_addText" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">106</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adiciona texto não confiável, escapado para HTML.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addText</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Use este método para valores fornecidos por utilizadores. Para markup
+controlado pela aplicação, utilize addHtml() de forma explícita.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$text</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Texto a renderizar</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getContents">
         getContents()
         <a href="classes/Aurea-Container-TDataGridWrapper.html#method_getContents" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1242,7 +1563,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">105</span>
+    <span class="phpdocumentor-element-found-in__line">133</span>
 
     </aside>
 
@@ -1340,7 +1661,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">131</span>
 
     </aside>
 
@@ -1383,6 +1704,55 @@ $wrapper-&gt;show();</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setHeight">
+        setHeight()
+        <a href="classes/Aurea-Container-TDataGridWrapper.html#method_setHeight" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">92</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define a altura máxima da área rolável da grelha.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setHeight</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string|int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$height</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$height</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_setId">
         setId()
         <a href="classes/Aurea-Core-TComponent.html#method_setId" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1391,7 +1761,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">128</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
@@ -1502,7 +1872,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">52</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 
     </aside>
 
@@ -1554,6 +1924,55 @@ $wrapper-&gt;show();</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setSearchPlaceholder">
+        setSearchPlaceholder()
+        <a href="classes/Aurea-Container-TDataGridWrapper.html#method_setSearchPlaceholder" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">85</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define o texto de ajuda do campo de busca.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setSearchPlaceholder</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$placeholder</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$placeholder</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_setStyle">
         setStyle()
         <a href="classes/Aurea-Core-TComponent.html#method_setStyle" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1562,7 +1981,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">139</span>
+    <span class="phpdocumentor-element-found-in__line">167</span>
 
     </aside>
 
@@ -1613,7 +2032,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">193</span>
+    <span class="phpdocumentor-element-found-in__line">221</span>
 
     </aside>
 
@@ -1648,7 +2067,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">177</span>
 
     </aside>
 
@@ -1691,7 +2110,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">164</span>
+    <span class="phpdocumentor-element-found-in__line">192</span>
 
     </aside>
 
@@ -1734,7 +2153,7 @@ $wrapper-&gt;show();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TDataGridWrapper.php"><a href="files/lib-aurea-container-tdatagridwrapper.html"><abbr title="lib/Aurea/Container/TDataGridWrapper.php">TDataGridWrapper.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">78</span>
+    <span class="phpdocumentor-element-found-in__line">103</span>
 
     </aside>
 
@@ -1789,8 +2208,11 @@ $wrapper-&gt;show();</p>
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_children">$children</a></li>
                                                     <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#property_grid">$grid</a></li>
                                                     <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#property_headerActions">$headerActions</a></li>
+                                                    <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#property_headerWidgets">$headerWidgets</a></li>
+                                                    <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#property_height">$height</a></li>
                                                     <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#property_searchAction">$searchAction</a></li>
                                                     <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#property_searchParam">$searchParam</a></li>
+                                                    <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#property_searchPlaceholder">$searchPlaceholder</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_tag">$tag</a></li>
                                                     <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#property_title">$title</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_voidTags">$voidTags</a></li>
@@ -1808,12 +2230,17 @@ $wrapper-&gt;show();</p>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_add">add()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addClass">addClass()</a></li>
                                             <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#method_addHeaderAction">addHeaderAction()</a></li>
+                                            <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#method_addHeaderWidget">addHeaderWidget()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addHtml">addHtml()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addText">addText()</a></li>
                                             <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#method_getContents">getContents()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_getProperty">getProperty()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setChildren">setChildren()</a></li>
+                                            <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#method_setHeight">setHeight()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setId">setId()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setProperty">setProperty()</a></li>
                                             <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#method_setSearchAction">setSearchAction()</a></li>
+                                            <li class=""><a href="classes/Aurea-Container-TDataGridWrapper.html#method_setSearchPlaceholder">setSearchPlaceholder()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setStyle">setStyle()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_show">show()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_renderAttributes">renderAttributes()</a></li>

@@ -297,11 +297,31 @@
 <dd>Devolve a cláusula WHERE e os parâmetros.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TCriteria.html#method_getColumns">getColumns()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, string&gt;|null    </span>
+</dt>
+<dd>Obtém as colunas selecionadas do critério.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Database-TCriteria.html#method_getProperty">getProperty()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>Obtém uma propriedade do critério.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TCriteria.html#method_groupClause">groupClause()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Monta a cláusula GROUP BY a partir das propriedades.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TCriteria.html#method_havingClause">havingClause()</a>
+    <span>
+                                &nbsp;: array{0: string, 1: array}    </span>
+</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Database-TCriteria.html#method_limitClause">limitClause()</a>
@@ -330,6 +350,34 @@
                                 &nbsp;: void    </span>
 </dt>
 <dd>Limpa todas as propriedades do critério.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TCriteria.html#method_setColumns">setColumns()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Colunas selecionadas (usado por repositórios/SELECT).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TCriteria.html#method_setDistinct">setDistinct()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Ativa SELECT DISTINCT.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TCriteria.html#method_setGroup">setGroup()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Define GROUP BY.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TCriteria.html#method_setHaving">setHaving()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Define HAVING bruto (com params opcionais via setProperty(&#039;having_params&#039;)).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Database-TCriteria.html#method_setProperties">setProperties()</a>
@@ -636,6 +684,49 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getColumns">
+        getColumns()
+        <a href="classes/Aurea-Database-TCriteria.html#method_getColumns" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TCriteria.php"><a href="files/lib-aurea-database-tcriteria.html"><abbr title="lib/Aurea/Database/TCriteria.php">TCriteria.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">213</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Obtém as colunas selecionadas do critério.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getColumns</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Lista de colunas ou null</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getProperty">
         getProperty()
         <a href="classes/Aurea-Database-TCriteria.html#method_getProperty" class="headerlink"><i class="fas fa-link"></i></a>
@@ -680,6 +771,91 @@
         <span class="phpdocumentor-signature__response_type">mixed</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>Valor da propriedade ou null</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_groupClause">
+        groupClause()
+        <a href="classes/Aurea-Database-TCriteria.html#method_groupClause" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TCriteria.php"><a href="files/lib-aurea-database-tcriteria.html"><abbr title="lib/Aurea/Database/TCriteria.php">TCriteria.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">223</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Monta a cláusula GROUP BY a partir das propriedades.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">groupClause</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Cláusula GROUP BY ou string vazia</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_havingClause">
+        havingClause()
+        <a href="classes/Aurea-Database-TCriteria.html#method_havingClause" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TCriteria.php"><a href="files/lib-aurea-database-tcriteria.html"><abbr title="lib/Aurea/Database/TCriteria.php">TCriteria.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">236</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">havingClause</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array{0: string, 1: array}</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array{0: string, 1: array}</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Par [having, params]</p>
 </section>
 
             </section>
@@ -881,6 +1057,211 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setColumns">
+        setColumns()
+        <a href="classes/Aurea-Database-TCriteria.html#method_setColumns" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TCriteria.php"><a href="files/lib-aurea-database-tcriteria.html"><abbr title="lib/Aurea/Database/TCriteria.php">TCriteria.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">202</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Colunas selecionadas (usado por repositórios/SELECT).</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setColumns</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string|array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$columns</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$columns</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setDistinct">
+        setDistinct()
+        <a href="classes/Aurea-Database-TCriteria.html#method_setDistinct" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TCriteria.php"><a href="files/lib-aurea-database-tcriteria.html"><abbr title="lib/Aurea/Database/TCriteria.php">TCriteria.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">193</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Ativa SELECT DISTINCT.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setDistinct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$distinct</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$distinct</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>True para registos distintos</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setGroup">
+        setGroup()
+        <a href="classes/Aurea-Database-TCriteria.html#method_setGroup" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TCriteria.php"><a href="files/lib-aurea-database-tcriteria.html"><abbr title="lib/Aurea/Database/TCriteria.php">TCriteria.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">171</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define GROUP BY.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setGroup</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string|array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$group</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$group</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setHaving">
+        setHaving()
+        <a href="classes/Aurea-Database-TCriteria.html#method_setHaving" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TCriteria.php"><a href="files/lib-aurea-database-tcriteria.html"><abbr title="lib/Aurea/Database/TCriteria.php">TCriteria.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">180</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define HAVING bruto (com params opcionais via setProperty(&#039;having_params&#039;)).</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setHaving</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$having</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$having</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$params</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_setProperties">
         setProperties()
         <a href="classes/Aurea-Database-TCriteria.html#method_setProperties" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1019,11 +1400,18 @@
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_add">add()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_andWhere">andWhere()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_dump">dump()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_getColumns">getColumns()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_getProperty">getProperty()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_groupClause">groupClause()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_havingClause">havingClause()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_limitClause">limitClause()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_orderClause">orderClause()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_orWhere">orWhere()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_resetProperties">resetProperties()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_setColumns">setColumns()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_setDistinct">setDistinct()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_setGroup">setGroup()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_setHaving">setHaving()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_setProperties">setProperties()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TCriteria.html#method_setProperty">setProperty()</a></li>
                                     </ul>

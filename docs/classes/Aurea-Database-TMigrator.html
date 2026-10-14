@@ -262,7 +262,37 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#property_lockName">$lockName</a>
+    <span>
+                        &nbsp;: string            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#property_locks">$locks</a>
+    <span>
+                        &nbsp;: array&lt;int, bool&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#property_lockTimeout">$lockTimeout</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#property_lockToken">$lockToken</a>
+    <span>
+                        &nbsp;: string|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Aurea-Database-TMigrator.html#property_migrations">$migrations</a>
+    <span>
+                        &nbsp;: array&lt;string, array{type: string, payload: mixed}&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#property_rollbacks">$rollbacks</a>
     <span>
                         &nbsp;: array&lt;string, array{type: string, payload: mixed}&gt;            </span>
 </dt>
@@ -297,6 +327,13 @@
 <dd>Adiciona uma migration por callback que recebe a conexão PDO.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#method_addRollback">addRollback()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Regista rollback de uma versão (SQL ou callback).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Database-TMigrator.html#method_applied">applied()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
@@ -317,12 +354,52 @@
 </dt>
 <dd>Obtém as versões registadas ainda por aplicar.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#method_rollback">rollback()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Reverte a última versão aplicada (ou versão indicada) usando rollback registado.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#method_setLock">setLock()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Configura o nome lógico e a expiração do lock persistente de migrations.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#method_acquireLock">acquireLock()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#method_assertAppliedChecksums">assertAppliedChecksums()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Deteta alterações acidentais em migrations já aplicadas.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#method_checksum">checksum()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Aurea-Database-TMigrator.html#method_ensureTable">ensureTable()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Cria a tabela de controlo das migrations se ainda não existir.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Database-TMigrator.html#method_releaseLock">releaseLock()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Liberta somente o lock persistente pertencente a esta instância.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Aurea-Database-TMigrator.html#method_splitSql">splitSql()</a>
@@ -361,7 +438,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 
     </aside>
 
@@ -388,9 +465,122 @@
             -protected
                                                                     "
 >
-    <h4 class="phpdocumentor-element__name" id="property_migrations">
-        $migrations
-        <a href="classes/Aurea-Database-TMigrator.html#property_migrations" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_lockName">
+        $lockName
+        <a href="classes/Aurea-Database-TMigrator.html#property_lockName" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">20</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$lockName</span>
+     = <span class="phpdocumentor-signature__default-value">&#039;aurea_migrator&#039;</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_locks">
+        $locks
+        <a href="classes/Aurea-Database-TMigrator.html#property_locks" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">18</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;int, bool&gt;</span>
+    <span class="phpdocumentor-signature__name">$locks</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>Locks por conexão no processo atual</p>
+</section>
+
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_lockTimeout">
+        $lockTimeout
+        <a href="classes/Aurea-Database-TMigrator.html#property_lockTimeout" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">21</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$lockTimeout</span>
+     = <span class="phpdocumentor-signature__default-value">300</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_lockToken">
+        $lockToken
+        <a href="classes/Aurea-Database-TMigrator.html#property_lockToken" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                             </span>
@@ -406,8 +596,82 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
         <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$lockToken</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_migrations">
+        $migrations
+        <a href="classes/Aurea-Database-TMigrator.html#property_migrations" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">24</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
             <span class="phpdocumentor-signature__type">array&lt;string, array{type: string, payload: mixed}&gt;</span>
     <span class="phpdocumentor-signature__name">$migrations</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_rollbacks">
+        $rollbacks
+        <a href="classes/Aurea-Database-TMigrator.html#property_rollbacks" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">26</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type">array&lt;string, array{type: string, payload: mixed}&gt;</span>
+    <span class="phpdocumentor-signature__name">$rollbacks</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
     
@@ -440,7 +704,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -487,7 +751,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 
     </aside>
 
@@ -547,7 +811,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
 
     </aside>
 
@@ -599,6 +863,62 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_addRollback">
+        addRollback()
+        <a href="classes/Aurea-Database-TMigrator.html#method_addRollback" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">78</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Regista rollback de uma versão (SQL ou callback).</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addRollback</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string|callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$down</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$version</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$down</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|callable</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_applied">
         applied()
         <a href="classes/Aurea-Database-TMigrator.html#method_applied" class="headerlink"><i class="fas fa-link"></i></a>
@@ -607,7 +927,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">100</span>
+    <span class="phpdocumentor-element-found-in__line">140</span>
 
     </aside>
 
@@ -650,7 +970,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">66</span>
+    <span class="phpdocumentor-element-found-in__line">95</span>
 
     </aside>
 
@@ -697,7 +1017,7 @@ transacional em alguns drivers, executa na mesma e regista a versão.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">112</span>
+    <span class="phpdocumentor-element-found-in__line">203</span>
 
     </aside>
 
@@ -729,6 +1049,244 @@ transacional em alguns drivers, executa na mesma e regista a versão.</p>
                     <article
         class="phpdocumentor-element
             -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_rollback">
+        rollback()
+        <a href="classes/Aurea-Database-TMigrator.html#method_rollback" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">152</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Reverte a última versão aplicada (ou versão indicada) usando rollback registado.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">rollback</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$version</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="method_rollback_tags">
+        Tags
+        <a href="classes/Aurea-Database-TMigrator.html#method_rollback_tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                    <dt class="phpdocumentor-tag-list__entry">
+                <span class="phpdocumentor-tag__name">throws</span>
+            </dt>
+                            <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\RuntimeException">RuntimeException</abbr></span>
+                                                                                        <section class="phpdocumentor-description"><p>Se não houver rollback para a versão</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setLock">
+        setLock()
+        <a href="classes/Aurea-Database-TMigrator.html#method_setLock" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">39</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Configura o nome lógico e a expiração do lock persistente de migrations.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setLock</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$timeout</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">300</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$name</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$timeout</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">300</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_acquireLock">
+        acquireLock()
+        <a href="classes/Aurea-Database-TMigrator.html#method_acquireLock" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">244</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">acquireLock</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_assertAppliedChecksums">
+        assertAppliedChecksums()
+        <a href="classes/Aurea-Database-TMigrator.html#method_assertAppliedChecksums" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">227</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Deteta alterações acidentais em migrations já aplicadas.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">assertAppliedChecksums</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_checksum">
+        checksum()
+        <a href="classes/Aurea-Database-TMigrator.html#method_checksum" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">238</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">checksum</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$version</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
             -protected
                                                         "
 >
@@ -740,7 +1298,7 @@ transacional em alguns drivers, executa na mesma e regista a versão.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">123</span>
+    <span class="phpdocumentor-element-found-in__line">214</span>
 
     </aside>
 
@@ -767,6 +1325,41 @@ transacional em alguns drivers, executa na mesma e regista a versão.</p>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_releaseLock">
+        releaseLock()
+        <a href="classes/Aurea-Database-TMigrator.html#method_releaseLock" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">269</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Liberta somente o lock persistente pertencente a esta instância.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">releaseLock</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_splitSql">
         splitSql()
         <a href="classes/Aurea-Database-TMigrator.html#method_splitSql" class="headerlink"><i class="fas fa-link"></i></a>
@@ -775,7 +1368,7 @@ transacional em alguns drivers, executa na mesma e regista a versão.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TMigrator.php"><a href="files/lib-aurea-database-tmigrator.html"><abbr title="lib/Aurea/Database/TMigrator.php">TMigrator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">134</span>
+    <span class="phpdocumentor-element-found-in__line">289</span>
 
     </aside>
 
@@ -839,7 +1432,12 @@ transacional em alguns drivers, executa na mesma e regista a versão.</p>
                 <li>
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="classes/Aurea-Database-TMigrator.html#property_conn">$conn</a></li>
+                                                    <li class=""><a href="classes/Aurea-Database-TMigrator.html#property_lockName">$lockName</a></li>
+                                                    <li class=""><a href="classes/Aurea-Database-TMigrator.html#property_locks">$locks</a></li>
+                                                    <li class=""><a href="classes/Aurea-Database-TMigrator.html#property_lockTimeout">$lockTimeout</a></li>
+                                                    <li class=""><a href="classes/Aurea-Database-TMigrator.html#property_lockToken">$lockToken</a></li>
                                                     <li class=""><a href="classes/Aurea-Database-TMigrator.html#property_migrations">$migrations</a></li>
+                                                    <li class=""><a href="classes/Aurea-Database-TMigrator.html#property_rollbacks">$rollbacks</a></li>
                                             </ul>
                 </li>
             
@@ -849,10 +1447,17 @@ transacional em alguns drivers, executa na mesma e regista a versão.</p>
                                             <li class=""><a href="classes/Aurea-Database-TMigrator.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_add">add()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_addCallback">addCallback()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_addRollback">addRollback()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_applied">applied()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_migrate">migrate()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_pending">pending()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_rollback">rollback()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_setLock">setLock()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_acquireLock">acquireLock()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_assertAppliedChecksums">assertAppliedChecksums()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_checksum">checksum()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_ensureTable">ensureTable()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_releaseLock">releaseLock()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TMigrator.html#method_splitSql">splitSql()</a></li>
                                     </ul>
             </li>

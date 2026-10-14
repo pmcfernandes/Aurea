@@ -30,6 +30,8 @@ class TFormBuilder extends TComponent
     protected bool $clientValidation = false;
     /** @var array<int,array{label:string,action:TAction,icon:string}> */
     protected array $headerActions = [];
+    /** @var array<int,TComponent|string> */
+    protected array $headerWidgets = [];
 
     /**
      * Cria o construtor de formulário com o nome informado.
@@ -41,6 +43,7 @@ class TFormBuilder extends TComponent
         parent::__construct('div');
         $this->addClass('card');
         $this->form = new TForm($name);
+        $this->form->enableCsrf();
         $this->body = new TComponent('div');
         $this->body->addClass('card-body');
         $this->footer = new TComponent('div');
@@ -112,6 +115,33 @@ class TFormBuilder extends TComponent
         $a->add(($icon ? "<i class='fa-solid {$icon}'></i> " : '') . $label);
         $this->headerActions[] = ['label' => $label, 'action' => $action, 'icon' => $icon];
         return $a;
+    }
+
+    /** Adiciona conteúdo ao cabeçalho do formulário. */
+    public function addHeaderWidget(TComponent|string $widget): static
+    {
+        $this->headerWidgets[] = $widget;
+        return $this;
+    }
+
+    /** Adiciona conteúdo ao rodapé do formulário. */
+    public function addFooterWidget(TComponent|string $widget): static
+    {
+        $this->footer->add($widget);
+        return $this;
+    }
+
+    /** Adiciona uma secção semântica ao corpo do formulário. */
+    public function addSection(string $title, ?string $description = null): static
+    {
+        $section = new TComponent('div');
+        $section->addClass('col-12 border-bottom mb-3 pb-2');
+        $section->addHtml('<h2 class="h6 mb-1">' . htmlspecialchars($title, ENT_QUOTES) . '</h2>');
+        if ($description !== null && $description !== '') {
+            $section->addHtml('<p class="text-muted small mb-0">' . htmlspecialchars($description, ENT_QUOTES) . '</p>');
+        }
+        $this->body->add($section);
+        return $this;
     }
 
     /** Uma linha: cada par [labels, campos] vira colunas */
@@ -235,6 +265,15 @@ class TFormBuilder extends TComponent
     }
 
     /**
+     * Ativa/desativa CSRF no formulário interno.
+     */
+    public function enableCsrf(bool $on = true): static
+    {
+        $this->form->enableCsrf($on);
+        return $this;
+    }
+
+    /**
      * Obtém o HTML do formulário.
      *
      * @return string HTML do formulário
@@ -247,11 +286,15 @@ class TFormBuilder extends TComponent
             $headerLinks .= "<a class='btn btn-sm btn-outline-secondary' href='" . $item['action']->toHref() . "'>{$icon}"
                 . htmlspecialchars($item['label']) . '</a>';
         }
-        $hasHeader = $this->title || $headerLinks !== '';
+        $headerWidgets = '';
+        foreach ($this->headerWidgets as $widget) {
+            $headerWidgets .= $widget instanceof TComponent ? $widget->getContents() : (string) $widget;
+        }
+        $hasHeader = $this->title || $headerLinks !== '' || $headerWidgets !== '';
         $title = $hasHeader
             ? "<div class='card-header fw-bold d-flex gap-2 align-items-center justify-content-between'><span>"
             . htmlspecialchars((string) $this->title) . '</span>'
-            . ($headerLinks !== '' ? "<span class='d-flex gap-2'>{$headerLinks}</span>" : '') . '</div>'
+            . (($headerLinks !== '' || $headerWidgets !== '') ? "<span class='d-flex gap-2 align-items-center'>{$headerWidgets}{$headerLinks}</span>" : '') . '</div>'
             : '';
         // injeta título antes do form body
         $formHtml = $this->form->getContents();

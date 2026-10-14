@@ -80,4 +80,17 @@ final class TMenuTest extends TestCase
             restore_error_handler();
         }
     }
+
+    public function testFromArraySupportsNestedItemsAndActiveState(): void
+    {
+        $menu = TMenu::fromArray([
+            ['label' => 'Administração', 'children' => [
+                ['label' => 'Utilizadores', 'action' => 'UserList:onShow'],
+            ]],
+            ['label' => 'Início', 'action' => 'HomeView:onShow'],
+        ], null, 'HomeView:onShow');
+        $html = $menu->getContents();
+        $this->assertStringContainsString('Utilizadores', $html);
+        $this->assertStringContainsString('aria-current="page"', $html);
+    }
 }

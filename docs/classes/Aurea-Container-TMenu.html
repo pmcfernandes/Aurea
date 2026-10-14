@@ -351,6 +351,27 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
 <dd>Adiciona uma classe CSS ao elemento.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TComponent.html#method_addHtml">addHtml()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Adiciona HTML confiável.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TComponent.html#method_addText">addText()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Adiciona texto não confiável, escapado para HTML.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Container-TMenu.html#method_fromArray">fromArray()</a>
+    <span>
+                                &nbsp;: self    </span>
+</dt>
+<dd>Constrói um menu a partir de arrays com label, icon, action e children.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Container-TMenu.html#method_fromXml">fromXml()</a>
     <span>
                                 &nbsp;: self    </span>
@@ -413,6 +434,12 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
 <dd>Converte a string de ação num objeto Action.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Container-TMenu.html#method_buildArrayItem">buildArrayItem()</a>
+    <span>
+                                &nbsp;: <a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a>|null    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Aurea-Container-TMenu.html#method_buildItem">buildItem()</a>
     <span>
                                 &nbsp;: <a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a>|null    </span>
@@ -439,6 +466,12 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
                                 &nbsp;: string    </span>
 </dt>
 <dd>Renderiza os filhos do elemento.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/Aurea-Container-TMenu.html#method_xmlToArray">xmlToArray()</a>
+    <span>
+                                &nbsp;: array{label: string, icon: string, action: string, children: array}    </span>
+</dt>
 
     </dl>
 
@@ -623,7 +656,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
+    <span class="phpdocumentor-element-found-in__line">239</span>
 
     </aside>
 
@@ -804,7 +837,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">203</span>
+    <span class="phpdocumentor-element-found-in__line">231</span>
 
     </aside>
 
@@ -898,7 +931,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 
     </aside>
 
@@ -939,6 +972,179 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
         class="phpdocumentor-element
             -method
             -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addHtml">
+        addHtml()
+        <a href="classes/Aurea-Core-TComponent.html#method_addHtml" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">120</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adiciona HTML confiável.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addHtml</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$html</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>O conteúdo não é sanitizado. Nunca passe dados de utilizador sem
+sanitização prévia; use addText() para texto não confiável.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$html</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>HTML confiável</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addText">
+        addText()
+        <a href="classes/Aurea-Core-TComponent.html#method_addText" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">106</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adiciona texto não confiável, escapado para HTML.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addText</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Use este método para valores fornecidos por utilizadores. Para markup
+controlado pela aplicação, utilize addHtml() de forma explícita.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$text</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Texto a renderizar</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_fromArray">
+        fromArray()
+        <a href="classes/Aurea-Container-TMenu.html#method_fromArray" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TMenu.php"><a href="files/lib-aurea-container-tmenu.html"><abbr title="lib/Aurea/Container/TMenu.php">TMenu.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">69</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Constrói um menu a partir de arrays com label, icon, action e children.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;int, array{label?: string, icon?: string, action?: string, children?: array}&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$items</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$allowed</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$activeAction</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Esta alternativa evita XML para menus definidos por código ou base de dados.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$items</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;int, array{label?: string, icon?: string, action?: string, children?: array}&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$allowed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$activeAction</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
                                     -static                    "
 >
     <h4 class="phpdocumentor-element__name" id="method_fromXml">
@@ -957,7 +1163,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromXml</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$allowed</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromXml</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$allowed</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$activeAction</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -982,6 +1188,13 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
                     <section class="phpdocumentor-description"><p>Callback de permissão por programa</p>
 </section>
 
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$activeAction</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
             </dd>
             </dl>
 
@@ -1029,7 +1242,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">181</span>
+    <span class="phpdocumentor-element-found-in__line">209</span>
 
     </aside>
 
@@ -1126,7 +1339,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">131</span>
 
     </aside>
 
@@ -1177,7 +1390,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">128</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
@@ -1288,7 +1501,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">139</span>
+    <span class="phpdocumentor-element-found-in__line">167</span>
 
     </aside>
 
@@ -1339,7 +1552,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">193</span>
+    <span class="phpdocumentor-element-found-in__line">221</span>
 
     </aside>
 
@@ -1374,7 +1587,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TMenu.php"><a href="files/lib-aurea-container-tmenu.html"><abbr title="lib/Aurea/Container/TMenu.php">TMenu.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">141</span>
+    <span class="phpdocumentor-element-found-in__line">179</span>
 
     </aside>
 
@@ -1421,6 +1634,68 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
             -protected
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_buildArrayItem">
+        buildArrayItem()
+        <a href="classes/Aurea-Container-TMenu.html#method_buildArrayItem" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TMenu.php"><a href="files/lib-aurea-container-tmenu.html"><abbr title="lib/Aurea/Container/TMenu.php">TMenu.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">94</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">buildArrayItem</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$item</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$allowed</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$activeAction</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a>|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$item</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$allowed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$activeAction</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a>|null</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_buildItem">
         buildItem()
         <a href="classes/Aurea-Container-TMenu.html#method_buildItem" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1429,7 +1704,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TMenu.php"><a href="files/lib-aurea-container-tmenu.html"><abbr title="lib/Aurea/Container/TMenu.php">TMenu.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">73</span>
+    <span class="phpdocumentor-element-found-in__line">88</span>
 
     </aside>
 
@@ -1493,7 +1768,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TMenu.php"><a href="files/lib-aurea-container-tmenu.html"><abbr title="lib/Aurea/Container/TMenu.php">TMenu.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">130</span>
+    <span class="phpdocumentor-element-found-in__line">168</span>
 
     </aside>
 
@@ -1548,7 +1823,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">177</span>
 
     </aside>
 
@@ -1591,7 +1866,7 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">164</span>
+    <span class="phpdocumentor-element-found-in__line">192</span>
 
     </aside>
 
@@ -1617,6 +1892,54 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
                 <section class="phpdocumentor-description"><p>HTML dos filhos</p>
 </section>
 
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_xmlToArray">
+        xmlToArray()
+        <a href="classes/Aurea-Container-TMenu.html#method_xmlToArray" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Container/TMenu.php"><a href="files/lib-aurea-container-tmenu.html"><abbr title="lib/Aurea/Container/TMenu.php">TMenu.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">148</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">xmlToArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><abbr title="\SimpleXMLElement">SimpleXMLElement</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$item</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array{label: string, icon: string, action: string, children: array}</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$item</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\SimpleXMLElement">SimpleXMLElement</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array{label: string, icon: string, action: string, children: array}</span>
             </section>
 
 </article>
@@ -1659,6 +1982,9 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method___toString">__toString()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_add">add()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addClass">addClass()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addHtml">addHtml()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addText">addText()</a></li>
+                                            <li class=""><a href="classes/Aurea-Container-TMenu.html#method_fromArray">fromArray()</a></li>
                                             <li class=""><a href="classes/Aurea-Container-TMenu.html#method_fromXml">fromXml()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_getContents">getContents()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_getProperty">getProperty()</a></li>
@@ -1668,10 +1994,12 @@ $allowed é um callback fn(string $programa): bool para permissões.</p>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setStyle">setStyle()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_show">show()</a></li>
                                             <li class=""><a href="classes/Aurea-Container-TMenu.html#method_actionOf">actionOf()</a></li>
+                                            <li class=""><a href="classes/Aurea-Container-TMenu.html#method_buildArrayItem">buildArrayItem()</a></li>
                                             <li class=""><a href="classes/Aurea-Container-TMenu.html#method_buildItem">buildItem()</a></li>
                                             <li class=""><a href="classes/Aurea-Container-TMenu.html#method_programOf">programOf()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_renderAttributes">renderAttributes()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_renderChildren">renderChildren()</a></li>
+                                            <li class=""><a href="classes/Aurea-Container-TMenu.html#method_xmlToArray">xmlToArray()</a></li>
                                     </ul>
             </li>
                     </ul>

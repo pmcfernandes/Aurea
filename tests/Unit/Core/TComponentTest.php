@@ -17,6 +17,20 @@ final class TComponentTest extends TestCase
         $this->assertSame('<div id="x">a<b</div>', $c->getContents());
     }
 
+    public function testAddTextEscapesUntrustedContent(): void
+    {
+        $c = new TComponent('div');
+        $c->addText('<script>alert("x")</script>');
+        $this->assertSame('<div>&lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt;</div>', $c->getContents());
+    }
+
+    public function testAddHtmlMakesTrustedMarkupExplicit(): void
+    {
+        $c = new TComponent('div');
+        $c->addHtml('<strong>Seguro</strong>');
+        $this->assertSame('<div><strong>Seguro</strong></div>', $c->getContents());
+    }
+
     public function testNestedChildren(): void
     {
         $outer = new TComponent('div');

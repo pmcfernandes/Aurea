@@ -264,6 +264,12 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Auth-TPermission.html#property_actionChecker">$actionChecker</a>
+    <span>
+                        &nbsp;: callable|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Aurea-Auth-TPermission.html#property_checker">$checker</a>
     <span>
                         &nbsp;: callable|null            </span>
@@ -291,11 +297,25 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
 <dd>Verifica se um programa é permitido (usa TAuth::id() se userId omisso).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Auth-TPermission.html#method_checkAction">checkAction()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Verifica uma ação, aceitando concessão específica ou global do controller.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Auth-TPermission.html#method_grant">grant()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Concede acesso a um programa (global ou a um utilizador).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Auth-TPermission.html#method_grantAction">grantAction()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Concede acesso a uma ação específica de um controller.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Auth-TPermission.html#method_menuFilter">menuFilter()</a>
@@ -310,6 +330,13 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Limpa concessões e verificador (útil em testes).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Auth-TPermission.html#method_setActionChecker">setActionChecker()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Define um verificador externo para recursos controller+ação.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Auth-TPermission.html#method_setChecker">setChecker()</a>
@@ -331,6 +358,45 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
             <a href="classes/Aurea-Auth-TPermission.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_actionChecker">
+        $actionChecker
+        <a href="classes/Aurea-Auth-TPermission.html#property_actionChecker" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Auth/TPermission.php"><a href="files/lib-aurea-auth-tpermission.html"><abbr title="lib/Aurea/Auth/TPermission.php">TPermission.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">29</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">callable|null</span>
+    <span class="phpdocumentor-signature__name">$actionChecker</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>fn(string $program, string $action, ?string $userId): bool</p>
+</section>
+
+    
+
+        
+        
+
+</article>
                     <article
         class="
             phpdocumentor-element
@@ -431,7 +497,7 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Auth/TPermission.php"><a href="files/lib-aurea-auth-tpermission.html"><abbr title="lib/Aurea/Auth/TPermission.php">TPermission.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
@@ -487,6 +553,69 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_checkAction">
+        checkAction()
+        <a href="classes/Aurea-Auth-TPermission.html#method_checkAction" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Auth/TPermission.php"><a href="files/lib-aurea-auth-tpermission.html"><abbr title="lib/Aurea/Auth/TPermission.php">TPermission.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">87</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Verifica uma ação, aceitando concessão específica ou global do controller.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">checkAction</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$program</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$action</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$userId</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$program</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$action</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$userId</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_grant">
         grant()
         <a href="classes/Aurea-Auth-TPermission.html#method_grant" class="headerlink"><i class="fas fa-link"></i></a>
@@ -495,7 +624,7 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Auth/TPermission.php"><a href="files/lib-aurea-auth-tpermission.html"><abbr title="lib/Aurea/Auth/TPermission.php">TPermission.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -543,6 +672,65 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_grantAction">
+        grantAction()
+        <a href="classes/Aurea-Auth-TPermission.html#method_grantAction" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Auth/TPermission.php"><a href="files/lib-aurea-auth-tpermission.html"><abbr title="lib/Aurea/Auth/TPermission.php">TPermission.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">43</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Concede acesso a uma ação específica de um controller.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">grantAction</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$program</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$action</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$userId</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$program</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$action</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$userId</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_menuFilter">
         menuFilter()
         <a href="classes/Aurea-Auth-TPermission.html#method_menuFilter" class="headerlink"><i class="fas fa-link"></i></a>
@@ -551,7 +739,7 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Auth/TPermission.php"><a href="files/lib-aurea-auth-tpermission.html"><abbr title="lib/Aurea/Auth/TPermission.php">TPermission.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">77</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
@@ -594,7 +782,7 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Auth/TPermission.php"><a href="files/lib-aurea-auth-tpermission.html"><abbr title="lib/Aurea/Auth/TPermission.php">TPermission.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">85</span>
+    <span class="phpdocumentor-element-found-in__line">113</span>
 
     </aside>
 
@@ -621,6 +809,51 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setActionChecker">
+        setActionChecker()
+        <a href="classes/Aurea-Auth-TPermission.html#method_setActionChecker" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Auth/TPermission.php"><a href="files/lib-aurea-auth-tpermission.html"><abbr title="lib/Aurea/Auth/TPermission.php">TPermission.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">49</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define um verificador externo para recursos controller+ação.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">setActionChecker</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fn</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$fn</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_setChecker">
         setChecker()
         <a href="classes/Aurea-Auth-TPermission.html#method_setChecker" class="headerlink"><i class="fas fa-link"></i></a>
@@ -629,7 +862,7 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Auth/TPermission.php"><a href="files/lib-aurea-auth-tpermission.html"><abbr title="lib/Aurea/Auth/TPermission.php">TPermission.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -684,6 +917,7 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
+                                                    <li class=""><a href="classes/Aurea-Auth-TPermission.html#property_actionChecker">$actionChecker</a></li>
                                                     <li class=""><a href="classes/Aurea-Auth-TPermission.html#property_checker">$checker</a></li>
                                                     <li class=""><a href="classes/Aurea-Auth-TPermission.html#property_grants">$grants</a></li>
                                             </ul>
@@ -693,9 +927,12 @@ TMenu::fromXml($file, TPermission::menuFilter());</p>
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/Aurea-Auth-TPermission.html#method_check">check()</a></li>
+                                            <li class=""><a href="classes/Aurea-Auth-TPermission.html#method_checkAction">checkAction()</a></li>
                                             <li class=""><a href="classes/Aurea-Auth-TPermission.html#method_grant">grant()</a></li>
+                                            <li class=""><a href="classes/Aurea-Auth-TPermission.html#method_grantAction">grantAction()</a></li>
                                             <li class=""><a href="classes/Aurea-Auth-TPermission.html#method_menuFilter">menuFilter()</a></li>
                                             <li class=""><a href="classes/Aurea-Auth-TPermission.html#method_reset">reset()</a></li>
+                                            <li class=""><a href="classes/Aurea-Auth-TPermission.html#method_setActionChecker">setActionChecker()</a></li>
                                             <li class=""><a href="classes/Aurea-Auth-TPermission.html#method_setChecker">setChecker()</a></li>
                                     </ul>
             </li>

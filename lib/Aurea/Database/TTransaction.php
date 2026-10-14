@@ -22,6 +22,10 @@ class TTransaction
     /** @var array<string,PDO> */
     protected static array $conns = [];
     protected static ?string $active = null;
+    /** @var string[] Contextos suspensos ao alternar entre conexões */
+    protected static array $contexts = [];
+    /** @var array<string,int> Profundidade da transação por conexão */
+    protected static array $depths = [];
     protected static $logger = null;
     protected static bool $dump = false;
     protected static $loggerStrategy = null;
@@ -57,16 +61,26 @@ class TTransaction
 
     /**
      * Ativa uma conexão registada e inicia transação se preciso.
+     * Reentradas na mesma conexão criam savepoints; outra conexão suspende o
+     * contexto atual até ser fechada ou revertida.
      *
      * @param string $name Nome da conexão registada
      * @return PDO Conexão PDO ativa
      */
     protected static function activate(string $name): PDO
     {
+        if (self::$active !== null && self::$active !== $name) {
+            self::$contexts[] = self::$active;
+        }
         self::$active = $name;
         $conn = self::$conns[$name];
         if (!$conn->inTransaction()) {
             $conn->beginTransaction();
+            self::$depths[$name] = 1;
+        } else {
+            $depth = (self::$depths[$name] ?? 1) + 1;
+            $conn->exec('SAVEPOINT aurea_tx_' . $depth);
+            self::$depths[$name] = $depth;
         }
         return $conn;
     }
@@ -96,28 +110,49 @@ class TTransaction
     }
 
     /**
-     * Confirma a transação ativa.
+     * Confirma a transação ativa ou liberta o savepoint da reentrada atual.
+     * Ao fechar o nível externo, restaura o contexto anterior ou o limpa.
      */
     public static function close(): void
     {
         if (self::$active && isset(self::$conns[self::$active])) {
+            $name = self::$active;
             $conn = self::$conns[self::$active];
+            $depth = self::$depths[$name] ?? 1;
             if ($conn->inTransaction()) {
+                if ($depth > 1) {
+                    $conn->exec('RELEASE SAVEPOINT aurea_tx_' . $depth);
+                    self::$depths[$name] = $depth - 1;
+                    return;
+                }
                 $conn->commit();
             }
+            unset(self::$depths[$name]);
+            self::$active = array_pop(self::$contexts) ?: null;
         }
     }
 
     /**
-     * Reverte a transação ativa.
+     * Reverte a transação ativa ou o savepoint da reentrada atual.
+     * Ao reverter o nível externo, restaura o contexto anterior ou o limpa.
      */
     public static function rollback(): void
     {
         if (self::$active && isset(self::$conns[self::$active])) {
+            $name = self::$active;
             $conn = self::$conns[self::$active];
+            $depth = self::$depths[$name] ?? 1;
             if ($conn->inTransaction()) {
+                if ($depth > 1) {
+                    $conn->exec('ROLLBACK TO SAVEPOINT aurea_tx_' . $depth);
+                    $conn->exec('RELEASE SAVEPOINT aurea_tx_' . $depth);
+                    self::$depths[$name] = $depth - 1;
+                    return;
+                }
                 $conn->rollBack();
             }
+            unset(self::$depths[$name]);
+            self::$active = array_pop(self::$contexts) ?: null;
         }
     }
 
@@ -131,6 +166,9 @@ class TTransaction
                 $conn->commit();
             }
         }
+        self::$depths = [];
+        self::$contexts = [];
+        self::$active = null;
     }
 
     /**
@@ -143,6 +181,9 @@ class TTransaction
                 $conn->rollBack();
             }
         }
+        self::$depths = [];
+        self::$contexts = [];
+        self::$active = null;
     }
 
     /** Ativa log SQL no stdout/arquivo (debug) */
@@ -190,6 +231,27 @@ class TTransaction
             file_put_contents(self::$logger, $line, FILE_APPEND);
         } else {
             echo "<!-- SQL: " . htmlspecialchars($line) . " -->";
+        }
+    }
+
+    /**
+     * Executa callable dentro de transação (commit/rollback automáticos).
+     *
+     * @template T
+     * @param callable():T $fn Trabalho a executar
+     * @param string $configName Nome da config
+     * @return T Retorno do callable
+     */
+    public static function transaction(callable $fn, string $configName = 'app'): mixed
+    {
+        self::open($configName);
+        try {
+            $result = $fn();
+            self::close();
+            return $result;
+        } catch (\Throwable $e) {
+            self::rollback();
+            throw $e;
         }
     }
 }

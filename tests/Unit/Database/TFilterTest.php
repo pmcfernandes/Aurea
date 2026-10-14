@@ -9,6 +9,20 @@ use PHPUnit\Framework\TestCase;
 /** @covers \Aurea\Database\TFilter */
 final class TFilterTest extends TestCase
 {
+    public function testRejectsUnsafeIdentifier(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new TFilter('nome; DROP TABLE cliente', '=', 'Ana');
+    }
+
+    public function testAcceptsQualifiedIdentifier(): void
+    {
+        $filter = new TFilter('cliente.nome', '=', 'Ana');
+        $params = [];
+        $this->assertSame('cliente.nome = ?', $filter->dump($params));
+        $this->assertSame(['Ana'], $params);
+    }
+
     public function testDumpEquals(): void
     {
         $params = [];

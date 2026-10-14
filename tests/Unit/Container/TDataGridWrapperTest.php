@@ -66,4 +66,18 @@ final class TDataGridWrapperTest extends TestCase
         $this->assertStringContainsString('fa-plus', $html);
         $this->assertStringContainsString($action->toHref(), $html);
     }
+
+    public function testSupportsHeaderWidgetsHeightAndAccessibleSearch(): void
+    {
+        $wrapper = new TDataGridWrapper(new TDataGrid, 'T');
+        $wrapper->setSearchAction(new TAction(['ClienteList', 'onReload']))
+            ->setSearchPlaceholder('Filtrar clientes')
+            ->addHeaderWidget('<span>2 itens</span>')
+            ->setHeight(320);
+        $html = $wrapper->getContents();
+        $this->assertStringContainsString("role='search'", $html);
+        $this->assertStringContainsString('Filtrar clientes', $html);
+        $this->assertStringContainsString('2 itens', $html);
+        $this->assertStringContainsString('max-height:320px', $html);
+    }
 }

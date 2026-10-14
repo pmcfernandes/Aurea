@@ -28,7 +28,7 @@ class TSqlInsert
      */
     public function setEntity(string $table): static
     {
-        $this->entity = $table;
+        $this->entity = TIdentifier::assert($table);
         return $this;
     }
 
@@ -40,6 +40,9 @@ class TSqlInsert
      */
     public function setRowData(array $data): static
     {
+        foreach (array_keys($data) as $column) {
+            TIdentifier::assert((string) $column);
+        }
         $this->rowData = $data;
         return $this;
     }
@@ -53,6 +56,7 @@ class TSqlInsert
      */
     public function addRowData(string $col, $val): static
     {
+        TIdentifier::assert($col);
         $this->rowData[$col] = $val;
         return $this;
     }

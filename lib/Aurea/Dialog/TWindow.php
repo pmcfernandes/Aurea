@@ -25,6 +25,7 @@ class TWindow extends TComponent
     protected string $modalId;
     protected TComponent $body;
     protected TComponent $footer;
+    protected string $titleId;
 
     /**
      * Cria uma janela modal Bootstrap.
@@ -37,8 +38,12 @@ class TWindow extends TComponent
         parent::__construct('div');
         self::$counter++;
         $this->modalId = 'aurea-modal-' . self::$counter;
+        $this->titleId = $this->modalId . '-title';
         $this->addClass('modal fade');
         $this->setProperty('tabindex', '-1');
+        $this->setProperty('role', 'dialog');
+        $this->setProperty('aria-modal', 'true');
+        $this->setProperty('aria-labelledby', $this->titleId);
 
         $dialog = new TComponent('div');
         $dialog->addClass('modal-dialog');
@@ -51,11 +56,13 @@ class TWindow extends TComponent
         $header->addClass('modal-header');
         $h = new TComponent('h5');
         $h->addClass('modal-title');
+        $h->setProperty('id', $this->titleId);
         $h->add(htmlspecialchars($title));
         $close = new TComponent('button');
         $close->addClass('btn-close');
         $close->setProperty('type', 'button');
         $close->setProperty('data-bs-dismiss', 'modal');
+        $close->setProperty('aria-label', 'Fechar');
         $header->add($h);
         $header->add($close);
 
@@ -79,6 +86,12 @@ class TWindow extends TComponent
     public function getModalId(): string
     {
         return $this->modalId;
+    }
+
+    /** Devolve o ID do título, para associar campos e descrições ao modal. */
+    public function getTitleId(): string
+    {
+        return $this->titleId;
     }
 
     /**
@@ -124,6 +137,7 @@ class TWindow extends TComponent
         $this->setProperty('id', $this->modalId);
         parent::show();
         TScript::showModal($this->modalId);
+        TScript::create("var m=document.getElementById('{$this->modalId}');m?.addEventListener('shown.bs.modal',function(){m.querySelector('[autofocus],input,select,textarea,button')?.focus();},{once:true});");
         echo TScript::render();
     }
 

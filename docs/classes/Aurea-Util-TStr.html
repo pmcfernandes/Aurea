@@ -277,11 +277,25 @@
 <dd>Aplica máscara tipo &#039;###.###.###-##&#039; sobre dígitos</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Util-TStr.html#method_camel">camel()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Converte uma expressão para camelCase.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Util-TStr.html#method_limit">limit()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
 <dd>Trunca um texto ao tamanho máximo com sufixo.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Util-TStr.html#method_normalize">normalize()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Normaliza texto Unicode para NFC quando a extensão intl está disponível.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Util-TStr.html#method_onlyNumbers">onlyNumbers()</a>
@@ -296,6 +310,13 @@
                                 &nbsp;: string    </span>
 </dt>
 <dd>Converte um texto em slug URL (minúsculo, hifenizado).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Util-TStr.html#method_snake">snake()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Converte uma expressão camelCase/PascalCase para snake_case.</dd>
 
     </dl>
 
@@ -369,7 +390,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Util/TStr.php"><a href="files/lib-aurea-util-tstr.html"><abbr title="lib/Aurea/Util/TStr.php">TStr.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">94</span>
 
     </aside>
 
@@ -394,6 +415,55 @@
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$mask</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_camel">
+        camel()
+        <a href="classes/Aurea-Util-TStr.html#method_camel" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Util/TStr.php"><a href="files/lib-aurea-util-tstr.html"><abbr title="lib/Aurea/Util/TStr.php">TStr.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">66</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Converte uma expressão para camelCase.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">camel</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$text</span>
                 : <span class="phpdocumentor-argument-list__argument__type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -490,6 +560,55 @@
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_normalize">
+        normalize()
+        <a href="classes/Aurea-Util-TStr.html#method_normalize" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Util/TStr.php"><a href="files/lib-aurea-util-tstr.html"><abbr title="lib/Aurea/Util/TStr.php">TStr.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">60</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Normaliza texto Unicode para NFC quando a extensão intl está disponível.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">normalize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$text</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_onlyNumbers">
         onlyNumbers()
         <a href="classes/Aurea-Util-TStr.html#method_onlyNumbers" class="headerlink"><i class="fas fa-link"></i></a>
@@ -498,7 +617,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Util/TStr.php"><a href="files/lib-aurea-util-tstr.html"><abbr title="lib/Aurea/Util/TStr.php">TStr.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">65</span>
+    <span class="phpdocumentor-element-found-in__line">87</span>
 
     </aside>
 
@@ -594,6 +713,55 @@
             </section>
 
 </article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_snake">
+        snake()
+        <a href="classes/Aurea-Util-TStr.html#method_snake" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Util/TStr.php"><a href="files/lib-aurea-util-tstr.html"><abbr title="lib/Aurea/Util/TStr.php">TStr.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">74</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Converte uma expressão camelCase/PascalCase para snake_case.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">snake</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$text</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
             </section>
 
         
@@ -624,9 +792,12 @@
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/Aurea-Util-TStr.html#method_applyMask">applyMask()</a></li>
+                                            <li class=""><a href="classes/Aurea-Util-TStr.html#method_camel">camel()</a></li>
                                             <li class=""><a href="classes/Aurea-Util-TStr.html#method_limit">limit()</a></li>
+                                            <li class=""><a href="classes/Aurea-Util-TStr.html#method_normalize">normalize()</a></li>
                                             <li class=""><a href="classes/Aurea-Util-TStr.html#method_onlyNumbers">onlyNumbers()</a></li>
                                             <li class=""><a href="classes/Aurea-Util-TStr.html#method_slug">slug()</a></li>
+                                            <li class=""><a href="classes/Aurea-Util-TStr.html#method_snake">snake()</a></li>
                                     </ul>
             </li>
                     </ul>

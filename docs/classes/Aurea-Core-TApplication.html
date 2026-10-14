@@ -259,9 +259,33 @@ App\Control\NomeDoController::metodo($param).</p>
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Core-TApplication.html#property_appEnv">$appEnv</a>
+    <span>
+                        &nbsp;: string|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Core-TApplication.html#property_authCallback">$authCallback</a>
+    <span>
+                        &nbsp;: callable|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Aurea-Core-TApplication.html#property_controlNamespace">$controlNamespace</a>
     <span>
                         &nbsp;: string            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Core-TApplication.html#property_csrfProtection">$csrfProtection</a>
+    <span>
+                        &nbsp;: bool            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Core-TApplication.html#property_debug">$debug</a>
+    <span>
+                        &nbsp;: bool            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
@@ -277,9 +301,21 @@ App\Control\NomeDoController::metodo($param).</p>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Core-TApplication.html#property_layoutRenderer">$layoutRenderer</a>
+    <span>
+                        &nbsp;: callable|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Aurea-Core-TApplication.html#property_menuHtml">$menuHtml</a>
     <span>
                         &nbsp;: string|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Core-TApplication.html#property_permissionGuard">$permissionGuard</a>
+    <span>
+                        &nbsp;: bool            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
@@ -311,11 +347,39 @@ App\Control\NomeDoController::metodo($param).</p>
 <dd>Despacha um evento e devolve JSON.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_errorEnvelope">errorEnvelope()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Envelope padrão de erro para APIs.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_getEnv">getEnv()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Obtém o ambiente atual da aplicação.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_isDebug">isDebug()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Indica se o modo debug está ativo.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TApplication.html#method_run">run()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Ponto de entrada: despacha o evento e renderiza a página</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_setAuthCallback">setAuthCallback()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Define callback de autorização executado antes de cada despacho.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TApplication.html#method_setControlNamespace">setControlNamespace()</a>
@@ -325,11 +389,39 @@ App\Control\NomeDoController::metodo($param).</p>
 <dd>Define o namespace dos controllers.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_setCsrfProtection">setCsrfProtection()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Exige token CSRF em pedidos HTTP mutáveis processados por run().</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_setDebug">setDebug()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Liga/desliga o modo debug (stack traces nas respostas de erro).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TApplication.html#method_setDefault">setDefault()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Define a rota padrão do Front Controller.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_setEnv">setEnv()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Define ambiente (dev/test/prod) e modo debug.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_setLayoutRenderer">setLayoutRenderer()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Define um renderer de layout, separando a composição visual do dispatcher.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TApplication.html#method_setMenuHtml">setMenuHtml()</a>
@@ -352,6 +444,27 @@ App\Control\NomeDoController::metodo($param).</p>
 </dt>
 <dd>Define o título da aplicação.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_usePermissionGuard">usePermissionGuard()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Ativa a verificação TPermission::checkAction() antes do dispatch.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_assertDispatchableMethod">assertDispatchableMethod()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Garante que apenas handlers de evento públicos podem ser chamados pela URL.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_authorize">authorize()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Executa o callback de autorização antes do despacho.</dd>
+
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Aurea-Core-TApplication.html#method_menu">menu()</a>
     <span>
@@ -372,6 +485,13 @@ App\Control\NomeDoController::metodo($param).</p>
 </dt>
 <dd>Layout base com Bootstrap + helper AJAX</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Core-TApplication.html#method_verifyCsrf">verifyCsrf()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Valida CSRF em POST/PUT/PATCH/DELETE quando a proteção foi ativada.</dd>
+
     </dl>
 
 
@@ -385,6 +505,82 @@ App\Control\NomeDoController::metodo($param).</p>
             <a href="classes/Aurea-Core-TApplication.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_appEnv">
+        $appEnv
+        <a href="classes/Aurea-Core-TApplication.html#property_appEnv" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">28</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$appEnv</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_authCallback">
+        $authCallback
+        <a href="classes/Aurea-Core-TApplication.html#property_authCallback" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">27</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">callable|null</span>
+    <span class="phpdocumentor-signature__name">$authCallback</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>Callback de autorização: fn(string $class, string $method, array $param): bool|string</p>
+</section>
+
+    
+
+        
+        
+
+</article>
                     <article
         class="
             phpdocumentor-element
@@ -413,6 +609,80 @@ App\Control\NomeDoController::metodo($param).</p>
         <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$controlNamespace</span>
      = <span class="phpdocumentor-signature__default-value">&#039;App\Control\\&#039;</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_csrfProtection">
+        $csrfProtection
+        <a href="classes/Aurea-Core-TApplication.html#property_csrfProtection" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">32</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$csrfProtection</span>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_debug">
+        $debug
+        <a href="classes/Aurea-Core-TApplication.html#property_debug" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">25</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$debug</span>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
 
     
     
@@ -503,6 +773,45 @@ App\Control\NomeDoController::metodo($param).</p>
             -protected
             -static                                                        "
 >
+    <h4 class="phpdocumentor-element__name" id="property_layoutRenderer">
+        $layoutRenderer
+        <a href="classes/Aurea-Core-TApplication.html#property_layoutRenderer" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">30</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">callable|null</span>
+    <span class="phpdocumentor-signature__name">$layoutRenderer</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>fn(string $content,string $active):string</p>
+</section>
+
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_menuHtml">
         $menuHtml
         <a href="classes/Aurea-Core-TApplication.html#property_menuHtml" class="headerlink"><i class="fas fa-link"></i></a>
@@ -524,6 +833,43 @@ App\Control\NomeDoController::metodo($param).</p>
         <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string|null</span>
     <span class="phpdocumentor-signature__name">$menuHtml</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_permissionGuard">
+        $permissionGuard
+        <a href="classes/Aurea-Core-TApplication.html#property_permissionGuard" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">31</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$permissionGuard</span>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
 
     
     
@@ -592,7 +938,7 @@ App\Control\NomeDoController::metodo($param).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">124</span>
+    <span class="phpdocumentor-element-found-in__line">272</span>
 
     </aside>
 
@@ -655,7 +1001,7 @@ App\Control\NomeDoController::metodo($param).</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">161</span>
+    <span class="phpdocumentor-element-found-in__line">314</span>
 
     </aside>
 
@@ -713,6 +1059,141 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_errorEnvelope">
+        errorEnvelope()
+        <a href="classes/Aurea-Core-TApplication.html#method_errorEnvelope" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">198</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Envelope padrão de erro para APIs.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">errorEnvelope</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><abbr title="\Throwable">Throwable</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$e</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$e</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\Throwable">Throwable</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getEnv">
+        getEnv()
+        <a href="classes/Aurea-Core-TApplication.html#method_getEnv" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">119</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Obtém o ambiente atual da aplicação.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">getEnv</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Ambiente (ex.: dev, test, prod)</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isDebug">
+        isDebug()
+        <a href="classes/Aurea-Core-TApplication.html#method_isDebug" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">109</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Indica se o modo debug está ativo.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">isDebug</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True se o modo debug está ativo</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_run">
         run()
         <a href="classes/Aurea-Core-TApplication.html#method_run" class="headerlink"><i class="fas fa-link"></i></a>
@@ -721,7 +1202,7 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">216</span>
 
     </aside>
 
@@ -772,6 +1253,53 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setAuthCallback">
+        setAuthCallback()
+        <a href="classes/Aurea-Core-TApplication.html#method_setAuthCallback" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">132</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define callback de autorização executado antes de cada despacho.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">setAuthCallback</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callback</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Deve devolver true (autorizado), false ou string com motivo (negado).</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$callback</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_setControlNamespace">
         setControlNamespace()
         <a href="classes/Aurea-Core-TApplication.html#method_setControlNamespace" class="headerlink"><i class="fas fa-link"></i></a>
@@ -780,7 +1308,7 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
@@ -819,6 +1347,98 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setCsrfProtection">
+        setCsrfProtection()
+        <a href="classes/Aurea-Core-TApplication.html#method_setCsrfProtection" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">144</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Exige token CSRF em pedidos HTTP mutáveis processados por run().</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">setCsrfProtection</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$enabled</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$enabled</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setDebug">
+        setDebug()
+        <a href="classes/Aurea-Core-TApplication.html#method_setDebug" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">99</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Liga/desliga o modo debug (stack traces nas respostas de erro).</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">setDebug</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$debug</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>True para ativar o modo debug</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_setDefault">
         setDefault()
         <a href="classes/Aurea-Core-TApplication.html#method_setDefault" class="headerlink"><i class="fas fa-link"></i></a>
@@ -827,7 +1447,7 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 
     </aside>
 
@@ -875,6 +1495,105 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setEnv">
+        setEnv()
+        <a href="classes/Aurea-Core-TApplication.html#method_setEnv" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">84</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define ambiente (dev/test/prod) e modo debug.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">setEnv</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$env</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$debug</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Por padrão debug segue APP_ENV !== 'prod'.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$env</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$debug</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setLayoutRenderer">
+        setLayoutRenderer()
+        <a href="classes/Aurea-Core-TApplication.html#method_setLayoutRenderer" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">150</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Define um renderer de layout, separando a composição visual do dispatcher.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">setLayoutRenderer</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">callable|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$renderer</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$renderer</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_setMenuHtml">
         setMenuHtml()
         <a href="classes/Aurea-Core-TApplication.html#method_setMenuHtml" class="headerlink"><i class="fas fa-link"></i></a>
@@ -883,7 +1602,7 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">68</span>
 
     </aside>
 
@@ -928,7 +1647,7 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">67</span>
+    <span class="phpdocumentor-element-found-in__line">75</span>
 
     </aside>
 
@@ -980,7 +1699,7 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">53</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
@@ -1016,6 +1735,191 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
                     <article
         class="phpdocumentor-element
             -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_usePermissionGuard">
+        usePermissionGuard()
+        <a href="classes/Aurea-Core-TApplication.html#method_usePermissionGuard" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">138</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Ativa a verificação TPermission::checkAction() antes do dispatch.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">usePermissionGuard</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$enabled</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$enabled</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_assertDispatchableMethod">
+        assertDispatchableMethod()
+        <a href="classes/Aurea-Core-TApplication.html#method_assertDispatchableMethod" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">355</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Garante que apenas handlers de evento públicos podem ser chamados pela URL.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">assertDispatchableMethod</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fqcn</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$method</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$class</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$fqcn</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$method</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$class</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_authorize">
+        authorize()
+        <a href="classes/Aurea-Core-TApplication.html#method_authorize" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">163</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Executa o callback de autorização antes do despacho.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">authorize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$class</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$method</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$param</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$class</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Classe do controller</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$method</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Método do evento</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$param</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Parâmetros do pedido</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="method_authorize_tags">
+        Tags
+        <a href="classes/Aurea-Core-TApplication.html#method_authorize_tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                    <dt class="phpdocumentor-tag-list__entry">
+                <span class="phpdocumentor-tag__name">throws</span>
+            </dt>
+                            <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\RuntimeException">RuntimeException</abbr></span>
+                                                                                        <section class="phpdocumentor-description"><p>Se o acesso for negado (403)</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
             -protected
                                     -static                    "
 >
@@ -1027,7 +1931,7 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">252</span>
+    <span class="phpdocumentor-element-found-in__line">430</span>
 
     </aside>
 
@@ -1082,7 +1986,7 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">182</span>
+    <span class="phpdocumentor-element-found-in__line">341</span>
 
     </aside>
 
@@ -1137,7 +2041,7 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">197</span>
+    <span class="phpdocumentor-element-found-in__line">368</span>
 
     </aside>
 
@@ -1179,6 +2083,51 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
             </section>
 
 </article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_verifyCsrf">
+        verifyCsrf()
+        <a href="classes/Aurea-Core-TApplication.html#method_verifyCsrf" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TApplication.php"><a href="files/lib-aurea-core-tapplication.html"><abbr title="lib/Aurea/Core/TApplication.php">TApplication.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">180</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Valida CSRF em POST/PUT/PATCH/DELETE quando a proteção foi ativada.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">verifyCsrf</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$param</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$param</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
             </section>
 
         
@@ -1201,10 +2150,16 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
+                                                    <li class=""><a href="classes/Aurea-Core-TApplication.html#property_appEnv">$appEnv</a></li>
+                                                    <li class=""><a href="classes/Aurea-Core-TApplication.html#property_authCallback">$authCallback</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TApplication.html#property_controlNamespace">$controlNamespace</a></li>
+                                                    <li class=""><a href="classes/Aurea-Core-TApplication.html#property_csrfProtection">$csrfProtection</a></li>
+                                                    <li class=""><a href="classes/Aurea-Core-TApplication.html#property_debug">$debug</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TApplication.html#property_defaultClass">$defaultClass</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TApplication.html#property_defaultMethod">$defaultMethod</a></li>
+                                                    <li class=""><a href="classes/Aurea-Core-TApplication.html#property_layoutRenderer">$layoutRenderer</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TApplication.html#property_menuHtml">$menuHtml</a></li>
+                                                    <li class=""><a href="classes/Aurea-Core-TApplication.html#property_permissionGuard">$permissionGuard</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TApplication.html#property_title">$title</a></li>
                                             </ul>
                 </li>
@@ -1214,15 +2169,27 @@ public function onList($param): array { return ['data' =&gt; [...]]; }</p>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_dispatch">dispatch()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_dispatchJson">dispatchJson()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_errorEnvelope">errorEnvelope()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_getEnv">getEnv()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_isDebug">isDebug()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_run">run()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setAuthCallback">setAuthCallback()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setControlNamespace">setControlNamespace()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setCsrfProtection">setCsrfProtection()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setDebug">setDebug()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setDefault">setDefault()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setEnv">setEnv()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setLayoutRenderer">setLayoutRenderer()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setMenuHtml">setMenuHtml()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setMenuXml">setMenuXml()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_setTitle">setTitle()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_usePermissionGuard">usePermissionGuard()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_assertDispatchableMethod">assertDispatchableMethod()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_authorize">authorize()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_menu">menu()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_resolve">resolve()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TApplication.html#method_template">template()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TApplication.html#method_verifyCsrf">verifyCsrf()</a></li>
                                     </ul>
             </li>
                     </ul>

@@ -8,6 +8,8 @@ use Aurea\Core\TCsrf;
 use Aurea\Core\TComponent;
 use Aurea\Core\TSession;
 use Aurea\Form\TEntry;
+use Aurea\Form\TFileField;
+use Aurea\Form\TMultiFileField;
 use Aurea\Form\TForm;
 use Aurea\Validator\TRequiredValidator;
 use PHPUnit\Framework\TestCase;
@@ -43,6 +45,17 @@ final class TFormTest extends TestCase
         $this->assertSame(['nome' => $field], $form->getFields());
         $this->assertSame($field, $form->getField('nome'));
         $this->assertNull($form->getField('inexistente'));
+    }
+
+    public function testFileFieldsEnableMultipartEncoding(): void
+    {
+        $form = new TForm('upload');
+        $form->addField(new TFileField('anexo'));
+        $this->assertSame('multipart/form-data', $form->getProperty('enctype'));
+
+        $multi = new TForm('uploads');
+        $multi->addField(new TMultiFileField('anexos'));
+        $this->assertSame('multipart/form-data', $multi->getProperty('enctype'));
     }
 
     public function testAddAction(): void

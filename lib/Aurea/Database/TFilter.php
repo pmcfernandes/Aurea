@@ -24,6 +24,9 @@ class TFilter
         public string $operator,
         public mixed $value
     ) {
+        if (!$field instanceof TExpression) {
+            TIdentifier::assert($field);
+        }
     }
 
     /** @param array $params acumulador de prepared-statement */

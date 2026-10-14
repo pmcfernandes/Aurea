@@ -35,7 +35,7 @@ final class TRepositoryTest extends TestCase
         } catch (\Throwable) {
         }
         $r = new \ReflectionClass(TTransaction::class);
-        foreach (['conns' => [], 'active' => null, 'logger' => null, 'dump' => false, 'loggerStrategy' => null, 'loggerFunction' => null] as $prop => $val) {
+        foreach (['conns' => [], 'active' => null, 'contexts' => [], 'depths' => [], 'logger' => null, 'dump' => false, 'loggerStrategy' => null, 'loggerFunction' => null] as $prop => $val) {
             $r->getProperty($prop)->setValue(null, $val);
         }
     }
@@ -73,5 +73,29 @@ final class TRepositoryTest extends TestCase
         $n = $repo->delete((new TCriteria)->andWhere('cidade', '=', 'Porto'));
         $this->assertSame(2, $n);
         $this->assertSame(1, $repo->count());
+    }
+
+    public function testCursorYieldsRecords(): void
+    {
+        $names = [];
+        foreach ((new TRepository(Cliente::class))->cursor((new TCriteria)->setProperty('order', 'id')) as $record) {
+            $names[] = $record->nome;
+        }
+        $this->assertSame(['Ana', 'Bia', 'Cid'], $names);
+    }
+
+    public function testChunkProcessesEveryRecord(): void
+    {
+        $chunks = [];
+        (new TRepository(Cliente::class))->chunk(2, function (array $rows, int $page) use (&$chunks): void {
+            $chunks[$page] = array_map(fn(Cliente $record): string => $record->nome, $rows);
+        }, (new TCriteria)->setProperty('order', 'id'));
+        $this->assertSame([1 => ['Ana', 'Bia'], 2 => ['Cid']], $chunks);
+    }
+
+    public function testChunkRequiresPositiveSize(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        (new TRepository(Cliente::class))->chunk(0, static function (): void {});
     }
 }

@@ -29,4 +29,17 @@ final class TPageTest extends TestCase
         $p->onShow(['a' => 1]);
         $this->assertTrue(true);
     }
+
+    public function testLifecycleHooksCanBeOverridden(): void
+    {
+        $page = new class extends TPage {
+            public array $events = [];
+            public function onBeforeAction(string $method, array $param = []): void { $this->events[] = ['before', $method, $param]; }
+            public function onAfterAction(string $method, array $param = [], mixed $result = null): void { $this->events[] = ['after', $method, $result]; }
+        };
+        $page->onBeforeAction('onShow', ['a' => 1]);
+        $page->onAfterAction('onShow', ['a' => 1], 'ok');
+        $this->assertSame('before', $page->events[0][0]);
+        $this->assertSame('ok', $page->events[1][2]);
+    }
 }

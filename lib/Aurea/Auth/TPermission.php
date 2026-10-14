@@ -25,6 +25,8 @@ class TPermission
     protected static array $grants = [];
     /** @var callable|null fn(string $program, ?string $userId): bool */
     protected static $checker = null;
+    /** @var callable|null fn(string $program, string $action, ?string $userId): bool */
+    protected static $actionChecker = null;
 
     /**
      * Concede acesso a um programa (global ou a um utilizador).
@@ -35,6 +37,18 @@ class TPermission
     public static function grant(string $program, ?string $userId = null): void
     {
         self::$grants[$program][$userId ?? '*'] = true;
+    }
+
+    /** Concede acesso a uma ação específica de um controller. */
+    public static function grantAction(string $program, string $action, ?string $userId = null): void
+    {
+        self::grant($program . '::' . $action, $userId);
+    }
+
+    /** Define um verificador externo para recursos controller+ação. */
+    public static function setActionChecker(?callable $fn): void
+    {
+        self::$actionChecker = $fn;
     }
 
     /**
@@ -69,6 +83,20 @@ class TPermission
         return $uid !== null && isset(self::$grants[$program][$uid]);
     }
 
+    /** Verifica uma ação, aceitando concessão específica ou global do controller. */
+    public static function checkAction(string $program, string $action, ?string $userId = null): bool
+    {
+        $uid = $userId ?? TAuth::id();
+        if (self::$actionChecker !== null) {
+            return (bool) (self::$actionChecker)($program, $action, $uid);
+        }
+        $resource = $program . '::' . $action;
+        if (isset(self::$grants[$resource])) {
+            return isset(self::$grants[$resource]['*']) || ($uid !== null && isset(self::$grants[$resource][$uid]));
+        }
+        return self::check($program, $uid);
+    }
+
     /**
      * Devolve um filtro de menu pronto para TMenu::fromXml().
      *
@@ -86,5 +114,6 @@ class TPermission
     {
         self::$grants = [];
         self::$checker = null;
+        self::$actionChecker = null;
     }
 }

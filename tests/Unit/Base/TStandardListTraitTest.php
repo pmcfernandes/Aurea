@@ -101,6 +101,19 @@ final class TStandardListTraitTest extends TestCase
         $this->assertSame(10, $criteria->getProperty('offset'));
     }
 
+    public function testBuildCriteriaRejectsUnknownSortFields(): void
+    {
+        $page = $this->makePage();
+        $ref = new \ReflectionMethod($page, 'buildCriteria');
+        $ref->setAccessible(true);
+        $criteria = $ref->invoke($page, ['order' => 'email']);
+        $this->assertSame('id', $criteria->getProperty('order'));
+
+        $page->setOrderFields(['email']);
+        $criteria = $ref->invoke($page, ['order' => 'email']);
+        $this->assertSame('email', $criteria->getProperty('order'));
+    }
+
     public function testOnDeleteWithoutConfirmAsksQuestion(): void
     {
         $page = $this->makePage();
@@ -149,4 +162,3 @@ final class TStandardListTraitTest extends TestCase
         $this->assertStringContainsString('Bruno', $page->getContents());
     }
 }
-

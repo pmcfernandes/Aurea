@@ -30,7 +30,13 @@ class TSession
     protected static function start(): void
     {
         if (session_status() !== PHP_SESSION_ACTIVE && !headers_sent()) {
-            session_start();
+            $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+            session_start([
+                'cookie_httponly' => true,
+                'cookie_samesite' => 'Lax',
+                'cookie_secure' => $secure,
+                'use_strict_mode' => true,
+            ]);
         }
         if (!isset($_SESSION)) {
             $_SESSION = [];
@@ -106,5 +112,23 @@ class TSession
         if (session_status() === PHP_SESSION_ACTIVE) {
             session_regenerate_id(true);
         }
+    }
+
+    /**
+     * Guarda mensagem flash (lida uma única vez).
+     */
+    public static function setFlash(string $key, mixed $value): void
+    {
+        self::setValue('_flash_' . $key, $value);
+    }
+
+    /**
+     * Lê e apaga mensagem flash.
+     */
+    public static function getFlash(string $key, mixed $default = null): mixed
+    {
+        $value = self::getValue('_flash_' . $key, $default);
+        self::clear('_flash_' . $key);
+        return $value;
     }
 }

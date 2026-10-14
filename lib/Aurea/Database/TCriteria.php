@@ -164,4 +164,82 @@ class TCriteria
     {
         $this->properties = [];
     }
+
+    /**
+     * Define GROUP BY.
+     */
+    public function setGroup(string|array $group): static
+    {
+        $this->properties['group'] = is_array($group) ? implode(', ', $group) : $group;
+        return $this;
+    }
+
+    /**
+     * Define HAVING bruto (com params opcionais via setProperty('having_params')).
+     */
+    public function setHaving(string $having, array $params = []): static
+    {
+        $this->properties['having'] = $having;
+        $this->properties['having_params'] = $params;
+        return $this;
+    }
+
+    /**
+     * Ativa SELECT DISTINCT.
+     *
+     * @param bool $distinct True para registos distintos
+     * @return static
+     */
+    public function setDistinct(bool $distinct = true): static
+    {
+        $this->properties['distinct'] = $distinct;
+        return $this;
+    }
+
+    /**
+     * Colunas selecionadas (usado por repositórios/SELECT).
+     */
+    public function setColumns(string|array $columns): static
+    {
+        $this->properties['columns'] = is_array($columns) ? $columns : [$columns];
+        return $this;
+    }
+
+    /**
+     * Obtém as colunas selecionadas do critério.
+     *
+     * @return string[]|null Lista de colunas ou null
+     */
+    public function getColumns(): ?array
+    {
+        return $this->properties['columns'] ?? null;
+    }
+
+    /**
+     * Monta a cláusula GROUP BY a partir das propriedades.
+     *
+     * @return string Cláusula GROUP BY ou string vazia
+     */
+    public function groupClause(): string
+    {
+        $group = $this->properties['group'] ?? null;
+        if (!$group) {
+            return '';
+        }
+        $group = preg_replace('/[^A-Za-z0-9_,\. ]/', '', (string) $group);
+        return " GROUP BY {$group}";
+    }
+
+    /**
+     * @return array{0:string,1:array} Par [having, params]
+     */
+    public function havingClause(): array
+    {
+        $having = $this->properties['having'] ?? '';
+        $params = $this->properties['having_params'] ?? [];
+        if ($having === '') {
+            return ['', []];
+        }
+        return [' HAVING ' . $having, (array) $params];
+    }
 }

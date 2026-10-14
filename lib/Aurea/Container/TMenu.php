@@ -44,7 +44,7 @@ class TMenu extends TComponent
      * @return self TMenu construído
      * @throws \RuntimeException Se o arquivo for inválido
      */
-    public static function fromXml(string $file, ?callable $allowed = null): self
+    public static function fromXml(string $file, ?callable $allowed = null, ?string $activeAction = null): self
     {
         if (!file_exists($file)) {
             throw new \RuntimeException("Menu não encontrado: {$file}");
@@ -53,10 +53,25 @@ class TMenu extends TComponent
         if (!$xml) {
             throw new \RuntimeException("XML inválido: {$file}");
         }
-        $menu = new self;
+        $items = [];
         foreach ($xml->menuitem as $item) {
-            $node = self::buildItem($item, $allowed);
-            if ($node) {
+            $items[] = self::xmlToArray($item);
+        }
+        return self::fromArray($items, $allowed, $activeAction);
+    }
+
+    /**
+     * Constrói um menu a partir de arrays com label, icon, action e children.
+     * Esta alternativa evita XML para menus definidos por código ou base de dados.
+     *
+     * @param array<int,array{label?:string,icon?:string,action?:string,children?:array}> $items
+     */
+    public static function fromArray(array $items, ?callable $allowed = null, ?string $activeAction = null): self
+    {
+        $menu = new self;
+        foreach ($items as $item) {
+            $node = self::buildArrayItem($item, $allowed, $activeAction);
+            if ($node !== null) {
                 $menu->add($node);
             }
         }
@@ -72,16 +87,19 @@ class TMenu extends TComponent
      */
     protected static function buildItem(\SimpleXMLElement $item, ?callable $allowed): ?TComponent
     {
+        return self::buildArrayItem(self::xmlToArray($item), $allowed, null);
+    }
+
+    /** @param array<string,mixed> $item */
+    protected static function buildArrayItem(array $item, ?callable $allowed, ?string $activeAction): ?TComponent
+    {
         $label = (string) ($item['label'] ?? 'Item');
         $icon = (string) ($item['icon'] ?? 'fa-circle');
         $action = (string) ($item['action'] ?? '');
         $children = [];
-        if (isset($item->menu->menuitem)) {
-            foreach ($item->menu->menuitem as $sub) {
-                $node = self::buildItem($sub, $allowed);
-                if ($node) {
-                    $children[] = $node;
-                }
+        foreach ((array) ($item['children'] ?? []) as $child) {
+            if (is_array($child) && ($node = self::buildArrayItem($child, $allowed, $activeAction))) {
+                $children[] = $node;
             }
         }
         if ($action !== '' && $allowed && !$allowed(self::programOf($action))) {
@@ -99,6 +117,7 @@ class TMenu extends TComponent
             $a->addClass('nav-link dropdown-toggle');
             $a->setProperty('href', '#');
             $a->setProperty('role', 'button');
+            $a->setProperty('aria-expanded', 'false');
             $a->setProperty('data-bs-toggle', 'dropdown');
             $a->add("<i class='fa-solid {$icon}'></i> " . htmlspecialchars($label));
             $ul = new TComponent('ul');
@@ -115,10 +134,29 @@ class TMenu extends TComponent
         $li->addClass('nav-item');
         $a = new TComponent('a');
         $a->addClass('nav-link');
+        if ($activeAction !== null && $activeAction === $action) {
+            $a->addClass('active');
+            $a->setProperty('aria-current', 'page');
+        }
         $a->setProperty('href', self::actionOf($action)->toHref());
         $a->add("<i class='fa-solid {$icon}'></i> " . htmlspecialchars($label));
         $li->add($a);
         return $li;
+    }
+
+    /** @return array{label:string,icon:string,action:string,children:array} */
+    private static function xmlToArray(\SimpleXMLElement $item): array
+    {
+        $children = [];
+        foreach ($item->menu->menuitem ?? [] as $child) {
+            $children[] = self::xmlToArray($child);
+        }
+        return [
+            'label' => (string) ($item['label'] ?? 'Item'),
+            'icon' => (string) ($item['icon'] ?? 'fa-circle'),
+            'action' => (string) ($item['action'] ?? ''),
+            'children' => $children,
+        ];
     }
 
     /**

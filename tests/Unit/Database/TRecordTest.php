@@ -31,7 +31,7 @@ final class TRecordTest extends TestCase
         } catch (\Throwable) {
         }
         $r = new \ReflectionClass(TTransaction::class);
-        foreach (['conns' => [], 'active' => null, 'logger' => null, 'dump' => false, 'loggerStrategy' => null, 'loggerFunction' => null] as $prop => $val) {
+        foreach (['conns' => [], 'active' => null, 'contexts' => [], 'depths' => [], 'logger' => null, 'dump' => false, 'loggerStrategy' => null, 'loggerFunction' => null] as $prop => $val) {
             $r->getProperty($prop)->setValue(null, $val);
         }
     }
@@ -120,6 +120,27 @@ final class TRecordTest extends TestCase
         $c = $this->makeCliente('Tmp');
         $c->store();
         TTransaction::rollback();
+        TTransaction::openConfig(['type' => 'sqlite', 'name' => ':memory:'], $this->db);
         $this->assertSame([], Cliente::all());
+    }
+
+    public function testSoftDeletedRecordsAreHiddenByDefault(): void
+    {
+        $table = 'soft_cliente';
+        TTransaction::get()->exec("CREATE TABLE {$table} (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, deleted_at TEXT NULL)");
+        $recordClass = new class extends \Aurea\Database\TRecord {
+            public const TABLENAME = 'soft_cliente';
+            public const SOFT_DELETE = true;
+            public const DELETED_AT = 'deleted_at';
+        };
+        $recordClass->nome = 'Ana';
+        $recordClass->store();
+        $id = (int) $recordClass->id;
+        $recordClass->delete();
+
+        $this->assertSame([], $recordClass::all());
+        $this->assertSame(0, (new \Aurea\Database\TRepository($recordClass::class))->count());
+        $this->expectException(\RuntimeException::class);
+        $recordClass::find($id);
     }
 }

@@ -28,7 +28,7 @@ class TSqlDelete
      */
     public function setEntity(string $table): static
     {
-        $this->entity = $table;
+        $this->entity = TIdentifier::assert($table);
         return $this;
     }
 

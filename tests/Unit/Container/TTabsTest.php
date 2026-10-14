@@ -44,4 +44,14 @@ final class TTabsTest extends TestCase
         $this->assertStringNotContainsString('<Tag>', $html);
         $this->assertStringContainsString('<b>negrito</b>', $html);
     }
+
+    public function testTabsExposeStableAccessibleRelationships(): void
+    {
+        $tabs = (new TTabs)->appendTab('Um', 'x')->appendTab('Dois', 'y')->setCurrentTab(1);
+        $html = $tabs->getContents();
+        $this->assertStringContainsString("role='tablist'", $html);
+        $this->assertStringContainsString("role='tabpanel'", $html);
+        $this->assertStringContainsString("aria-selected='true'", $html);
+        $this->assertSame($html, $tabs->getContents());
+    }
 }

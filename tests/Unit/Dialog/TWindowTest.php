@@ -30,6 +30,8 @@ final class TWindowTest extends TestCase
         $this->assertStringContainsString('max-width:600px', $html);
         $this->assertStringContainsString('Detalhes', $html);
         $this->assertStringContainsString($win->getModalId(), $html);
+        $this->assertStringContainsString('aria-modal="true"', $html);
+        $this->assertStringContainsString($win->getTitleId(), $html);
     }
 
     public function testSetContent(): void
@@ -71,5 +73,6 @@ final class TWindowTest extends TestCase
         $this->assertStringContainsString($win->getModalId(), $out);
         $this->assertStringContainsString('corpo', $out);
         $this->assertStringContainsString('bootstrap.Modal', $out);
+        $this->assertStringContainsString('shown.bs.modal', $out);
     }
 }

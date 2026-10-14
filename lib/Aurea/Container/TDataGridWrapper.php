@@ -27,6 +27,10 @@ class TDataGridWrapper extends TComponent
     protected string $searchParam = 'q';
     /** @var array<int,array{label:string,action:TAction,icon:string}> */
     protected array $headerActions = [];
+    /** @var array<int,TComponent|string> */
+    protected array $headerWidgets = [];
+    protected string $searchPlaceholder = 'Pesquisar...';
+    protected ?string $height = null;
 
     /**
      * Cria o contentor do TDataGrid com título opcional.
@@ -70,6 +74,27 @@ class TDataGridWrapper extends TComponent
         return $this;
     }
 
+    /** Adiciona conteúdo adicional ao cabeçalho do card. */
+    public function addHeaderWidget(TComponent|string $widget): static
+    {
+        $this->headerWidgets[] = $widget;
+        return $this;
+    }
+
+    /** Define o texto de ajuda do campo de busca. */
+    public function setSearchPlaceholder(string $placeholder): static
+    {
+        $this->searchPlaceholder = $placeholder;
+        return $this;
+    }
+
+    /** Define a altura máxima da área rolável da grelha. */
+    public function setHeight(string|int $height): static
+    {
+        $this->height = is_int($height) ? $height . 'px' : $height;
+        return $this;
+    }
+
     /**
      * Renderiza o formulário de busca rápida.
      *
@@ -92,9 +117,12 @@ class TDataGridWrapper extends TComponent
         }
         $param = htmlspecialchars($this->searchParam, ENT_QUOTES);
         $current = htmlspecialchars((string) ($_GET[$this->searchParam] ?? ''), ENT_QUOTES);
-        return "<form method='get' action='index.php' class='d-flex gap-2'>{$hidden}"
-            . "<input type='search' class='form-control form-control-sm' name='{$param}' value='{$current}' placeholder='Pesquisar...'>"
-            . "<button type='submit' class='btn btn-sm btn-outline-secondary'><i class='fa-solid fa-search'></i></button></form>";
+        $inputId = 'grid_search_' . substr(md5($this->searchParam . spl_object_id($this)), 0, 8);
+        $placeholder = htmlspecialchars($this->searchPlaceholder, ENT_QUOTES);
+        return "<form method='get' action='index.php' class='d-flex gap-2' role='search'>{$hidden}"
+            . "<label class='visually-hidden' for='{$inputId}'>Pesquisar</label>"
+            . "<input id='{$inputId}' type='search' class='form-control form-control-sm' name='{$param}' value='{$current}' placeholder='{$placeholder}'>"
+            . "<button type='submit' class='btn btn-sm btn-outline-secondary' aria-label='Pesquisar'><i class='fa-solid fa-search' aria-hidden='true'></i></button></form>";
     }
 
     /**
@@ -111,11 +139,16 @@ class TDataGridWrapper extends TComponent
             $buttons .= "<a class='btn btn-sm btn-primary' href='" . $item['action']->toHref() . "'>{$icon}"
                 . htmlspecialchars($item['label'], ENT_QUOTES) . '</a>';
         }
+        $widgets = '';
+        foreach ($this->headerWidgets as $widget) {
+            $widgets .= $widget instanceof TComponent ? $widget->getContents() : (string) $widget;
+        }
         $search = $this->renderSearch();
         $head = "<div class='card-header d-flex flex-wrap gap-2 align-items-center justify-content-between'>"
             . "<span class='fw-bold'>{$title}</span>"
-            . "<div class='d-flex gap-2 align-items-center'>{$search}{$buttons}</div></div>";
+            . "<div class='d-flex gap-2 align-items-center'>{$search}{$widgets}{$buttons}</div></div>";
         $attrs = $this->renderAttributes();
-        return "<div{$attrs}>{$head}<div class='card-body p-0'>{$this->grid->getContents()}</div></div>";
+        $style = $this->height === null ? '' : " style='max-height:" . htmlspecialchars($this->height, ENT_QUOTES) . ";overflow:auto'";
+        return "<div{$attrs}>{$head}<div class='card-body p-0'{$style}>{$this->grid->getContents()}</div></div>";
     }
 }

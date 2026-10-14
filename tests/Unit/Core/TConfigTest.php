@@ -42,6 +42,19 @@ final class TConfigTest extends TestCase
         $this->assertSame('h', $c->get('db.host'));
     }
 
+    public function testValidateAndCachedLoad(): void
+    {
+        $file = $this->dir . '/cached.php';
+        file_put_contents($file, "<?php return ['name' => 'aurea', 'port' => 80, 'options' => []];");
+        TConfig::clearCache();
+        $one = TConfig::loadCached($file);
+        $two = TConfig::loadCached($file);
+        $this->assertSame($one, $two);
+        $one->validate(['name' => 'string', 'port' => 'int', 'options' => 'array', 'missing' => 'nullable:string']);
+        $this->expectException(\RuntimeException::class);
+        $one->validate(['port' => 'string']);
+    }
+
     public function testMissingFile(): void
     {
         $this->expectException(\RuntimeException::class);

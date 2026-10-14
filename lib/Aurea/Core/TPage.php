@@ -53,4 +53,26 @@ class TPage extends TComponent
     public function onShow(array $param = []): void
     {
     }
+
+    /**
+     * Ciclo de vida: chamado pelo dispatcher antes de um handler de evento.
+     * Subclasses podem validar contexto, carregar permissões ou preparar dados.
+     *
+     * @param string $method Nome do handler
+     * @param array<string,mixed> $param Parâmetros do pedido
+     */
+    public function onBeforeAction(string $method, array $param = []): void
+    {
+    }
+
+    /**
+     * Ciclo de vida: chamado após a execução bem-sucedida de um handler.
+     *
+     * @param string $method Nome do handler
+     * @param array<string,mixed> $param Parâmetros do pedido
+     * @param mixed $result Resultado devolvido pelo handler
+     */
+    public function onAfterAction(string $method, array $param = [], mixed $result = null): void
+    {
+    }
 }

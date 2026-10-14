@@ -23,7 +23,7 @@ final class TTransactionTest extends TestCase
     private function resetTransactionState(): void
     {
         $r = new \ReflectionClass(TTransaction::class);
-        foreach (['conns' => [], 'active' => null, 'logger' => null, 'dump' => false, 'loggerStrategy' => null, 'loggerFunction' => null] as $prop => $val) {
+        foreach (['conns' => [], 'active' => null, 'contexts' => [], 'depths' => [], 'logger' => null, 'dump' => false, 'loggerStrategy' => null, 'loggerFunction' => null] as $prop => $val) {
             $p = $r->getProperty($prop);
             $p->setValue(null, $val);
         }
@@ -84,6 +84,8 @@ final class TTransactionTest extends TestCase
         $conn->exec('CREATE TABLE t (id INTEGER PRIMARY KEY, v TEXT)');
         TTransaction::close();
         $this->assertFalse($conn->inTransaction());
+        $this->expectException(\RuntimeException::class);
+        TTransaction::get();
     }
 
     public function testRollbackDiscards(): void
@@ -109,7 +111,21 @@ final class TTransactionTest extends TestCase
         $this->assertFalse($b->inTransaction());
         TTransaction::openConfig(['type' => 'sqlite', 'name' => ':memory:'], $this->memName());
         TTransaction::rollbackAll();
-        $this->assertFalse(TTransaction::get()->inTransaction());
+        $this->expectException(\RuntimeException::class);
+        TTransaction::get();
+    }
+
+    public function testNestedTransactionsUseSavepoints(): void
+    {
+        $conn = TTransaction::openConfig(['type' => 'sqlite', 'name' => ':memory:'], $this->memName());
+        $conn->exec('CREATE TABLE t (id INTEGER PRIMARY KEY, v TEXT)');
+        $conn->exec("INSERT INTO t (v) VALUES ('outer')");
+        TTransaction::openConfig(['type' => 'sqlite', 'name' => ':memory:'], TTransaction::getDatabase());
+        $conn->exec("INSERT INTO t (v) VALUES ('inner')");
+        TTransaction::rollback();
+        $this->assertSame(1, (int) $conn->query('SELECT COUNT(*) FROM t')->fetchColumn());
+        TTransaction::close();
+        $this->assertSame(1, (int) $conn->query('SELECT COUNT(*) FROM t')->fetchColumn());
     }
 
     public function testSetLoggerFunctionAndLog(): void

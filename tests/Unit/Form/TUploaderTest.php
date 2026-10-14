@@ -89,6 +89,25 @@ final class TUploaderTest extends TestCase
         $this->assertFileExists($dest);
     }
 
+    public function testSaveValidatesDetectedMimeType(): void
+    {
+        $this->makeUpload('anexo', 'doc.txt');
+        $dest = TUploader::save('anexo', $this->targetDir, ['txt'], 10485760, ['text/plain']);
+        $this->assertNotNull($dest);
+        $this->created[] = $dest;
+
+        $this->makeUpload('bin', 'doc.txt', 'GIF89a');
+        $this->expectException(\RuntimeException::class);
+        TUploader::save('bin', $this->targetDir, ['txt'], 10485760, ['text/plain']);
+    }
+
+    public function testSaveImageRejectsNonImageContent(): void
+    {
+        $this->makeUpload('imagem', 'imagem.png', 'não é uma imagem');
+        $this->expectException(\RuntimeException::class);
+        TUploader::saveImage('imagem', $this->targetDir);
+    }
+
     public function testSaveThrowsOnForbiddenExtension(): void
     {
         $this->makeUpload('anexo', 'virus.exe');

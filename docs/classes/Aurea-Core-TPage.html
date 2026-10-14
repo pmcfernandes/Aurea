@@ -349,6 +349,20 @@
 <dd>Adiciona uma classe CSS ao elemento.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TComponent.html#method_addHtml">addHtml()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Adiciona HTML confiável.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TComponent.html#method_addText">addText()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Adiciona texto não confiável, escapado para HTML.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TComponent.html#method_getContents">getContents()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -367,6 +381,20 @@
                                 &nbsp;: string    </span>
 </dt>
 <dd>Obtém o contentor alvo das respostas AJAX.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TPage.html#method_onAfterAction">onAfterAction()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Ciclo de vida: chamado após a execução bem-sucedida de um handler.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Core-TPage.html#method_onBeforeAction">onBeforeAction()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Ciclo de vida: chamado pelo dispatcher antes de um handler de evento.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Core-TPage.html#method_onShow">onShow()</a>
@@ -651,7 +679,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
+    <span class="phpdocumentor-element-found-in__line">239</span>
 
     </aside>
 
@@ -832,7 +860,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">203</span>
+    <span class="phpdocumentor-element-found-in__line">231</span>
 
     </aside>
 
@@ -926,7 +954,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 
     </aside>
 
@@ -969,6 +997,114 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_addHtml">
+        addHtml()
+        <a href="classes/Aurea-Core-TComponent.html#method_addHtml" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">120</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adiciona HTML confiável.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addHtml</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$html</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>O conteúdo não é sanitizado. Nunca passe dados de utilizador sem
+sanitização prévia; use addText() para texto não confiável.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$html</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>HTML confiável</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addText">
+        addText()
+        <a href="classes/Aurea-Core-TComponent.html#method_addText" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">106</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adiciona texto não confiável, escapado para HTML.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addText</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$text</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Use este método para valores fornecidos por utilizadores. Para markup
+controlado pela aplicação, utilize addHtml() de forma explícita.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$text</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Texto a renderizar</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getContents">
         getContents()
         <a href="classes/Aurea-Core-TComponent.html#method_getContents" class="headerlink"><i class="fas fa-link"></i></a>
@@ -977,7 +1113,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">181</span>
+    <span class="phpdocumentor-element-found-in__line">209</span>
 
     </aside>
 
@@ -1109,6 +1245,129 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_onAfterAction">
+        onAfterAction()
+        <a href="classes/Aurea-Core-TPage.html#method_onAfterAction" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TPage.php"><a href="files/lib-aurea-core-tpage.html"><abbr title="lib/Aurea/Core/TPage.php">TPage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">75</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Ciclo de vida: chamado após a execução bem-sucedida de um handler.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">onAfterAction</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$method</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$param</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$result</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$method</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Nome do handler</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$param</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string, mixed&gt;</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Parâmetros do pedido</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$result</span>
+                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Resultado devolvido pelo handler</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_onBeforeAction">
+        onBeforeAction()
+        <a href="classes/Aurea-Core-TPage.html#method_onBeforeAction" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TPage.php"><a href="files/lib-aurea-core-tpage.html"><abbr title="lib/Aurea/Core/TPage.php">TPage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Ciclo de vida: chamado pelo dispatcher antes de um handler de evento.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">onBeforeAction</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$method</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$param</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Subclasses podem validar contexto, carregar permissões ou preparar dados.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$method</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Nome do handler</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$param</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string, mixed&gt;</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Parâmetros do pedido</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_onShow">
         onShow()
         <a href="classes/Aurea-Core-TPage.html#method_onShow" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1162,7 +1421,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">131</span>
 
     </aside>
 
@@ -1213,7 +1472,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">128</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
@@ -1324,7 +1583,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">139</span>
+    <span class="phpdocumentor-element-found-in__line">167</span>
 
     </aside>
 
@@ -1426,7 +1685,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">193</span>
+    <span class="phpdocumentor-element-found-in__line">221</span>
 
     </aside>
 
@@ -1461,7 +1720,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">177</span>
 
     </aside>
 
@@ -1504,7 +1763,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Core/TComponent.php"><a href="files/lib-aurea-core-tcomponent.html"><abbr title="lib/Aurea/Core/TComponent.php">TComponent.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">164</span>
+    <span class="phpdocumentor-element-found-in__line">192</span>
 
     </aside>
 
@@ -1573,9 +1832,13 @@
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method___toString">__toString()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_add">add()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addClass">addClass()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addHtml">addHtml()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TComponent.html#method_addText">addText()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_getContents">getContents()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_getProperty">getProperty()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TPage.html#method_getTargetContainer">getTargetContainer()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TPage.html#method_onAfterAction">onAfterAction()</a></li>
+                                            <li class=""><a href="classes/Aurea-Core-TPage.html#method_onBeforeAction">onBeforeAction()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TPage.html#method_onShow">onShow()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setChildren">setChildren()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_setId">setId()</a></li>

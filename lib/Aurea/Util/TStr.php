@@ -56,6 +56,28 @@ class TStr
         return trim($text, '-');
     }
 
+    /** Normaliza texto Unicode para NFC quando a extensão intl está disponível. */
+    public static function normalize(string $text): string
+    {
+        return class_exists(\Normalizer::class) ? \Normalizer::normalize($text, \Normalizer::FORM_C) : $text;
+    }
+
+    /** Converte uma expressão para camelCase. */
+    public static function camel(string $text): string
+    {
+        $parts = preg_split('/[^\pL\pN]+/u', self::normalize($text), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        $first = strtolower((string) array_shift($parts));
+        return $first . implode('', array_map(fn(string $part): string => ucfirst(strtolower($part)), $parts));
+    }
+
+    /** Converte uma expressão camelCase/PascalCase para snake_case. */
+    public static function snake(string $text): string
+    {
+        $text = preg_replace('/(?<!^)[A-Z]/', '_$0', self::normalize($text)) ?? $text;
+        $text = preg_replace('/[^\pL\pN]+/u', '_', $text) ?? $text;
+        return trim(strtolower($text), '_');
+    }
+
     /**
      * Extrai só os dígitos de um texto.
      *

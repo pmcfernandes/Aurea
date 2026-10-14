@@ -31,7 +31,7 @@ class TSqlUpdate
      */
     public function setEntity(string $table): static
     {
-        $this->entity = $table;
+        $this->entity = TIdentifier::assert($table);
         return $this;
     }
 
@@ -43,6 +43,9 @@ class TSqlUpdate
      */
     public function setRowData(array $data): static
     {
+        foreach (array_keys($data) as $column) {
+            TIdentifier::assert((string) $column);
+        }
         $this->rowData = $data;
         return $this;
     }

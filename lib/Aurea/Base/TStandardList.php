@@ -121,6 +121,9 @@ abstract class TStandardList extends TPage
             TTransaction::open($this->database);
             $criteria = $this->buildCriteria($param);
             $items = (new TRepository($this->activeRecord))->load($criteria);
+            if ($this->afterLoad !== null) {
+                ($this->afterLoad)($items);
+            }
             $total = (new TRepository($this->activeRecord))->count($this->countCriteria($param));
 
             $this->grid->setItems($items);

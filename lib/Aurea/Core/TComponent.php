@@ -95,6 +95,34 @@ class TComponent
     }
 
     /**
+     * Adiciona texto não confiável, escapado para HTML.
+     *
+     * Use este método para valores fornecidos por utilizadores. Para markup
+     * controlado pela aplicação, utilize addHtml() de forma explícita.
+     *
+     * @param string $text Texto a renderizar
+     * @return static
+     */
+    public function addText(string $text): static
+    {
+        return $this->add(htmlspecialchars($text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));
+    }
+
+    /**
+     * Adiciona HTML confiável.
+     *
+     * O conteúdo não é sanitizado. Nunca passe dados de utilizador sem
+     * sanitização prévia; use addText() para texto não confiável.
+     *
+     * @param string $html HTML confiável
+     * @return static
+     */
+    public function addHtml(string $html): static
+    {
+        return $this->add($html);
+    }
+
+    /**
      * Substitui todos os filhos do elemento.
      *
      * @param array $children Novos filhos

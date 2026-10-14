@@ -277,11 +277,32 @@
 <dd>Cria o repositório para uma classe de Active Record.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TRepository.html#method_avg">avg()</a>
+    <span>
+                                &nbsp;: float|int|null    </span>
+</dt>
+<dd>Média dos valores de uma coluna.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TRepository.html#method_chunk">chunk()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Executa um callback por blocos de registos paginados.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Database-TRepository.html#method_count">count()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
 <dd>Conta os registros do critério.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TRepository.html#method_cursor">cursor()</a>
+    <span>
+                                &nbsp;: <abbr title="\Generator">Generator</abbr>&lt;int, <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>&gt;    </span>
+</dt>
+<dd>Itera os registos sem carregá-los todos em memória.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Database-TRepository.html#method_delete">delete()</a>
@@ -291,10 +312,52 @@
 <dd>Apaga os registros do critério.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TRepository.html#method_first">first()</a>
+    <span>
+                                &nbsp;: <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>|null    </span>
+</dt>
+<dd>Devolve o primeiro registro do critério.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Aurea-Database-TRepository.html#method_load">load()</a>
     <span>
                                 &nbsp;: array&lt;string|int, <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>&gt;    </span>
 </dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TRepository.html#method_max">max()</a>
+    <span>
+                                &nbsp;: float|int|null    </span>
+</dt>
+<dd>Valor máximo de uma coluna.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TRepository.html#method_min">min()</a>
+    <span>
+                                &nbsp;: float|int|null    </span>
+</dt>
+<dd>Valor mínimo de uma coluna.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TRepository.html#method_paginate">paginate()</a>
+    <span>
+                                &nbsp;: <abbr title="array{data: \Aurea\Database\TRecord[], total: int, page: int, per_page: int, last_page: int}">TRecord[], total: int, page: int, per_page: int, last_page: int}</abbr>    </span>
+</dt>
+<dd>Paginação simples.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Aurea-Database-TRepository.html#method_sum">sum()</a>
+    <span>
+                                &nbsp;: float|int|null    </span>
+</dt>
+<dd>Soma os valores de uma coluna.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Database-TRepository.html#method_aggregate">aggregate()</a>
+    <span>
+                                &nbsp;: float|int|null    </span>
+</dt>
+<dd>Executa uma função de agregação SQL sobre uma coluna.</dd>
 
     </dl>
 
@@ -407,6 +470,147 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_avg">
+        avg()
+        <a href="classes/Aurea-Database-TRepository.html#method_avg" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">179</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Média dos valores de uma coluna.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">avg</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$column</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float|int|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$column</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Coluna calculada</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$criteria</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Critério de filtro ou null</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">float|int|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Média ou null</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_chunk">
+        chunk()
+        <a href="classes/Aurea-Database-TRepository.html#method_chunk" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">273</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Executa um callback por blocos de registos paginados.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">chunk</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">callable(array&lt;string|int, <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>&gt;, int): void&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callback</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callObjectLoad</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$withTrashed</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>O callback recebe a lista do bloco e o número do bloco (iniciado em 1).
+A consulta é repetida com LIMIT/OFFSET; para conjuntos em alteração,
+prefira um critério ordenado por uma chave imutável ou cursor().</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$size</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$callback</span>
+                : <span class="phpdocumentor-argument-list__argument__type">callable(array&lt;string|int, <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>&gt;, int): void</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$criteria</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$callObjectLoad</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$withTrashed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_count">
         count()
         <a href="classes/Aurea-Database-TRepository.html#method_count" class="headerlink"><i class="fas fa-link"></i></a>
@@ -415,7 +619,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">63</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 
     </aside>
 
@@ -423,7 +627,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">count</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+                    <span class="phpdocumentor-signature__name">count</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$withTrashed</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -439,6 +643,13 @@
                     <section class="phpdocumentor-description"><p>Critério de filtro ou null</p>
 </section>
 
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$withTrashed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
             </dd>
             </dl>
 
@@ -478,6 +689,72 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_cursor">
+        cursor()
+        <a href="classes/Aurea-Database-TRepository.html#method_cursor" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">239</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Itera os registos sem carregá-los todos em memória.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">cursor</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callObjectLoad</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$withTrashed</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Generator">Generator</abbr>&lt;int, <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>O cursor PDO permanece aberto até o gerador ser totalmente consumido.
+Mantenha a transação aberta durante a iteração.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$criteria</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$callObjectLoad</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$withTrashed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Generator">Generator</abbr>&lt;int, <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_delete">
         delete()
         <a href="classes/Aurea-Database-TRepository.html#method_delete" class="headerlink"><i class="fas fa-link"></i></a>
@@ -486,7 +763,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">86</span>
+    <span class="phpdocumentor-element-found-in__line">94</span>
 
     </aside>
 
@@ -549,6 +826,61 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_first">
+        first()
+        <a href="classes/Aurea-Database-TRepository.html#method_first" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">123</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Devolve o primeiro registro do critério.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">first</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$criteria</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Critério de filtro ou null</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Primeiro registro ou null</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_load">
         load()
         <a href="classes/Aurea-Database-TRepository.html#method_load" class="headerlink"><i class="fas fa-link"></i></a>
@@ -564,7 +896,7 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">load</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callObjectLoad</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">load</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callObjectLoad</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$withTrashed</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -586,6 +918,13 @@
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$withTrashed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
             </dl>
 
     
@@ -595,6 +934,334 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/Aurea-Database-TRecord.html"><abbr title="\Aurea\Database\TRecord">TRecord</abbr></a>&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_max">
+        max()
+        <a href="classes/Aurea-Database-TRepository.html#method_max" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">203</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Valor máximo de uma coluna.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">max</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$column</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float|int|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$column</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Coluna pesquisada</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$criteria</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Critério de filtro ou null</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">float|int|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Máximo ou null</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_min">
+        min()
+        <a href="classes/Aurea-Database-TRepository.html#method_min" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">191</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Valor mínimo de uma coluna.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">min</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$column</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float|int|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$column</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Coluna pesquisada</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$criteria</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Critério de filtro ou null</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">float|int|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Mínimo ou null</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_paginate">
+        paginate()
+        <a href="classes/Aurea-Database-TRepository.html#method_paginate" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">213</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Paginação simples.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">paginate</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$page</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">1</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$perPage</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">10</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="array{data: \Aurea\Database\TRecord[], total: int, page: int, per_page: int, last_page: int}">TRecord[], total: int, page: int, per_page: int, last_page: int}</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$criteria</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$page</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">1</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$perPage</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">10</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="array{data: \Aurea\Database\TRecord[], total: int, page: int, per_page: int, last_page: int}">TRecord[], total: int, page: int, per_page: int, last_page: int}</abbr></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_sum">
+        sum()
+        <a href="classes/Aurea-Database-TRepository.html#method_sum" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">167</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Soma os valores de uma coluna.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">sum</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$column</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float|int|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$column</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Coluna a somar</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$criteria</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Critério de filtro ou null</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">float|int|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Soma ou null</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_aggregate">
+        aggregate()
+        <a href="classes/Aurea-Database-TRepository.html#method_aggregate" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Database/TRepository.php"><a href="files/lib-aurea-database-trepository.html"><abbr title="lib/Aurea/Database/TRepository.php">TRepository.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">139</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Executa uma função de agregação SQL sobre uma coluna.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">aggregate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fn</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$column</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$criteria</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float|int|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$fn</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Função SQL (SUM, AVG, MIN, MAX)</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$column</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Coluna agregada</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$criteria</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Database-TCriteria.html"><abbr title="\Aurea\Database\TCriteria">TCriteria</abbr></a>|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Critério de filtro ou null</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">float|int|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Resultado da agregação ou null</p>
+</section>
+
             </section>
 
 </article>
@@ -628,9 +1295,18 @@
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/Aurea-Database-TRepository.html#method___construct">__construct()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TRepository.html#method_avg">avg()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TRepository.html#method_chunk">chunk()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TRepository.html#method_count">count()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TRepository.html#method_cursor">cursor()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TRepository.html#method_delete">delete()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TRepository.html#method_first">first()</a></li>
                                             <li class=""><a href="classes/Aurea-Database-TRepository.html#method_load">load()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TRepository.html#method_max">max()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TRepository.html#method_min">min()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TRepository.html#method_paginate">paginate()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TRepository.html#method_sum">sum()</a></li>
+                                            <li class=""><a href="classes/Aurea-Database-TRepository.html#method_aggregate">aggregate()</a></li>
                                     </ul>
             </li>
                     </ul>

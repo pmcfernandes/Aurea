@@ -121,6 +121,19 @@ final class TFormBuilderTest extends TestCase
         $this->assertStringContainsString('card-header', $html);
     }
 
+    public function testAddsSectionsAndHeaderFooterWidgets(): void
+    {
+        $b = new TFormBuilder('fb');
+        $b->addSection('Dados pessoais', 'Preencha os dados.');
+        $b->addHeaderWidget('<span>Estado</span>');
+        $b->addFooterWidget('<small>Obrigatório</small>');
+        $html = $b->getContents();
+        $this->assertStringContainsString('Dados pessoais', $html);
+        $this->assertStringContainsString('Preencha os dados.', $html);
+        $this->assertStringContainsString('Estado', $html);
+        $this->assertStringContainsString('Obrigatório', $html);
+    }
+
     public function testSetDataGetData(): void
     {
         $b = new TFormBuilder('fb');
@@ -135,6 +148,7 @@ final class TFormBuilderTest extends TestCase
     public function testValidate(): void
     {
         $b = new TFormBuilder('fb');
+        $b->enableCsrf(false);
         $b->addFields(['Nome'], [(new TEntry('nome'))->addValidation('Nome', new TRequiredValidator())]);
         $b->setData(['nome' => 'Ana']);
         $b->validate();
@@ -144,9 +158,17 @@ final class TFormBuilderTest extends TestCase
     public function testValidateFails(): void
     {
         $b = new TFormBuilder('fb');
+        $b->enableCsrf(false);
         $b->addFields(['Nome'], [(new TEntry('nome'))->addValidation('Nome', new TRequiredValidator())]);
         $this->expectException(\Exception::class);
         $b->validate();
+    }
+
+    public function testCsrfEnabledByDefault(): void
+    {
+        $b = new TFormBuilder('fb_csrf');
+        $b->addFields(['Nome'], [new TEntry('nome')]);
+        $this->assertStringContainsString('_csrf', $b->getContents());
     }
 
     public function testClear(): void
