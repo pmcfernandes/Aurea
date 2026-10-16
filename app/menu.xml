@@ -1,6 +1,10 @@
 <menu>
   <menuitem label="Dashboard" icon="fa-gauge" action="CrmDashboard:onShow"/>
-  <menuitem label="Clientes" icon="fa-users" action="CrmClienteList:onShow"/>
-  <menuitem label="Novo cliente" icon="fa-user-plus" action="CrmClienteForm:onShow"/>
-  <menuitem label="Sair" icon="fa-right-from-bracket" action="CrmLogin:onLogout"/>
+  <menuitem label="Clientes" icon="fa-users" action="CustomerList:onShow"/>
+  <menuitem label="Actividades" icon="fa-list-check" action="CustomerActivityList:onShow"/>
+  <menuitem label="Oportunidades" icon="fa-columns" action="CustomerOpportunityKanban:onShow"/>
+  <menuitem label="Vendas" icon="fa-chart-pie" action="SalesAnalytics:onShow"/>
+  <menuitem label="Utilizadores" icon="fa-users" action="AccessManagement:onUsers"/>
+  <menuitem label="Grupos" icon="fa-user-group" action="AccessManagement:onGroups"/>
+  <menuitem label="Permissões" icon="fa-user-shield" action="AccessManagement:onPermissions"/>
 </menu>

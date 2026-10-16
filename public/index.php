@@ -7,10 +7,13 @@ declare(strict_types=1);
  */
 require dirname(__DIR__) . '/bootstrap.php';
 
+use App\Lib\CrmShell;
+use App\Lib\AccessControl;
 use Aurea\Auth\TAuth;
 use Aurea\Auth\TPermission;
 use Aurea\Core\TApplication;
 use Aurea\Core\TAction;
+use Aurea\Core\TAssets;
 use Aurea\Core\TScript;
 use Aurea\Core\TSession;
 use Aurea\Core\TConfig;
@@ -31,11 +34,24 @@ $config->validate([
 ]);
 
 TApplication::setTitle('Aurea CRM Demo');
+TAssets::setVersion('1.4.0');
 TApplication::setControlNamespace('App\\Control\\');
-TApplication::setDefault('CrmDashboard', 'onShow');
+TApplication::setDefault('CrmLogin', 'onShow');
 TApplication::setEnv($config->get('app.environment'), $config->get('app.debug'));
 TApplication::setCsrfProtection($config->get('app.csrf_protection'));
 TApplication::usePermissionGuard($config->get('app.permission_guard'));
+TPermission::setActionChecker(static function (string $controller, string $action, ?string $userId): bool {
+    if ($controller === 'CrmLogin') {
+        return true;
+    }
+
+    return AccessControl::allows($userId, $controller, $action);
+});
+TApplication::setLayoutRenderer(static fn(string $content, string $active): string => CrmShell::render(
+    $content,
+    $active,
+    $config->get('permissions')
+));
 
 if ($config->get('logging.enabled', false)) {
     $logger = new TRotatingTxtLogger(
@@ -58,20 +74,11 @@ foreach ($config->get('permissions') as $controller => $actions) {
 }
 
 TApplication::setAuthCallback(static function (string $class, string $method): bool|string {
-    if (!str_starts_with($class, 'Crm') || $class === 'CrmLogin' || TAuth::check()) {
+    if ($class === 'CrmLogin' || TAuth::check()) {
         return true;
     }
     TSession::setValue('crm_after_login', ['class' => $class, 'method' => $method]);
     TScript::redirect(new TAction(['CrmLogin', 'onShow']));
     return 'Autenticação necessária.';
 });
-if (TAuth::check() && file_exists(APP_ROOT . '/app/menu.xml')) {
-    $menuControllers = array_keys($config->get('permissions'));
-    TApplication::setMenuXml(
-        APP_ROOT . '/app/menu.xml',
-        static fn(string $controller): bool => in_array($controller, $menuControllers, true)
-    );
-} else {
-    TApplication::setMenuHtml('');
-}
 TApplication::run();

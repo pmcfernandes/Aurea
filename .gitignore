@@ -1,6 +1,10 @@
 .idea/
+.env
 .phpdoc/
+
 vendor/
+var/
+
 database/*.db
 
 *.log

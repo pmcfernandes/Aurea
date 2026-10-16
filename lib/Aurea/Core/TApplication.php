@@ -237,6 +237,10 @@ class TApplication
                 return;
             }
             $content = self::dispatch($class, $method, $param);
+            if ($method === 'onExportCSV') {
+                echo $content;
+                return;
+            }
             if (TRequest::isAjax()) {
                 echo $content . TScript::render();
                 return;
@@ -298,6 +302,9 @@ class TApplication
 
         // se o método imprimiu via show(), captura; se devolveu Page/TComponent, renderiza
         $echoed = (string) ob_get_clean();
+        if ($method === 'onExportCSV') {
+            return $echoed;
+        }
         if ($result instanceof TComponent) {
             return $result->getContents() . $echoed;
         }

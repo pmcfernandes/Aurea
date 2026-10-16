@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Aurea\Base;
 
 use Aurea\Core\TPage;
+use Aurea\Core\TComponent;
+use Aurea\Dialog\TMessage;
 use Aurea\Form\TFormBuilder;
 
 /**
@@ -19,6 +21,8 @@ use Aurea\Form\TFormBuilder;
 abstract class TStandardForm extends TPage
 {
     use TStandardFormTrait;
+
+    protected TComponent $messageArea;
 
     /**
      * Obtém o nome da config em config/.
@@ -50,7 +54,16 @@ abstract class TStandardForm extends TPage
         $this->setDatabase($this->getDatabase());
         $this->setActiveRecord($this->getActiveRecord());
         $this->form = $this->buildForm();
+        $this->messageArea = new TComponent('div');
+        $this->messageArea->addClass('form-message-area');
+        $this->add($this->messageArea);
         $this->add($this->form);
+    }
+
+    /** Exibe a mensagem imediatamente antes do formulário. */
+    protected function showFormMessage(TMessage $message): void
+    {
+        $this->messageArea->setChildren([$message]);
     }
 
     /**

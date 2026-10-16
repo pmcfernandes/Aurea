@@ -1,0 +1,31 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Model;
+
+use Aurea\Database\TRecord;
+
+/** Documento associado a um cliente. */
+class CustomerDocument extends TRecord
+{
+    public const TABLENAME = 'customer_document';
+    public const PRIMARYKEY = 'id';
+    public const IDPOLICY = 'serial';
+    public const CREATED_AT = 'created_at';
+    public const UPDATED_AT = 'updated_at';
+    public const ATTRIBUTES = ['customer_id', 'title', 'document_type', 'file_name', 'file_path', 'expires_at', 'status', 'created_at', 'updated_at'];
+
+    public function __construct(array|int|string|null $data = null, bool $callObjectLoad = true)
+    {
+        foreach (self::ATTRIBUTES as $attribute) {
+            $this->addAttribute($attribute);
+        }
+        parent::__construct($data, $callObjectLoad);
+    }
+
+    public function fromArray(array $data): static
+    {
+        unset($data['attachment']);
+        return parent::fromArray($data);
+    }
+}

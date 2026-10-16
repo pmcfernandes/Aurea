@@ -65,7 +65,7 @@ class TScript
      */
     public static function showModal(string $id): void
     {
-        self::create("var m=document.getElementById('{$id}');if(m&&window.bootstrap){new bootstrap.Modal(m).show();}");
+        self::create("(function(){var open=function(){var m=document.getElementById('{$id}');if(m&&window.bootstrap){new bootstrap.Modal(m).show();}};if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',open,{once:true});}else{setTimeout(open,0);}})();");
     }
 
     /** Devolve <script> com tudo o que foi acumulado e limpa a fila */

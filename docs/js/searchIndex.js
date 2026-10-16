@@ -171,10 +171,20 @@ Search.appendIndex(
             "summary": "Constr\u00F3i\u0020a\u0020p\u00E1gina\u0020e\u0020liga\u0020o\u0020formul\u00E1rio\u0020ao\u0020trait.",
             "url": "classes/Aurea-Base-TStandardForm.html#method___construct"
         },                {
+            "fqsen": "\\Aurea\\Base\\TStandardForm\u003A\u003AshowFormMessage\u0028\u0029",
+            "name": "showFormMessage",
+            "summary": "Exibe\u0020a\u0020mensagem\u0020imediatamente\u0020antes\u0020do\u0020formul\u00E1rio.",
+            "url": "classes/Aurea-Base-TStandardForm.html#method_showFormMessage"
+        },                {
             "fqsen": "\\Aurea\\Base\\TStandardForm\u003A\u003AonShow\u0028\u0029",
             "name": "onShow",
             "summary": "Exibe\u0020o\u0020formul\u00E1rio\u0020\u0028carrega\u0020o\u0020registro\u0020quando\u0020h\u00E1\u0020\u0027key\u0027\u0029.",
             "url": "classes/Aurea-Base-TStandardForm.html#method_onShow"
+        },                {
+            "fqsen": "\\Aurea\\Base\\TStandardForm\u003A\u003A\u0024messageArea",
+            "name": "messageArea",
+            "summary": "",
+            "url": "classes/Aurea-Base-TStandardForm.html#property_messageArea"
         },                {
             "fqsen": "\\Aurea\\Base\\TStandardFormList",
             "name": "TStandardFormList",
@@ -276,6 +286,11 @@ Search.appendIndex(
             "summary": "Limpa\u0020os\u0020campos\u0020do\u0020formul\u00E1rio.",
             "url": "classes/Aurea-Base-TStandardFormTrait.html#method_onClear"
         },                {
+            "fqsen": "\\Aurea\\Base\\TStandardFormTrait\u003A\u003AdisplayFormMessage\u0028\u0029",
+            "name": "displayFormMessage",
+            "summary": "Coloca\u0020alertas\u0020no\u0020topo\u0020do\u0020formul\u00E1rio\u0020quando\u0020a\u0020p\u00E1gina\u0020oferece\u0020uma\u0020\u00E1rea\u0020pr\u00F3pria.",
+            "url": "classes/Aurea-Base-TStandardFormTrait.html#method_displayFormMessage"
+        },                {
             "fqsen": "\\Aurea\\Base\\TStandardFormTrait\u003A\u003A\u0024database",
             "name": "database",
             "summary": "",
@@ -340,6 +355,11 @@ Search.appendIndex(
             "name": "onShow",
             "summary": "Exibe\u0020a\u0020listagem\u0020\u0028atalho\u0020para\u0020onReload\u0029.",
             "url": "classes/Aurea-Base-TStandardList.html#method_onShow"
+        },                {
+            "fqsen": "\\Aurea\\Base\\TStandardList\u003A\u003AgetListTitle\u0028\u0029",
+            "name": "getListTitle",
+            "summary": "T\u00EDtulo\u0020vis\u00EDvel\u0020do\u0020painel\u0020da\u0020listagem.\u0020Subclasses\u0020podem\u0020omiti\u002Dlo\u0020ou\u0020personaliz\u00E1\u002Dlo.",
+            "url": "classes/Aurea-Base-TStandardList.html#method_getListTitle"
         },                {
             "fqsen": "\\Aurea\\Base\\TStandardList\u003A\u003AonReload\u0028\u0029",
             "name": "onReload",
@@ -6446,6 +6466,86 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Aurea-Log-TXmlLogger.html#property_file"
         },                {
+            "fqsen": "\\Aurea\\Mail\\TMail",
+            "name": "TMail",
+            "summary": "TMail\u0020\u2014\u0020envio\u0020de\u0020mensagens\u0020atrav\u00E9s\u0020de\u0020PHPMailer.",
+            "url": "classes/Aurea-Mail-TMail.html"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method___construct"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AfromConfig\u0028\u0029",
+            "name": "fromConfig",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_fromConfig"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003Aconfigure\u0028\u0029",
+            "name": "configure",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_configure"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AsetFrom\u0028\u0029",
+            "name": "setFrom",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_setFrom"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AaddTo\u0028\u0029",
+            "name": "addTo",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_addTo"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AaddCc\u0028\u0029",
+            "name": "addCc",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_addCc"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AaddBcc\u0028\u0029",
+            "name": "addBcc",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_addBcc"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AaddReplyTo\u0028\u0029",
+            "name": "addReplyTo",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_addReplyTo"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AsetSubject\u0028\u0029",
+            "name": "setSubject",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_setSubject"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AsetHtmlBody\u0028\u0029",
+            "name": "setHtmlBody",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_setHtmlBody"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AsetTextBody\u0028\u0029",
+            "name": "setTextBody",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_setTextBody"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003AaddAttachment\u0028\u0029",
+            "name": "addAttachment",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_addAttachment"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003Asend\u0028\u0029",
+            "name": "send",
+            "summary": "Envia\u0020a\u0020mensagem\u0020configurada.",
+            "url": "classes/Aurea-Mail-TMail.html#method_send"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003Aencryption\u0028\u0029",
+            "name": "encryption",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#method_encryption"
+        },                {
+            "fqsen": "\\Aurea\\Mail\\TMail\u003A\u003A\u0024mailer",
+            "name": "mailer",
+            "summary": "",
+            "url": "classes/Aurea-Mail-TMail.html#property_mailer"
+        },                {
             "fqsen": "\\Aurea\\Mvc\\TController",
             "name": "TController",
             "summary": "TController\u0020\u2014\u0020base\u0020fina\u0020para\u0020controllers\u0020MVC.",
@@ -8100,6 +8200,11 @@ Search.appendIndex(
             "name": "Log",
             "summary": "",
             "url": "namespaces/aurea-log.html"
+        },                {
+            "fqsen": "\\Aurea\\Mail",
+            "name": "Mail",
+            "summary": "",
+            "url": "namespaces/aurea-mail.html"
         },                {
             "fqsen": "\\Aurea\\Mvc",
             "name": "Mvc",

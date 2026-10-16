@@ -64,6 +64,7 @@ if ($command === 'migrate') {
         if (str_starts_with($a, '--db=')) $db = substr($a, 5);
     }
     require __DIR__ . '/../bootstrap.php';
+    \Aurea\Core\TConfig::loadEnv(APP_ROOT . '/.env');
     $pdo = \Aurea\Database\TTransaction::open($db);
     $migrator = new \Aurea\Database\TMigrator($pdo);
     $dir = 'database/migrations';

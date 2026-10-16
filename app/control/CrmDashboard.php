@@ -3,52 +3,62 @@ declare(strict_types=1);
 
 namespace App\Control;
 
-use App\Lib\CrmDemoDatabase;
-use Aurea\Core\TAction;
-use Aurea\Core\TComponent;
+use App\Model\Customer;
+use App\Model\CustomerActivity;
+use App\Model\CustomerDocument;
+use App\Model\CustomerOpportunity;
+use Aurea\Core\TAssets;
 use Aurea\Core\TPage;
 use Aurea\Database\TTransaction;
-use Aurea\Widget\TNumericIndicator;
+use Aurea\Mvc\TView;
 
-/**
- * Dashboard operacional da demonstração CRM.
- *
- * @author Pedro Fernandes
- * @version 1.0.0
- * @license MIT
- */
+/** Painel principal com os indicadores operacionais do CRM. */
 class CrmDashboard extends TPage
 {
+    public function __construct()
+    {
+        parent::__construct();
+        TAssets::addCss('/assets/dashboard.css');
+    }
+
     public function onShow(array $param = []): void
     {
-        CrmDemoDatabase::ensure();
-        TTransaction::open('crm');
-        $db = TTransaction::get();
-        $clients = (int) $db->query('SELECT COUNT(*) FROM crm_cliente')->fetchColumn();
-        $pipeline = (float) $db->query('SELECT COALESCE(SUM(valor), 0) FROM crm_oportunidade')->fetchColumn();
-        $pending = (int) $db->query('SELECT COUNT(*) FROM crm_tarefa WHERE concluida = 0')->fetchColumn();
-        $opps = $db->query('SELECT o.titulo, o.valor, o.fase, c.nome AS cliente FROM crm_oportunidade o JOIN crm_cliente c ON c.id = o.cliente_id ORDER BY o.id DESC')->fetchAll(\PDO::FETCH_ASSOC);
-        TTransaction::close();
-        $this->addHtml('<h1 class="h3 mb-4">CRM Demo</h1><div class="row g-3"></div>');
-        $cards = new TComponent('div');
-        $cards->addClass('row g-3 mb-4');
-        foreach ([['Clientes', $clients, null], ['Pipeline', $pipeline, 'EUR'], ['Tarefas pendentes', $pending, null]] as [$label, $value, $currency]) {
-            $column = new TComponent('div');
-            $column->addClass('col-md-4');
-            $card = new TComponent('div');
-            $card->addClass('card card-body');
-            $card->addHtml('<div class="text-muted small">' . htmlspecialchars($label) . '</div>');
-            $metric = (new TNumericIndicator($value))->setFormat($currency ? 2 : 0)->setCurrency($currency);
-            $card->add($metric);
-            $column->add($card);
-            $cards->add($column);
+        $data = [
+            'customers' => 0,
+            'activeCustomers' => 0,
+            'pipeline' => 0.0,
+            'plannedActivities' => 0,
+            'validDocuments' => 0,
+            'recentCustomers' => [],
+            'recentActivities' => [],
+        ];
+
+        try {
+            TTransaction::open('app');
+            $data['customers'] = count(Customer::all());
+            $data['activeCustomers'] = Customer::where('status', '=', 'customer')->count();
+            $openOpportunities = CustomerOpportunity::where('status', '=', 'open')->get();
+            $data['pipeline'] = array_sum(array_map(static fn(CustomerOpportunity $opportunity): float => (float) $opportunity->amount, $openOpportunities));
+            $data['plannedActivities'] = CustomerActivity::where('status', '=', 'planned')->count();
+            $data['validDocuments'] = CustomerDocument::where('status', '=', 'valid')->count();
+            $data['recentCustomers'] = array_map(
+                static fn(Customer $customer): array => $customer->toArray(),
+                Customer::where('id', '>', 0)->orderBy('created_at', 'DESC')->take(5)->get()
+            );
+            $data['recentActivities'] = array_map(static function (CustomerActivity $activity): array {
+                $customer = $activity->customer();
+                return [
+                    'subject' => $activity->subject,
+                    'type' => $activity->type,
+                    'scheduled_at' => $activity->scheduled_at,
+                    'customer_name' => $customer?->name ?? 'Cliente removido',
+                ];
+            }, CustomerActivity::where('id', '>', 0)->orderBy('created_at', 'DESC')->take(5)->get());
+            TTransaction::close();
+        } catch (\Throwable) {
+            TTransaction::rollback();
         }
-        $this->add($cards);
-        $html='<div class="card"><div class="card-header fw-bold">Oportunidades recentes</div><div class="table-responsive"><table class="table mb-0"><thead><tr><th>Cliente</th><th>Oportunidade</th><th>Fase</th><th class="text-end">Valor</th></tr></thead><tbody>';
-        foreach ($opps as $opp) {
-            $html .= '<tr><td>' . htmlspecialchars($opp['cliente']) . '</td><td>' . htmlspecialchars($opp['titulo']) . '</td><td><span class="badge text-bg-primary">' . htmlspecialchars($opp['fase']) . '</span></td><td class="text-end">' . number_format((float) $opp['valor'], 2, ',', '.') . ' €</td></tr>';
-        }
-        $html .= '</tbody></table></div></div><a class="btn btn-primary mt-3" href="' . (new TAction(['CrmClienteList', 'onShow']))->toHref() . '"><i class="fa-solid fa-users"></i> Gerir clientes</a>';
-        $this->addHtml($html);
+
+        $this->addHtml((new TView('dashboard/index'))->set('dashboard', $data)->fetch());
     }
 }

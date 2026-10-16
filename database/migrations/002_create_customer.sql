@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS customer (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    name VARCHAR(150) NOT NULL,
+    company VARCHAR(150) NULL,
+    email VARCHAR(190) NULL,
+    phone VARCHAR(50) NULL,
+    city VARCHAR(100) NULL,
+    status VARCHAR(30) NOT NULL DEFAULT 'lead',
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    KEY customer_name_index (name),
+    KEY customer_email_index (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -85,13 +85,15 @@ abstract class TStandardList extends TPage
         $this->filter = $this->buildFilter();
         $this->grid = $this->buildGrid();
 
-        $panel = new TPanel((new \ReflectionClass($this))->getShortName());
+        $panel = new TPanel($this->getListTitle());
         $panel->addToBody($this->filter);
         $panel->addToBody($this->grid);
 
         $export = new TComponent('a');
         $export->addClass('btn btn-outline-secondary btn-sm mt-2');
-        $export->setProperty('href', (new TAction([$this, 'onExportCSV'], $_GET))->toHref());
+        $exportParams = $_GET;
+        unset($exportParams['class'], $exportParams['method']);
+        $export->setProperty('href', (new TAction([$this, 'onExportCSV'], $exportParams))->toHref());
         $export->add("<i class='fa-solid fa-file-csv'></i> Exportar CSV");
         $panel->addToBody($export);
 
@@ -108,6 +110,12 @@ abstract class TStandardList extends TPage
     public function onShow(array $param = []): void
     {
         $this->onReload($param);
+    }
+
+    /** Título visível do painel da listagem. Subclasses podem omiti-lo ou personalizá-lo. */
+    protected function getListTitle(): string
+    {
+        return (new \ReflectionClass($this))->getShortName();
     }
 
     /**

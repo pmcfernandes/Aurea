@@ -116,6 +116,10 @@
                 
             </li>
                     <li>
+                <a href="namespaces/aurea-mail.html" class="">Mail</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/aurea-mvc.html" class="">Mvc</a>
                 
             </li>
@@ -201,7 +205,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardForm.php"><a href="files/lib-aurea-base-tstandardform.html"><abbr title="lib/Aurea/Base/TStandardForm.php">TStandardForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 
     </aside>
 
@@ -306,6 +310,12 @@ do formulário; onSave/onEdit/onClear vêm do trait.</p>
     <a class="" href="classes/Aurea-Base-TStandardFormTrait.html#property_form">$form</a>
     <span>
                         &nbsp;: mixed            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/Aurea-Base-TStandardForm.html#property_messageArea">$messageArea</a>
+    <span>
+                        &nbsp;: <a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a>            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
@@ -537,6 +547,13 @@ do formulário; onSave/onEdit/onClear vêm do trait.</p>
 <dd>Monta o formulário da página (campos, validações e ações).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Base-TStandardFormTrait.html#method_displayFormMessage">displayFormMessage()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Coloca alertas no topo do formulário quando a página oferece uma área própria.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Aurea-Base-TStandardForm.html#method_getActiveRecord">getActiveRecord()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -563,6 +580,13 @@ do formulário; onSave/onEdit/onClear vêm do trait.</p>
                                 &nbsp;: string    </span>
 </dt>
 <dd>Renderiza os filhos do elemento.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/Aurea-Base-TStandardForm.html#method_showFormMessage">showFormMessage()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Exibe a mensagem imediatamente antes do formulário.</dd>
 
     </dl>
 
@@ -847,6 +871,43 @@ do formulário; onSave/onEdit/onClear vêm do trait.</p>
             -protected
                                                                     "
 >
+    <h4 class="phpdocumentor-element__name" id="property_messageArea">
+        $messageArea
+        <a href="classes/Aurea-Base-TStandardForm.html#property_messageArea" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardForm.php"><a href="files/lib-aurea-base-tstandardform.html"><abbr title="lib/Aurea/Base/TStandardForm.php">TStandardForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">25</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__type"><a href="classes/Aurea-Core-TComponent.html"><abbr title="\Aurea\Core\TComponent">TComponent</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$messageArea</span>
+    </code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                                    "
+>
     <h4 class="phpdocumentor-element__name" id="property_tag">
         $tag
         <a href="classes/Aurea-Core-TComponent.html#property_tag" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1008,7 +1069,7 @@ do formulário; onSave/onEdit/onClear vêm do trait.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardForm.php"><a href="files/lib-aurea-base-tstandardform.html"><abbr title="lib/Aurea/Base/TStandardForm.php">TStandardForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
@@ -1811,7 +1872,7 @@ controlado pela aplicação, utilize addHtml() de forma explícita.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardForm.php"><a href="files/lib-aurea-base-tstandardform.html"><abbr title="lib/Aurea/Base/TStandardForm.php">TStandardForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">61</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
@@ -2341,7 +2402,7 @@ controlado pela aplicação, utilize addHtml() de forma explícita.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardForm.php"><a href="files/lib-aurea-base-tstandardform.html"><abbr title="lib/Aurea/Base/TStandardForm.php">TStandardForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 
     </aside>
 
@@ -2374,6 +2435,51 @@ controlado pela aplicação, utilize addHtml() de forma explícita.</p>
         class="phpdocumentor-element
             -method
             -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_displayFormMessage">
+        displayFormMessage()
+        <a href="classes/Aurea-Base-TStandardFormTrait.html#method_displayFormMessage" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardFormTrait.php"><a href="files/lib-aurea-base-tstandardformtrait.html"><abbr title="lib/Aurea/Base/TStandardFormTrait.php">TStandardFormTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">129</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Coloca alertas no topo do formulário quando a página oferece uma área própria.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">displayFormMessage</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Dialog-TMessage.html"><abbr title="\Aurea\Dialog\TMessage">TMessage</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$message</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$message</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Dialog-TMessage.html"><abbr title="\Aurea\Dialog\TMessage">TMessage</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
                         -abstract                                "
 >
     <h4 class="phpdocumentor-element__name" id="method_getActiveRecord">
@@ -2384,7 +2490,7 @@ controlado pela aplicação, utilize addHtml() de forma explícita.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardForm.php"><a href="files/lib-aurea-base-tstandardform.html"><abbr title="lib/Aurea/Base/TStandardForm.php">TStandardForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
@@ -2427,7 +2533,7 @@ controlado pela aplicação, utilize addHtml() de forma explícita.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardForm.php"><a href="files/lib-aurea-base-tstandardform.html"><abbr title="lib/Aurea/Base/TStandardForm.php">TStandardForm.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
@@ -2542,6 +2648,51 @@ controlado pela aplicação, utilize addHtml() de forma explícita.</p>
             </section>
 
 </article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_showFormMessage">
+        showFormMessage()
+        <a href="classes/Aurea-Base-TStandardForm.html#method_showFormMessage" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Aurea/Base/TStandardForm.php"><a href="files/lib-aurea-base-tstandardform.html"><abbr title="lib/Aurea/Base/TStandardForm.php">TStandardForm.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Exibe a mensagem imediatamente antes do formulário.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">showFormMessage</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><a href="classes/Aurea-Dialog-TMessage.html"><abbr title="\Aurea\Dialog\TMessage">TMessage</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$message</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$message</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Aurea-Dialog-TMessage.html"><abbr title="\Aurea\Dialog\TMessage">TMessage</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
             </section>
 
         
@@ -2571,6 +2722,7 @@ controlado pela aplicação, utilize addHtml() de forma explícita.</p>
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_children">$children</a></li>
                                                     <li class=""><a href="classes/Aurea-Base-TStandardFormTrait.html#property_database">$database</a></li>
                                                     <li class=""><a href="classes/Aurea-Base-TStandardFormTrait.html#property_form">$form</a></li>
+                                                    <li class=""><a href="classes/Aurea-Base-TStandardForm.html#property_messageArea">$messageArea</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_tag">$tag</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TPage.html#property_targetContainer">$targetContainer</a></li>
                                                     <li class=""><a href="classes/Aurea-Core-TComponent.html#property_voidTags">$voidTags</a></li>
@@ -2609,10 +2761,12 @@ controlado pela aplicação, utilize addHtml() de forma explícita.</p>
                                             <li class=""><a href="classes/Aurea-Core-TPage.html#method_setTargetContainer">setTargetContainer()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_show">show()</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardForm.html#method_buildForm">buildForm()</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardFormTrait.html#method_displayFormMessage">displayFormMessage()</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardForm.html#method_getActiveRecord">getActiveRecord()</a></li>
                                             <li class=""><a href="classes/Aurea-Base-TStandardForm.html#method_getDatabase">getDatabase()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_renderAttributes">renderAttributes()</a></li>
                                             <li class=""><a href="classes/Aurea-Core-TComponent.html#method_renderChildren">renderChildren()</a></li>
+                                            <li class=""><a href="classes/Aurea-Base-TStandardForm.html#method_showFormMessage">showFormMessage()</a></li>
                                     </ul>
             </li>
                     </ul>

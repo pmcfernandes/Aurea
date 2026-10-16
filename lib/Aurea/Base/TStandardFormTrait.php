@@ -81,9 +81,9 @@ trait TStandardFormTrait
             $data->id = $object->id;
             $this->form->setData($data);
             TTransaction::close();
-            (new TMessage('success', 'Registro salvo'))->show();
+            $this->displayFormMessage(new TMessage('success', 'Registro salvo'));
         } catch (\Throwable $e) {
-            (new TMessage('error', $e->getMessage()))->show();
+            $this->displayFormMessage(new TMessage('error', $e->getMessage()));
             try {
                 $this->form->setData($this->form->getData());
             } catch (\Throwable) {
@@ -110,7 +110,7 @@ trait TStandardFormTrait
             $this->form->setData($object->toArray());
             TTransaction::close();
         } catch (\Throwable $e) {
-            (new TMessage('error', $e->getMessage()))->show();
+            $this->displayFormMessage(new TMessage('error', $e->getMessage()));
             TTransaction::rollback();
         }
     }
@@ -123,5 +123,15 @@ trait TStandardFormTrait
     public function onClear(array $param = []): void
     {
         $this->form->clear();
+    }
+
+    /** Coloca alertas no topo do formulário quando a página oferece uma área própria. */
+    protected function displayFormMessage(TMessage $message): void
+    {
+        if (method_exists($this, 'showFormMessage')) {
+            $this->showFormMessage($message);
+            return;
+        }
+        $message->show();
     }
 }

@@ -1,0 +1,230 @@
+.opportunity-kanban {
+  max-width: 1440px;
+}
+.opportunity-kanban-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.opportunity-kanban-kicker {
+  margin: 0 0 6px;
+  color: #0064e0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.opportunity-kanban-heading h1 {
+  margin: 0;
+  color: #0a1317;
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.17;
+}
+.opportunity-kanban-heading p:not(.opportunity-kanban-kicker) {
+  margin: 8px 0 0;
+  color: #5d6c7b;
+  font-size: 16px;
+}
+.opportunity-kanban-heading .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.opportunity-kanban-board {
+  display: grid;
+  grid-auto-columns: minmax(260px, 1fr);
+  grid-auto-flow: column;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+.opportunity-kanban-column {
+  min-height: 520px;
+  padding: 16px;
+  border: 1px solid #dee3e9;
+  border-radius: 24px;
+  background: #f1f4f7;
+}
+.opportunity-kanban-column-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 4px 16px;
+}
+.opportunity-kanban-column-header h2 {
+  margin: 0;
+  color: #0a1317;
+  font-size: 16px;
+  font-weight: 700;
+}
+.opportunity-kanban-column-header span {
+  display: block;
+  margin-top: 4px;
+  color: #5d6c7b;
+  font-size: 12px;
+}
+.opportunity-kanban-column-header > strong {
+  color: #0a1317;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.opportunity-kanban-cards {
+  display: grid;
+  gap: 12px;
+}
+.opportunity-kanban-card {
+  display: block;
+  padding: 16px;
+  border: 1px solid #dee3e9;
+  border-radius: 16px;
+  background: #fff;
+  color: #1c1e21;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+.opportunity-kanban-card:hover {
+  border-color: #0064e0;
+  color: #1c1e21;
+  box-shadow: rgba(20, 22, 26, 0.16) 0 4px 12px;
+  transform: translateY(-2px);
+}
+.opportunity-kanban-card-title {
+  display: block;
+  color: #0a1317;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.opportunity-kanban-card-customer {
+  display: block;
+  margin-top: 10px;
+  color: #5d6c7b;
+  font-size: 13px;
+}
+.opportunity-kanban-card-customer i {
+  width: 16px;
+  color: #0064e0;
+}
+.opportunity-kanban-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #dee3e9;
+  font-size: 12px;
+}
+.opportunity-kanban-card-footer strong {
+  color: #0a1317;
+  font-size: 14px;
+}
+.opportunity-kanban-card-footer span {
+  color: #5d6c7b;
+  white-space: nowrap;
+}
+.opportunity-kanban-empty {
+  margin: 0;
+  padding: 24px 12px;
+  border: 1px dashed #ced0d4;
+  border-radius: 16px;
+  color: #5d6c7b;
+  font-size: 13px;
+  text-align: center;
+}
+.opportunity-kanban-column--won {
+  background: #edf9ef;
+}
+.opportunity-kanban-column--lost {
+  background: #fff4f5;
+}
+@media (max-width: 767px) {
+  .opportunity-kanban-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+  .opportunity-kanban-heading .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .opportunity-kanban-board {
+    margin: 0 -16px;
+    padding: 0 16px 16px;
+  }
+  .opportunity-kanban-column {
+    min-height: 380px;
+  }
+}
+.opportunity-kanban-board {
+  display: flex !important;
+  align-items: stretch;
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+.opportunity-kanban-board .kanban-col {
+  min-width: 264px;
+  margin: 0 !important;
+  border: 1px solid #dee3e9;
+  border-radius: 24px;
+  background: #f1f4f7;
+  box-shadow: none;
+}
+.opportunity-kanban-board .kanban-col > .card-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid #dee3e9;
+  background: transparent;
+  color: #0a1317;
+  font-size: 14px;
+  font-weight: 700;
+}
+.opportunity-kanban-board .kanban-list {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-height: 156px;
+  padding: 8px !important;
+  background: transparent;
+}
+.opportunity-kanban-board .kanban-card {
+  margin: 0 !important;
+  border: 1px solid #dee3e9;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: none;
+  cursor: grab;
+}
+.opportunity-kanban-board .kanban-card:active {
+  cursor: grabbing;
+}
+.opportunity-kanban-board .kanban-card .card-body {
+  padding: 16px !important;
+}
+.opportunity-kanban-board .kanban-card .card-title {
+  margin: 0 0 10px;
+  color: #0a1317;
+  font-size: 15px;
+  font-weight: 700;
+}
+.opportunity-kanban-board .kanban-card .card-text {
+  margin: 0;
+  color: #5d6c7b;
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre-line;
+}
+.opportunity-kanban-board .kanban-col[data-status="won"] {
+  background: #edf9ef;
+}
+.opportunity-kanban-board .kanban-col[data-status="lost"] {
+  background: #fff4f5;
+}
